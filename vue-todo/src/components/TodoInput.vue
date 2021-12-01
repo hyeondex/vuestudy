@@ -1,5 +1,5 @@
 <template>
-<div class="inputBox shadow">
+<div class="input-box">
   <input
       type="text"
       v-model="newTodoItem"
@@ -14,7 +14,7 @@
       v-if="showModal"
       @close="showModal=false"
   >
-    <h3 slot="header">alert</h3>
+    <h3 slot="header"></h3>
     <span slot="body">
 <!--      아무것도 안하려고 하네...?-->
     </span>
