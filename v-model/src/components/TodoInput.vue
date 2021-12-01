@@ -1,13 +1,13 @@
 <template>
   <div class="inputbox">
     <input
-      type="text"
-      v-model="newTodoItem"
-      value="newTodoItem"
-      v-on:keyup.enter="addTodo"
-      placeholder="TODO를 써보든가요"
+        type="text"
+        v-model="newTodoItem"
+        value="newTodoItem"
+        @keyup.enter="addTodo"
+        placeholder="TODO를 써보든가요"
     />
-    <button class="addConatainer" @:click="addTodo">✅</button>
+    <button class="addConatainer" @click="addTodo">✅</button>
 
     <modal v-if="showModal" @close="showModal = false">
       <h3 slot="header">💨</h3>
@@ -54,6 +54,7 @@ export default {
 .inputbox {
   margin-top: 20px;
 }
+
 input {
   width: 350px;
   padding-left: 15px;

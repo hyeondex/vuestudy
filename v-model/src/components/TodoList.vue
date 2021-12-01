@@ -1,12 +1,12 @@
 <template>
   <section>
     <transition-group name="list" tag="ul" appear>
-      <li v-for="(todoItem, index) in propsdata" :key="todoItem">
+      <li v-for="(todoItem, index) in propsdata" :key="index">
         {{ todoItem }}
         <button
-          type="button"
-          class="removeBtn"
-          @click="removeTodo(todoItem, index)"
+            type="button"
+            class="removeBtn"
+            @click="removeTodo(todoItem, index)"
         >
           🏅
         </button>
@@ -34,6 +34,7 @@ ul {
   margin-top: 0;
   text-align: left;
 }
+
 li {
   display: flex;
   margin: 0 auto;
@@ -52,10 +53,12 @@ li {
   margin-left: auto;
   color: olive;
 }
+
 .list-enter-active,
 .list-leave-active {
   transition: all 0.4s;
 }
+
 .list-enter,
 .list-leave-to {
   transition: all 0.5s;

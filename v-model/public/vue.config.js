@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: "/v-model",
+    publicPath: "/v-model",
 };
