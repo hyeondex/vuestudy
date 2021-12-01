@@ -4,11 +4,19 @@
       <h1>V-model</h1>
       <ul>
         <li>
+          사용자 이벤트에 의해 실행되는 vue 메서드
+        </li>
+        <li>
           단방향 바인딩 > 양방향 바인딩이 가능합니다 <br/>
           양방향 바인딩 :: 데이터가 있는 값이 뷰에 나타나고 뷰에서 값이 변경되면
           데이터의 값도 바뀌는 것
         </li>
-
+        <li>
+          사용법<br>
+          v-bind랑 v-on 기능을 조합해서 사용한다! <br>
+          v-bind : vue 인스턴스의 데이터 속성을 해당 html 요소에 연결할 때 사용함<br>
+          v-on : 해당 html 요소의 이벤트를 뷰 인스턴스의 로직과 연결할 때 사용함
+        </li>
         <li>
           사용자의 입력을 받는 UI 요소들에 v-model을 사용하면 입력값이 vue
           데이터 속성으로 연결됩니다.
@@ -19,6 +27,7 @@
                 @input="updateInput"
                 placeholder="아무거나넣어보기"
             />
+            {{inputText}}
           </div>
           <div class="code">
             <pre>
@@ -111,6 +120,11 @@
           </div>
         </li>
         <li>
+          select
+          select에서는 v-model 구성이 value, change
+
+        </li>
+        <li>
           Todolist
           <div class="todo-wrap">
             <todo-header></todo-header>
@@ -159,6 +173,7 @@ export default {
   methods: {
     updateInput: function (event) {
       var updatedText = event.target.value;
+      //console.log(event.target.value)
       this.inputText = updatedText;
     },
     addTodo(todoItem) {
