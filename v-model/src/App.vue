@@ -4,11 +4,11 @@
       <h1>V-model</h1>
       <ul>
         <li>
-          내부적으로는 서로 다른 속성을 사용하고, 서로 다른 요소를 받아 사용자
-          이벤트에 의해 실행되는 vue 메서드를 전송합니다 !
+          v-model은 data의 변화를 실시간으로 관찰할 수 있는 기능입니다. 양방향
+          데이터 바인딩으로 내용을 작성하면 해당 내용이 선언한 데이터 값에 바로
+          적용됩니다.
         </li>
         <li>
-          단방향 바인딩 > 양방향 바인딩이 가능합니다 <br />
           양방향 바인딩 :: 데이터가 있는 값이 뷰에 나타나고 뷰에서 값이 변경되면
           데이터의 값도 바뀌는 것
         </li>
@@ -177,7 +177,7 @@
               :propsdata="todoItems"
               @removeTodo="removeTodo"
             ></todo-list>
-            <todo-footer @:removeAll="clearAll"></todo-footer>
+            <todo-footer @removeAll="clearAll"></todo-footer>
           </div>
         </li>
       </ul>

@@ -1,12 +1,12 @@
 <template>
   <section>
     <transition-group name="list" tag="ul" appear>
-      <li v-for="(todoItem, index) in propsdata" :key="index">
+      <li v-for="(todoItem, index) in propsdata" :key="todoItem">
         {{ todoItem }}
         <button
-            type="button"
-            class="removeBtn"
-            @click="removeTodo(todoItem, index)"
+          type="button"
+          class="removeBtn"
+          @click="removeTodo(todoItem, index)"
         >
           🏅
         </button>
