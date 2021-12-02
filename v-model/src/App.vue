@@ -29,13 +29,25 @@
             <span class="hlight">input 이벤트</span>를 사용합니다
           </p>
           <div class="ex">
-            ex) input checkbox ::
+            ex) input text ::
             <input
               :value="inputText"
               @input="updateInput"
-              placeholder="아무거나넣어보기"
+              placeholder="v-model 사용X 버전"
             />
             {{ inputText }}
+          </div>
+          <div class="ex">
+            <p class="blight">
+              v-model을 사용할 경우 편리하게 사용 할 수 있습니다.
+            </p>
+            <br />
+            ex) input text ::
+            <input
+              v-model="updateInputVmodel"
+              placeholder="v-model 사용o 버전"
+            />
+            {{ updateInputVmodel }}
           </div>
           <div class="code">
             <pre>
@@ -202,14 +214,16 @@ export default {
       radioList: "",
       selected: "",
       todoItems: [],
+      updateInputVmodel: "",
     };
   },
+
   created() {
     if (localStorage.length > 0) {
+      console.log("created");
       for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) != "loglevel:webpack-dev-server") {
           this.todoItems.push(localStorage.key(i));
-          console.log(localStorage.key(i));
         }
       }
     }
