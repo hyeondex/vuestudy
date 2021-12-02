@@ -20,6 +20,12 @@
         <li>
           사용자의 입력을 받는 UI 요소들에 v-model을 사용하면 입력값이 vue
           데이터 속성으로 연결됩니다.
+          <p class="blight">
+            input text, textarea 에서는
+            <span class="hlight">value 속성</span>
+              과 <span class="hlight">input 이벤트</span>를 사용합니다</p>
+
+
           <div class="ex">
             ex) input checkbox ::
             <input
