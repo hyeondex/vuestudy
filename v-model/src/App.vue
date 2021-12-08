@@ -51,7 +51,8 @@
           </div>
           <div class="code">
             <pre>
-&lt;input v-bind:value="inputText" v-on:input="updateInput" /&gt;</pre
+&lt;input v-bind:value="inputText" v-on:input="updateInput" /&gt;
+&lt;input v-model="updateInputVmodel" placeholder="v-model 사용o 버전"/&gt;</pre
             >
           </div>
         </li>
