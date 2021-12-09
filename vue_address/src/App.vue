@@ -6,14 +6,13 @@
     <button type="button" @click="testText">클릭</button>
 
     <button type="button" @click="modalOpen">클릭</button>
-    <!--    <modal v-if="modal" @closeModal=""></modal>-->
-    <modal></modal>
+    <modal v-if="modal" @closeModal="closeModal"></modal>
   </div>
 </template>
 
 <script>
 import { getData } from "./api";
-import Modal from "./components/modal";
+import modal from "./components/modal";
 
 export default {
   name: "App",
@@ -22,16 +21,14 @@ export default {
       inputText: "",
       inputText1: "",
       inputText2: "",
-      modal: "",
+      modalView: false,
+      modal: false,
     };
   },
   components: {
-    Modal,
+    modal,
   },
   methods: {
-    aa(a) {
-      console.log(a);
-    },
     // 값을 가지고 옴 > 그 값을 뿌릴 메소드 제작 > 메소드를 실행시킬 이벤트 > 그 이벤트를 html 영역에 붙이기
     testText() {
       getData({

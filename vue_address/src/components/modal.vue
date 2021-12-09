@@ -1,9 +1,11 @@
-<template id="modal">
-  <div class="modal" @click.self="$emit(closeModal)">
-    <div class="close" @click="$emit(closeModal)">&times;</div>
-    <div class="body">
-      <slot name="body" />
-      testt
+<template name="modal">
+  <div class="modal-mask">
+    <div class="modal-wrapper">
+      <button class="close" @click="$emit('closeModal')">&times;</button>
+      <div class="body">
+        <slot name="body" />
+        test
+      </div>
     </div>
   </div>
 </template>

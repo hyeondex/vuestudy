@@ -17,7 +17,7 @@ function getData(val) {
   });
   //instance 리턴할때 url은 이미 가진 상태 >  url 자리 비워도 됨
   //params으로 넘기는건 약속... ! 이야...!
-  //params는 hap ㅂ변수로 합쳐진
+  //params는 hap 변수로 합쳐짐
 }
 
 export { getData };
