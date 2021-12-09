@@ -1,18 +1,57 @@
 <template name="modal">
   <div class="modal-mask">
-    <div class="modal-wrapper">
-      <button class="close" @click="$emit('closeModal')">&times;</button>
+    <div class="modal-wrap">
+      <slot name="header" />
       <div class="body">
         <slot name="body" />
-        test
+        <input
+          type="text"
+          placeholder="주소를 입력해보세요 "
+          id="searchTxt"
+          v-model="searchTxt"
+        />
+        <button type="button" @click="testText(searchTxt)">검색어 넣어</button>
+
+        <ul>
+          <li
+            v-for="(item, index) in clickItemList"
+            :key="index"
+            @click="$emit('addJusolist(item)')"
+          >
+            {{ item.roadAddrPart1 }}
+          </li>
+        </ul>
+
+        <button class="close" @click="$emit('closeModal')">&times;</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { getData } from "../api";
+
 export default {
   name: "modal",
+  data() {
+    return {
+      searchTxt: "",
+      clickItemList: [],
+    };
+  },
+  methods: {
+    testText() {
+      getData({
+        keyword: this.searchTxt,
+      }).then((response) => {
+        // console.log(response);
+
+        this.clickItemList = response.data.results.juso;
+        console.log(response.data.results.juso);
+      });
+    },
+    addJusolist() {},
+  },
 };
 </script>
 
@@ -34,20 +73,26 @@ export default {
   vertical-align: middle;
 }
 
-.modal-container {
+.body {
   position: relative;
   width: 300px;
+  padding: 20px;
   margin: 0px auto;
+  background: #fff;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff,
+    inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+}
 
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
   background: #c0c0c0;
   box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff,
     inset -2px -2px #808080, inset 2px 2px #dfdfdf;
   border: 1px solid #0a0a0a;
-
-  transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+  /*transition: all 0.3s ease;*/
 }
-
 .modal-header {
   margin-top: 0;
   color: #fff;

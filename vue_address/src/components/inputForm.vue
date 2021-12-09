@@ -1,6 +1,4 @@
-<template>
-  <input type="text" />
-</template>
+<template></template>
 
 <script>
 export default {
