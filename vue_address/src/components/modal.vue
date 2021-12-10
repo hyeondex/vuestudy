@@ -44,13 +44,12 @@ export default {
       getData({
         keyword: this.searchTxt,
       }).then((response) => {
-        // console.log(response);
-
+        console.log(response);
         this.clickItemList = response.data.results.juso;
-        console.log(response.data.results.juso);
+        console.log(this.clickItemList);
       });
+      console.log("리스트 나옴");
     },
-    addJusolist() {},
   },
 };
 </script>
