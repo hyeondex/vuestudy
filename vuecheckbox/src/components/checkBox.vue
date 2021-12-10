@@ -10,9 +10,10 @@
           :id="checkList.id"
           :value="checkList.value"
           v-model="check.checked"
-      /></label>
+        />{{ checkList.value }}
+      </label>
 
-      <p>checked: {{ checkList }}</p>
+      <p>checked: {{ checkList.value }}</p>
     </div>
   </div>
 </template>
