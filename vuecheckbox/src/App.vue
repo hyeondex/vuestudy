@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <check-box></check-box>
+    <check-box @allCheckedList="testEvent"></check-box>
   </div>
 </template>
 
@@ -12,6 +12,14 @@ export default {
   components: {
     checkBox,
   },
+  data(){
+    return {
+    }
+  },
+  methods: {
+    testEvent(){
+    }
+  }
 };
 </script>
 
