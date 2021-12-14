@@ -7,7 +7,7 @@
         type="checkbox"
         v-model="checkList.allChecked"
         @click="testevent(checkList)"
-      />{{ checkList.itemCheck }} 전체동의
+      />전체동의 {{ checkList.itemCheck }}
     </label>
     <!--    <check-box-all> </check-box-all>-->
 
@@ -17,8 +17,9 @@
           v-model="checkList.itemCheck"
           :id="item.id"
           :name="item.name"
-          :val="item.value"
-          @change="updateChecked()"
+          :value="item.value"
+
+          @click="updateChecked()"
         >
           {{ item.value }}
         </check-box>
@@ -36,7 +37,11 @@ export default {
   components: {
     checkBox,
   },
-  props: ["checked", "checking"],
+  props :{
+    checked : Boolean,
+    checking: Array,
+    value : String
+  },
   data() {
     return {
       checkList: {
@@ -77,16 +82,20 @@ export default {
       // console.log(el); //내가 만든 전체 배열
       if (!this.allChecked) {
         this.checkList.list.forEach((e) => {
-          console.log(e.value);
           el.itemCheck.push(e.value); //forEach로 value 값 담아주기
+
         });
+
       }
     },
     updateChecked() {
-      console.log("test");
+
       this.allChecked = !this.allChecked;
+
+
       if (this.itemCheck.length === this.checkList.list.length) {
         this.allChecked = true;
+
       } else {
         this.allChecked = false;
       }
