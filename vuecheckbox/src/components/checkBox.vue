@@ -1,47 +1,67 @@
 <template>
-  <label>
-    <input type="checkbox" ref="checkBox" />
+  <label :class="{ checked: clickCheck(val) }">
+    <input
+      type="checkbox"
+      ref="checkbox"
+      :val="val"
+      :checked="checked"
+      @change="checkItem(val)"
+    />
+    <!--@click="clickCheck"  -->
+    <slot></slot>
   </label>
-  <!--  TODO 질문 list
-        $attrs: class ,style를 포함해서 전달되는 모든 속성을 의미함 ( 컴포넌트에 전달된 속성 )
-         대체로 부모> 자식으로 보낸다는 글을 봤는데 html로 뿌려지는걸 생각하면 되는지,,,, 두루뭉실한이해,,,,-->
-  <!--  :checked="checked.some((el) => el === val)" 체크 된 애들 확인 다시하는거? -->
-  <!--  $listeners :컴포넌트에서 사용된 이벤트 리스너를 포함하는 오브젝트/ 부모> 자식 /.n개의 value나 event를 넘기는데 사용합니다
-        구성 요소가 내보내는 이벤트를 수신하는 구성 요소가 있으면 채워집니다. (?)-->
 </template>
 
 <script>
 export default {
   name: "checkBox",
-  props: {},
+  props: ["checked", "checking", "val"],
   data() {
-    return {};
+    return {
+      checkBoolean: false, // label에 들어가는 class 제어 하려고 넣은 데이터
+    };
   },
-  computed: {
-    /* inputListeners: function () {
-      return {
-        ...this.$listeners,
-        change: (event) => {
-          this.$emit("change", event.target.checked);
-          console.log(event.target);
-        }, //$listeners 모아서 합칠거야? > 근데 왜?
-      };
-      // `Object.assign` 는 오브젝트를 새로운 오브젝트로 병합합니다.
+  methods: {
+    // val = checkList.value
+    checkItem(val) {
+      const idx = this.checking.indexOf(val);
+      // ids는 this.checking 배열에 val을 찾음
+      if (idx === -1) {
+        //아무것도 없을 때나 찾는 요소가 없을 때
+        this.checking.push(val);
+        //checking에 val을 넣기
+        //console.log(val);
+      } else {
+        this.checking.splice(idx, 1);
+        // checked 해제 > idx에서 1개 지우기
+      }
+    },
+    //클릭 말고 다른 방법으로도 해보기
+    clickCheck(val) {
+      // 데이터로 true, false > return  해줘야함
+      // 여기서 this.checking은 위에서 checkItem으로 push된 배열이고 그 배열에서 some 을 활용해서 사용
+      // some()함수는 배열에서 값을 찾는 조건을 callback 함수로 전달함
+      // 여기서는 checking의 el 값은 el === val 값이랑 동일 한 경우 true 이고 class 삽입 checked 삽입
+      return this.checking.some((el) => el === val);
+    },
+    //click methode로 만드는 방법
+    /*clickCheck() {
+      console.log(this.checkBoolean); //초기
+      this.checkBoolean = !this.checkBoolean;
+      // false = !false(true)
+      console.log(this.checkBoolean); // 눌렸을 때 값
+
     },*/
   },
-  methods: {},
+
+  model: {
+    prop: "checking",
+    event: "change",
+  },
 };
 </script>
 
 <style scoped>
-label {
-  position: relative;
-  display: inline-block;
-  padding: 5px 0 5px 30px;
-  align-items: center;
-  cursor: pointer;
-}
-
 input {
 }
 </style>
