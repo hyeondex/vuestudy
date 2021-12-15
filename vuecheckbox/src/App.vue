@@ -146,17 +146,65 @@ props: ["value", "checking"],
       value="all"
       type="checkbox"
       v-model="checkList.allChecked"
-      @click="checkAll"
+      <strong class="hlight">@click="checkAll"</strong>
     /&gt;전체동의 {{ checkList.itemCheck }}
-  &lt;/label&gt;</pre
-          >
+  &lt;/label&gt;</pre>
         </div>
         <p class="exp">
           lebel에는 class="checked"를 allchecked: Boolean 의 값에 따라 적용 할
           수 있도록 했습니다. checkList에서 선택된 값을 담는 배열을 v-model로
           설정했습니다. checked된 데이터가 담기는 배열의 length와 기본
-          checkbox에 뿌려지는 배열의 length를 비교해 allChecked의 boolean을 비교
-          할 수 있도록 했습니다
+          checkbox에 뿌려지는 배열의 length를 비교해 allChecked의 boolean에
+          맞춰서 동작합니다.
+        </p>
+        <div class="code">
+          <pre>
+checkAll() {
+  this.checkList.itemCheck = [];
+  if (!this.checkList.allChecked) {
+    this.checkList.list.forEach((e) => {
+      this.checkList.itemCheck.push(e.value);<span class="green">//forEach로 value 값 담아주기</span>
+    });
+  }
+},</pre>
+        </div>
+        <p class="exp">상단 @click 이벤트 <br /></p>
+        <div class="code">
+          <pre>
+            &lt;ul&gt;
+          &lt;li v-for="(item, index) in checkList.list" :key="index"&gt;
+            &lt;check-box
+              v-model="checkList.itemCheck" 
+              :value="item.value"
+              <strong class="hlight">@change="updateChecked(checkList)" </strong>
+            &gt;
+              &lt;span slot="span"&gt;
+              item.value <span class="green">//{{}}</span>
+              &lt;/span&gt;
+            &lt;/check-box&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+          </pre>
+        </div>
+        <p class="exp">
+          v-for를 사용해 data에 들어간 checkbox list 뿌립니다.<br />
+        </p>
+        <div class="code">
+          <pre>
+            updateChecked(list) {
+      if (list.itemCheck.length === list.list.length) {
+        list.allChecked = true;
+      } else {
+        list.allChecked = false;
+      }
+    }</pre
+          >
+        </div>
+        <p class="exp">
+          위에 있는 @change="updateChecked(checkList)" 입니다.<br />
+          받아오는 list는 checklist입니다! checked된 배열인 itemCheck.length와
+          data list 내에 있는 배열의 length의 개수가 동일 한 경우 전체
+          체크됩니다.
         </p>
       </li>
     </ul>
