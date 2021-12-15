@@ -6,7 +6,7 @@
         value="all"
         type="checkbox"
         v-model="checkList.allChecked"
-        @click="testevent(checkList)"
+        @click="testevent"
       />전체동의 {{ checkList.itemCheck }}
     </label>
     <!--    <check-box-all> </check-box-all>-->
@@ -15,11 +15,8 @@
       <li v-for="(item, index) in checkList.list" :key="index">
         <check-box
           v-model="checkList.itemCheck"
-          :id="item.id"
-          :name="item.name"
           :value="item.value"
-
-          @click="updateChecked()"
+          @change="updateChecked(checkList)"
         >
           {{ item.value }}
         </check-box>
@@ -37,11 +34,11 @@ export default {
   components: {
     checkBox,
   },
-  props :{
-    checked : Boolean,
+  /*props: {
+    checked: Boolean,
     checking: Array,
-    value : String
-  },
+    value: String,
+  },*/
   data() {
     return {
       checkList: {
@@ -77,28 +74,28 @@ export default {
   computed: {},
   methods: {
     // 전체 체크가 눌림 > allchecked 가 true > true 일 때 checklist 내에 있는 itemCheck에 모든 배열을 담는다..?
-    testevent(el) {
-      el.itemCheck = [];
+    testevent() {
+      this.checkList.itemCheck = [];
       // console.log(el); //내가 만든 전체 배열
-      if (!this.allChecked) {
+      if (!this.checkList.allChecked) {
         this.checkList.list.forEach((e) => {
-          el.itemCheck.push(e.value); //forEach로 value 값 담아주기
-
+          this.checkList.itemCheck.push(e.value); //forEach로 value 값 담아주기
         });
-
       }
     },
-    updateChecked() {
-
-      this.allChecked = !this.allChecked;
-
-
-      if (this.itemCheck.length === this.checkList.list.length) {
+    updateChecked(list) {
+      /*this.allChecked = !this.allChecked;*/
+      console.log(list);
+      if (list.itemCheck.length === list.list.length) {
+        list.allChecked = true;
+      } else {
+        list.allChecked = false;
+      }
+      /*if (this.itemCheck.length === this.checkList.list.length) {
         this.allChecked = true;
-
       } else {
         this.allChecked = false;
-      }
+      }*/
     },
   },
 };
