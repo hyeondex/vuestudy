@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "SpoqaHanSansNeo";
+}
+
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/SpoqaHanSansNeo-Regular.woff") format("woff"),
+    url("../fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/SpoqaHanSansNeo-Medium.woff") format("woff"),
+    url("../fonts/SpoqaHanSansNeo-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/SpoqaHanSansNeo-Bold.woff") format("woff"),
+    url("../fonts/SpoqaHanSansNeo-Bold.woff2") format("woff2");
+}
+
+#app {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 50px 50px 150px;
+}
+
+button {
+  background: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.wrap {
+  padding: 50px 5px;
+  width: 700px;
+  height: auto;
+  margin: 0 auto;
+}
+
+ul.exem {
+  margin-top: 10px;
+}
+ul.exem > li {
+  padding: 5px 15px 10px 25px;
+  list-style: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+ul.exem > li + li {
+  margin-top: 15px;
+}
+
+ul.exem > li:before {
+  content: "📌";
+  margin: 0 0 0 -20px;
+}
+
+ul.exem li > .ex {
+  margin-top: 7px;
+}
+
+.code {
+  margin: 5px 0 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+}
+
+.code pre {
+  margin: 0;
+  padding: 0;
+}
+
+.bold {
+  font-weight: 700;
+}
+label {
+  display: block;
+  padding: 10px 50px;
+}
+ul li {
+  position: relative;
+  list-style: none;
+}
+ol {
+  margin: 10px 0 0 15px;
+}
+ol li {
+  list-style: inherit;
+  margin-top: 5px;
+}
+ol li ol {
+  margin-top: 0;
+}
+ol li ol li {
+  margin-top: 0;
+  list-style: square;
+  font-size: 14px;
+}
+.label {
+  padding-left: 25px;
+  position: relative;
+}
+.label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #fff;
+
+  box-shadow: 0 0 0 3px #000 inset;
+}
+.label.checked:before {
+  box-shadow: 0 0 0 3px #000 inset;
+  background: #fff;
+  box-sizing: border-box;
+}
+.label.checked:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 12px;
+  height: 12px;
+  background: #000;
+}
+.label span {
+  font-size: 15px;
+  color: black;
+}
+.label.checked span {
+  color: #000000;
+  font-weight: 700;
+}
+label input[type="checkbox"] {
+  display: none;
+}
+
+input {
+  /*display: block;*/
+  line-height: 25px;
+  border: 1px solid #000;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hlight {
+  margin: 0;
+  line-height: 1;
+  padding: 0;
+  color: orange;
+}
+.blight {
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 2px;
+  width: auto;
+  background: #fffa99;
+  color: #000;
+}
+.blight::before {
+  content: "👀::";
+  font-size: 15px;
+}
+.blight.ty2::before {
+  content: "😠::";
+  font-size: 15px;
+}
+.blight .hlight {
+  color: navy;
+  font-weight: bold;
+}
+.green {
+  color: green;
+}
+.code + p {
+  margin-top: 10px;
+}
+.exp:before {
+  content: "📍";
+  display: inline-block;
+  font-size: 15px;
+}
