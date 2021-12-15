@@ -5,13 +5,9 @@
       <li>
         체크박스 전체선택
         <label
-          for="all"
-          class="label"
-          :class="{ checked: this.checkList.allChecked }"
+          :class="{label:true, checked: this.checkList.allChecked }"
         >
           <input
-            id="all"
-            value="all"
             type="checkbox"
             v-model="checkList.allChecked"
             @click="checkAll"
@@ -22,7 +18,7 @@
             <check-box
               v-model="checkList.itemCheck"
               :value="item.value"
-              @change="updateChecked(checkList)"
+              @change="updateChecked"
             >
               <span slot="span">
                 {{ item.value }}
@@ -213,13 +209,9 @@ export default {
         });
       }
     },
-    updateChecked(list) {
+    updateChecked() {
       console.log(this.checked);
-      if (list.itemCheck.length === list.list.length) {
-        list.allChecked = true;
-      } else {
-        list.allChecked = false;
-      }
+      this.checkList.allChecked = this.checkList.itemCheck.length === this.checkList.list.length;
     },
   },
 };
