@@ -34,6 +34,7 @@
 <script>
 import checkBox from "./components/checkBox.vue";
 import "./css/app.css";
+
 export default {
   name: "App",
   components: {

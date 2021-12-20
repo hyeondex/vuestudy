@@ -2,7 +2,7 @@
   <!--  <하위컴포넌트 :[하위컴포넌트에서 정의한 props 속성 이름 ] = "상위컴포넌트에서
   전달할 data 속성 key 값"/>-->
   <label>
-    <input type="checkbox" @change="ckchange()" :value="value" />
+    <input type="checkbox" @change="checkChange" :value="value" />
     <slot name="span" />
   </label>
 </template>
@@ -11,34 +11,42 @@
 export default {
   name: "checkBox",
   props: {
-    itemCheck: Array,
-    allChecked: Boolean,
+    //itemCheck: Array,
+    //allChecked: Boolean,
+    value: {
+      String,
+      Boolean,
+    },
   }, //내가 부모한테 받은거
   prop: {
     event: "ckchange",
+    prop: "checking",
   },
   data() {
-    return {
-      checking: [],
+    return {};
   },
   computed: {
-    /*  ckchange() {
-      if(){
-
+    checkChange() {
+      if (typeof this.value === "boolean") {
+        return;
+      } else {
+        return this.checking.some((el) => el === this.value);
       }
-    },*/
+    },
   },
   methods: {
-    ckchange() {
-      var test = typeof this.value;
-      console.log(this.value);
-      if (typeof test === "boolean") {
-        console.log("test");
+    /*checkChange(e) {
+      e = event.target.value;
+      console.log(e);
+      if (typeof this.value === "boolean") {
+        this.checking = true;
       } else {
-        console.log("배열");
+        this.checking.push(e);
+        console.log(this.checking);
       }
-      this.$emit("chckange", this.checking);
-    },
+      console.log(this.checking);
+      /!**!/
+    },*/
   },
 };
 </script>
