@@ -33,7 +33,7 @@ export default {
       console.log(this.checking);
       return this.checking.some((el) => el === this.value);
     },
-    /*allChecked: {
+    /*         : {
       get() {
         return this.this.checking.value === true;
       },

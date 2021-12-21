@@ -7,9 +7,9 @@
       :itemCheck="checkList.itemCheck"
       v-for="(item, index) in checkList.list"
       :key="index"
-      :checked="checkList.checked"
       :value="checkList.list.value"
     >
+      <!--      :checked="this.checked"-->
       <span slot="span">
         {{ item.name }}
       </span>
@@ -54,7 +54,6 @@ export default {
       },
     };
   },
-  computed: {},
 };
 </script>
 
