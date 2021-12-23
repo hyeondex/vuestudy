@@ -1,11 +1,11 @@
 <template>
   <!--  <하위컴포넌트 :[하위컴포넌트에서 정의한 props 속성 이름 ] = "상위컴포넌트에서
   전달할 data 속성 key 값"/>-->
-  <label :class="{ checked: checked }">
+  <label :class="{ checked: checkcheck }">
     <input
       type="checkbox"
       :value="value"
-      :checked="checked"
+      :checked="checkcheck"
       @change="checkChange"
     />
     <slot name="span" />
@@ -16,15 +16,15 @@
 export default {
   name: "checkBox",
   props: {
-    //itemCheck: Array,
-    //allChecked: Boolean,
+    allChecked: Boolean,
+    itemCheck: Array,
     value: {
       String,
       Boolean,
     },
   }, //내가 부모한테 받은거
   prop: {
-    event: "checked",
+    event: "change",
     prop: "checking",
   },
   data() {
@@ -35,29 +35,31 @@ export default {
     // cache(잠시저장)을 하는 기능있음 로컬 장소에 파일을 미리 받아 두는 역할
     // get(){} 값을 가져오는거
     // set(){} 그 값으로 설정하는거
-    checkedType() {
-      return typeof this.checked === "boolean";
-    },
-    /* checked: {
+    checkcheck: {
       get() {
-        return this.checkedType;
+        console.log(this.value);
+        return this.value;
       },
-      set() {
-        if (this.checkedType) {
-          return this.checked;
+      set(newVal) {
+        if (!newVal) {
+          console.log(newVal);
+        } else {
+          console.log(newVal);
+          return this.value.push(...this.checking);
+          //
         }
-        return this.checking.some((el) => el === this.value);
       },
-    },*/
+    },
   },
   methods: {
-    checkChange(e) {
+    /*checkChange(e) {
       if (this.checkedType) {
-        this.$emit("change", e.target.checked);
+        this.$emit("change", e.target.checkcheck);
+        console.log(e.target.checkcheck);
       } else {
-        const idx = this.checked.indexOf(this.value);
+        const idx = this.checkcheck.indexOf(this.value);
         console.log(idx);
-        let checking = [...this.checked];
+        let checking = [...this.checkcheck];
         if (idx !== -1) {
           checking.splice(idx, 1);
           console.log(checking.splice(idx, 1));
@@ -66,6 +68,9 @@ export default {
         }
         this.$emit("change", checking);
       }
+    },*/
+    checkChange() {
+      this.$emit("checkChange", this.value);
     },
   },
 };

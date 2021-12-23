@@ -44,6 +44,7 @@ export default {
     return {
       checkList: {
         //allList: [],
+        allChecked: false,
         itemCheck: [], // 체크한 값
         list: [
           // 데이터
