@@ -1,11 +1,11 @@
 <template>
   <!--  <하위컴포넌트 :[하위컴포넌트에서 정의한 props 속성 이름 ] = "상위컴포넌트에서
   전달할 data 속성 key 값"/>-->
-  <label :class="{ checked: checkcheck }">
+  <label :class="{ checked: checked }">
     <input
       type="checkbox"
       :value="value"
-      :checked="checkcheck"
+      :checked="checked"
       @change="checkChange"
     />
     <slot name="span" />
@@ -19,13 +19,13 @@ export default {
     allChecked: Boolean,
     itemCheck: Array,
     value: {
-      String,
       Boolean,
+      Array,
     },
   }, //내가 부모한테 받은거
   prop: {
     event: "change",
-    prop: "checking",
+    prop: "checking", // 자식에서 보낼거
   },
   data() {
     return {};
@@ -35,16 +35,21 @@ export default {
     // cache(잠시저장)을 하는 기능있음 로컬 장소에 파일을 미리 받아 두는 역할
     // get(){} 값을 가져오는거
     // set(){} 그 값으로 설정하는거
-    checkcheck: {
+    checked: {
       get() {
-        console.log(this.value);
-        return this.value;
-      },
-      set(newVal) {
-        if (!newVal) {
-          console.log(newVal);
+        if (typeof this.value === "boolean") {
+          return this.value;
         } else {
-          console.log(newVal);
+          let checking = [...this.value];
+          console.log(checking);
+          return checking;
+        }
+      },
+      set(checkBoolean, checking) {
+        if (checkBoolean) {
+          return !this.value;
+        } else {
+          console.log(checking);
           return this.value.push(...this.checking);
           //
         }
