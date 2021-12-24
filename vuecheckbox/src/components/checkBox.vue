@@ -23,7 +23,7 @@ export default {
       Array,
     },
   }, //내가 부모한테 받은거
-  prop: {
+  model: {
     event: "change",
     prop: "checking", // 자식에서 보낼거
   },
@@ -39,44 +39,49 @@ export default {
       get() {
         if (typeof this.value === "boolean") {
           return this.value;
-        } else {
-          let checking = [...this.value];
-          console.log(checking);
-          return checking;
         }
+        return this.value.split("");
+        //value에 들어가는 값 1.체크 하나일때 boolean 2.checked 배열
       },
-      set(checkBoolean, checking) {
-        if (checkBoolean) {
+      set() {
+        console.log(this.value);
+        if (this.value.length === this.checking.length) {
           return !this.value;
-        } else {
-          console.log(checking);
-          return this.value.push(...this.checking);
-          //
         }
+
+        //al;checked 게산
       },
     },
   },
   methods: {
-    /*checkChange(e) {
-      if (this.checkedType) {
-        this.$emit("change", e.target.checkcheck);
-        console.log(e.target.checkcheck);
-      } else {
-        const idx = this.checkcheck.indexOf(this.value);
-        console.log(idx);
-        let checking = [...this.checkcheck];
-        if (idx !== -1) {
-          checking.splice(idx, 1);
-          console.log(checking.splice(idx, 1));
-        } else {
-          checking.push(this.value);
-        }
-        this.$emit("change", checking);
+    checkChange(e) {
+      this.$emit("change", e.target.checked);
+      if (e.target.checked) {
+        //console.log(e.target.checked);
+        this.checking = [];
+        this.checking.forEach((e) => {
+          this.checking.push(e.value);
+          //forEach로 value 값 담아주기
+        });
       }
-    },*/
-    checkChange() {
-      this.$emit("checkChange", this.value);
+      /* if (e.target.checked) {
+
+
+      } else {
+        console.log(this.checking);
+        const idx = this.checking.indexOf(this.value);
+
+        if (idx !== -1) {
+          this.checking.splice(idx, 1);
+        } /!*else {
+          this.checking.push(this.value);
+        }*!/
+        this.$emit("change", this.checking);
+      }*/
     },
+    /*checkChange() {
+      this.$emit("checkChange", this.value);
+    },*/
   },
 };
 </script>
