@@ -7,7 +7,7 @@
       :itemCheck="checkList.itemCheck"
       v-for="(item, index) in checkList.list"
       :key="index"
-      :value="checkList.list.value"
+      :value="item.value"
     >
       <!--      :checked="this.checked"-->
       <span slot="span">

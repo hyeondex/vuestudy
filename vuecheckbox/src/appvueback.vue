@@ -77,13 +77,13 @@ export default {
   },
   methods: {
     checkAll() {
-      // console.log(this.allChecked);
+      /*  // console.log(this.allChecked);
       this.checkList.itemCheck = [];
       if (!this.checkList.allChecked) {
         this.checkList.list.forEach((e) => {
           this.checkList.itemCheck.push(e.value); //forEach로 value 값 담아주기
         });
-      }
+      }*/
     },
     updateChecked() {
       console.log("자식에게 받은 이벤트 및 데이터", this.checking);
@@ -153,10 +153,7 @@ export default {
       <pre>
 <strong class="hlight">computed</strong>: {
     clickCheck() {
-        return this.checking.some(
-            (el) = &gt; el === this.value
-            (el) = &gt; el === this.value
-            );
+        return this.checking.some((el) = &gt; el === this.value(el) = &gt; el === this.value);
     },
 },</pre>
     </div>

@@ -16,7 +16,10 @@
 export default {
   name: "checkBox",
   props: {
-    allChecked: Boolean,
+    checking: {
+      Boolean,
+      Array,
+    },  // 부모한테서 받은 V-MODEL
     itemCheck: Array,
     value: {
       Boolean,
@@ -25,8 +28,7 @@ export default {
   }, //내가 부모한테 받은거
   model: {
     event: "change",
-    prop: "checking", // 자식에서 보낼거
-  },
+    prop: "checking", // 부모한테서 받은 V-MODEL  },
   data() {
     return {};
   },
@@ -37,24 +39,24 @@ export default {
     // set(){} 그 값으로 설정하는거
     checked: {
       get() {
+        console.log("DO");
         if (typeof this.value === "boolean") {
           return this.value;
         }
-        return this.value.split("");
+        return this.value;
         //value에 들어가는 값 1.체크 하나일때 boolean 2.checked 배열
       },
-      set() {
-        console.log(this.value);
-        if (this.value.length === this.checking.length) {
-          return !this.value;
-        }
+      set(val) {
+        console.log(val);
 
-        //al;checked 게산
+        // 전체 체크
+        /**/
       },
     },
   },
   methods: {
-    checkChange(e) {
+    checkChange() {},
+    /*checkChange(e) {
       this.$emit("change", e.target.checked);
       if (e.target.checked) {
         //console.log(e.target.checked);
@@ -64,7 +66,8 @@ export default {
           //forEach로 value 값 담아주기
         });
       }
-      /* if (e.target.checked) {
+      this.$emit("change", this.checking);
+      /!* if (e.target.checked) {
 
 
       } else {
@@ -77,8 +80,8 @@ export default {
           this.checking.push(this.value);
         }*!/
         this.$emit("change", this.checking);
-      }*/
-    },
+      }*!/
+    },*/
     /*checkChange() {
       this.$emit("checkChange", this.value);
     },*/
