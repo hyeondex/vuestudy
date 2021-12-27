@@ -12,6 +12,9 @@ export default {
     value: {
       type: String,
     },
+    checkedList: {
+      type: Array,
+    },
   }, // 부모한테 받아야하는 값만 가져오기
   computed: {
     /* checkType() {
@@ -24,14 +27,16 @@ export default {
     checking: {
       get() {
         if (this.checkType) {
-          console.log("do");
-          return this.value;
+          console.log(this.checked);
+          return this.checked;
         }
         return this.value;
         //value에 들어가는 값 1.체크 하나일때 boolean 2.checked 배열
       },
-      set(val) {
-        console.log(val);
+      set(newValue) {
+        let test2 = this.checkedList.push(...newValue);
+        this.checked = this.checked.length === this.checkedList.length;
+        console.log(test2);
       },
     },
   },

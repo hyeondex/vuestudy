@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <h1>checkbox</h1>
-    <check-box-all v-model="checkList.allChecked"> all </check-box-all>
+    <check-box-all v-model="checkList.allChecked" :checkedList="checkList.list">
+      all
+    </check-box-all>
 
     {{ checkList.itemCheck }}
     {{ test }}
+    {{ checkList.allChecked }}
     <check-box
       v-model="checkList.itemCheck"
       v-for="(item, index) in checkList.list"

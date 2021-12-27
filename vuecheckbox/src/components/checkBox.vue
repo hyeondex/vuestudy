@@ -54,9 +54,7 @@ export default {
           this.checked.splice(idx, 1);
         }
         this.$emit("change", this.checked);
-        console.log(this.checked);
       } else {
-        console.log(event.target.checked);
         this.$emit("change", event.target.checked);
       }
     },
