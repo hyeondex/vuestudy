@@ -1,18 +1,23 @@
 <template>
   <div id="app">
     <h1>checkbox</h1>
-    <check-box-all :value="checkList.allChecked"> all </check-box-all>
+    <check-box-all v-model="checkList.allChecked"> all </check-box-all>
+
+    {{ checkList.itemCheck }}
+    {{ test }}
     <check-box
-      v-model="checkList.list"
-      :itemCheck="checkList.itemCheck"
+      v-model="checkList.itemCheck"
       v-for="(item, index) in checkList.list"
       :key="index"
       :value="item.value"
     >
-      <!--      :checked="this.checked"-->
       <span slot="span">
         {{ item.name }}
       </span>
+    </check-box>
+
+    <check-box v-model="test">
+      <span slot="span"> 123 </span>
     </check-box>
   </div>
 </template>
@@ -25,6 +30,7 @@ export default {
   components: { CheckBoxAll, CheckBox },
   data() {
     return {
+      test: false,
       checkList: {
         allChecked: false,
         itemCheck: [], // 체크한 값

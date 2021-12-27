@@ -1,11 +1,11 @@
 <template>
   <!--  <하위컴포넌트 :[하위컴포넌트에서 정의한 props 속성 이름 ] = "상위컴포넌트에서
   전달할 data 속성 key 값"/>-->
-  <label :class="{ checked: checked }">
+  <label :class="{ checked: checking }">
     <input
       type="checkbox"
       :value="value"
-      :checked="checked"
+      :checked="checking"
       @change="checkChange"
     />
     <slot name="span" />
@@ -16,51 +16,48 @@
 export default {
   name: "checkBox",
   props: {
-    checking: {
-      Boolean,
-      Array,
-    }, // 부모한테서 받은 V-MODEL
-    itemCheck: Array,
-    value: {
-      Boolean,
-      Array,
+    //부모한테 받은 data
+    checked: {
+      // 부모한테서 받은 V-MODEL
+      type: [Boolean, Array], // type 적어주기
     },
-  }, //내가 부모한테 받은거
-  model: {
-    event: "change",
-    prop: "checking", // 부모한테서 받은 V-MODEL
+    value: {
+      type: String,
+    },
   },
-  data() {
-    return {};
+  model: {
+    // 부모한테서 받은 V-MODEL
+    event: "change",
+    prop: "checked", //부모한테 받은 v-model의 이름을 자식 component에서 checked로 바꿈
   },
   computed: {
     checkType() {
-      return typeof this.value === "boolean";
+      //value에 들어가는 값 1.체크 하나일때 boolean 2.checked 배열
+      return typeof this.checked === "boolean";
     },
-    checked() {
+    checking() {
       if (this.checkType) {
         console.log("전체선택");
         return this.value;
-      } else{
-        return this.checking.some((el) => el === this.value);
+      } else {
+        return this.checked.some((el) => el === this.value);
       }
-      /*else {
-        console.log(this.checked);
-        const list = this.checking.some((el) => el === this.value);
-        /!*const idx = list.indexof(this.value);*!/
-        console.log(list);
-        /!* if (idx === -1) {
-          this.checking.push(this.value);
-        }*!/
-        return list;
-      }*/
-      return this.value;
     },
   },
   methods: {
-    checkChange() {
-      if(){
-
+    checkChange(event) {
+      if (!this.checkType) {
+        const idx = this.checked.indexOf(this.value);
+        if (idx === -1) {
+          this.checked.push(this.value);
+        } else {
+          this.checked.splice(idx, 1);
+        }
+        this.$emit("change", this.checked);
+        console.log(this.checked);
+      } else {
+        console.log(event.target.checked);
+        this.$emit("change", event.target.checked);
       }
     },
   },
