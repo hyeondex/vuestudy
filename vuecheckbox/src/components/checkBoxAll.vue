@@ -4,15 +4,10 @@ export default {
   name: "checkBoxAll",
   extends: checkBox,
   props: {
-    //부모한테 받은 data
-    checked: {
-      // 부모한테서 받은 V-MODEL
-      type: [Boolean, Array],
-    },
-    value: {
-      type: String,
-    },
     checkedList: {
+      type: Array,
+    },
+    checklist: {
       type: Array,
     },
   }, // 부모한테 받아야하는 값만 가져오기
@@ -26,17 +21,10 @@ export default {
     // set(){} 그 값으로 설정하는거
     checking: {
       get() {
-        if (this.checkType) {
-          console.log(this.checked);
-          return this.checked;
-        }
-        return this.value;
-        //value에 들어가는 값 1.체크 하나일때 boolean 2.checked 배열
+        return this.checkedList.length === this.checklist.length;
       },
       set(newValue) {
-        let test2 = this.checkedList.push(...newValue);
-        this.checked = this.checked.length === this.checkedList.length;
-        console.log(test2);
+        this.checkedList = newValue ? this.checklist.map((el) => el.value) : [];
       },
     },
   },

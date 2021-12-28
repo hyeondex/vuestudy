@@ -50,11 +50,14 @@ export default {
         const idx = this.checked.indexOf(this.value);
         if (idx === -1) {
           this.checked.push(this.value);
+          console.log("push");
         } else {
           this.checked.splice(idx, 1);
+          console.log("splice ");
         }
-        this.$emit("change", this.checked);
+        this.$emit("change", this.checked); // checked 된 배열
       } else {
+        console.log(event.target.checked); // checkboxAll의 boolean
         this.$emit("change", event.target.checked);
       }
     },

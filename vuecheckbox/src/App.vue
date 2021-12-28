@@ -1,13 +1,54 @@
 <template>
+  <div>
+    {{ checkedList }}
+    <input v-model="checking" type="text" />
+  </div>
+</template>
+
+<script>
+export default {
+  name: "app",
+  data() {
+    return {
+      checkedList: "",
+    };
+  },
+  computed: {
+    checking() {
+      return this.checkedList;
+    },
+    props에서 가지고 온 값은 수정할 때 setter가 필요함 !
+    /*checking: {
+      get() {
+        return this.checkedList;
+      },
+      set(newValue) {
+        this.checkedList = newValue;
+      },
+    },*/
+  },
+};
+</script>
+
+<style scoped></style>
+
+<!--
+<template>
   <div id="app">
     <h1>checkbox</h1>
-    <check-box-all v-model="checkList.allChecked" :checkedList="checkList.list">
+
+    <check-box-all
+      v-model="checkList.allChecked"
+      :checkedList="checkList.itemCheck"
+      :checklist="checkList.list"
+    >
       all
     </check-box-all>
-
+    <br />
     {{ checkList.itemCheck }}
     {{ test }}
     {{ checkList.allChecked }}
+    <br />
     <check-box
       v-model="checkList.itemCheck"
       v-for="(item, index) in checkList.list"
@@ -18,6 +59,8 @@
         {{ item.name }}
       </span>
     </check-box>
+
+    <br /><br />
 
     <check-box v-model="test">
       <span slot="span"> 123 </span>
@@ -71,3 +114,4 @@ export default {
 #app {
 }
 </style>
+-->
