@@ -1,6 +1,10 @@
 <template>
+
+
   <div id="app">
-    <div class="wrap">
+   <router-view />
+
+<!--    <div class="wrap">
       <h1>V-model</h1>
       <ul>
         <li>
@@ -194,20 +198,21 @@
           </div>
         </li>
       </ul>
-    </div>
+    </div>-->
   </div>
+
 </template>
 
 <script>
 import "./css/app.css";
-import TodoFooter from "./components/TodoFooter";
+/*import TodoFooter from "./components/TodoFooter";
 import TodoHeader from "./components/TodoHeader";
 import TodoList from "./components/TodoList";
-import TodoInput from "./components/TodoInput";
+import TodoInput from "./components/TodoInput";*/
 
 export default {
   name: "App",
-  components: { TodoFooter, TodoHeader, TodoList, TodoInput },
+ /* components: { TodoFooter, TodoHeader, TodoList, TodoInput },
   data() {
     return {
       inputText: "",
@@ -250,7 +255,7 @@ export default {
       this.todoItems.splice(index, 1);
       console.log(index);
     },
-  },
+  },*/
 };
 </script>
 
