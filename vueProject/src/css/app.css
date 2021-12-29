@@ -4,6 +4,21 @@
   border: 0;
   font-family: "SpoqaHanSansNeo";
 }
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@font-face {
+  font-family: "DungGeunMo";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/SpoqaHanSansNeo-Regular.woff") format("woff"),
+    url("../fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2");
+}
 
 @font-face {
   font-family: "SpoqaHanSansNeo";
@@ -30,22 +45,38 @@
 }
 
 #app {
-  padding-bottom: 150px;
 }
-
-button {
+.home {
+  height: 100vh;
+  background: #0a0382;
+  padding: 150px 50px;
+}
+.home > h1 {
+  color: #fff;
+}
+h1 {
+  font-family: "Press Start 2P", "DungGeunMo";
+  font-size: 2em;
+}
+button,
+a {
+  font-family: "Press Start 2P";
   background: transparent;
   padding: 5px;
   cursor: pointer;
 }
 
 .wrap {
-  padding: 50px 5px;
+  display: block;
   width: 700px;
   height: auto;
   margin: 0 auto;
+  padding: 150px 50px;
+  text-align: center;
 }
-
+.wrap h1 {
+  color: #000;
+}
 ul {
   margin-top: 10px;
 }
@@ -132,4 +163,13 @@ input {
 }
 .green {
   color: green;
+}
+
+.clearAllContainer {
+  margin: 0 auto;
+}
+
+.clearAllBtn {
+  margin: 20px auto 0;
+  display: block;
 }

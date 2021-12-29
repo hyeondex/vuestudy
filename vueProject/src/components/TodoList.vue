@@ -40,8 +40,9 @@ li {
   margin: 0 auto;
   align-items: center;
   width: 380px;
-  border-bottom: 2px solid #fff;
-  color: #fff;
+  box-sizing: border-box;
+  /*//border-bottom: 2px solid #fff;*/
+  color: #000;
   font-size: 15px;
   vertical-align: middle;
   align-items: center;

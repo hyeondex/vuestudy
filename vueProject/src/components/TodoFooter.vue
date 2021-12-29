@@ -15,14 +15,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.clearAllContainer {
-  margin: 0 auto;
-}
-
-.clearAllBtn {
-  margin: 20px auto 0;
-  color: white;
-  display: block;
-}
-</style>
+<style scoped></style>

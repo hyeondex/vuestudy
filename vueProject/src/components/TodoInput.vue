@@ -1,11 +1,11 @@
 <template>
   <div class="inputbox">
     <input
-        type="text"
-        v-model="newTodoItem"
-        value="newTodoItem"
-        @keyup.enter="addTodo"
-        placeholder="TODO를 써보든가요"
+      type="text"
+      v-model="newTodoItem"
+      value="newTodoItem"
+      @keyup.enter="addTodo"
+      placeholder="TODO를 써보든가요"
     />
     <button class="addConatainer" @click="addTodo">✅</button>
 
@@ -52,12 +52,21 @@ export default {
 
 <style scoped>
 .inputbox {
-  margin-top: 20px;
+  position: relative;
+  width: 380px;
+  margin: 20px auto;
 }
 
 input {
-  width: 350px;
+  width: 380px;
   padding-left: 15px;
   box-sizing: border-box;
+}
+.addConatainer {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  right: 0;
 }
 </style>
