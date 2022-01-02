@@ -4,6 +4,7 @@
 
     <check-box-all
       v-model="checkList.allChecked"
+      :value = "checkList.allChecked"
       :noneCheckList="checkList.itemCheck"
       :checklist="checkList.list"
     >

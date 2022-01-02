@@ -22,7 +22,7 @@ export default {
       type: [Boolean, Array], // type 적어주기
     },
     value: {
-      type: String,
+      type: [Boolean, String],
     },
   },
   model: {
