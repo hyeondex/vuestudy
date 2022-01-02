@@ -4,7 +4,7 @@ export default {
   name: "checkBoxAll",
   extends: checkBox,
   props: {
-    checkedList: {
+    noneCheckList: {
       type: Array,
     },
     checklist: {
@@ -21,12 +21,19 @@ export default {
     // set(){} 그 값으로 설정하는거
     checking: {
       get() {
-        return this.checkedList.length === this.checklist.length;
+        return this.noneCheckList.length === this.checklist.length;
       },
       set(newValue) {
-        this.checkedList = newValue ? this.checklist.map((el) => el.value) : [];
+        this.noneCheckList = newValue ? this.checklist.map((el) => el.value) : [];
       },
     },
   },
+  methods:{
+   /* checkChange(){
+      if(this.checked){
+        console.log(this.checked)
+      }
+    }*/
+  }
 };
 </script>

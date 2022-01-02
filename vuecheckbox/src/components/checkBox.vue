@@ -37,7 +37,7 @@ export default {
     },
     checking() {
       if (this.checkType) {
-        console.log("전체선택");
+        console.log("전체선택" ,this.value);
         return this.value;
       } else {
         return this.checked.some((el) => el === this.value);
