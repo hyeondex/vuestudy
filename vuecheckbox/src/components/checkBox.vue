@@ -1,7 +1,7 @@
 <template>
   <!--  <하위컴포넌트 :[하위컴포넌트에서 정의한 props 속성 이름 ] = "상위컴포넌트에서
   전달할 data 속성 key 값"/>-->
-  <label :class="{ checked: checking }">
+  <label :class="{ checked: checking, label: true }">
     <input
       type="checkbox"
       :value="value"
@@ -37,7 +37,7 @@ export default {
     },
     checking() {
       if (this.checkType) {
-        console.log("전체선택" ,this.value);
+        console.log("전체선택", this.value);
         return this.value;
       } else {
         return this.checked.some((el) => el === this.value);

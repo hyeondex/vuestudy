@@ -8,12 +8,12 @@
       :noneCheckList="checkList.itemCheck"
       :checklist="checkList.list"
     >
-      all
+      <span slot="span"> All</span>
     </check-box-all>
-    <br />
-    {{ checkList.itemCheck }}
-    {{ test }}
-    {{ checkList.allChecked }}
+    <div class="box">
+      checkList.itemCheck : {{ checkList.itemCheck }} <br />
+      checkList.allChecked : {{ checkList.allChecked }}
+    </div>
     <br />
     <check-box
       v-model="checkList.itemCheck"
@@ -27,7 +27,7 @@
     </check-box>
 
     <br /><br />
-
+    {{ test }}
     <check-box v-model="test">
       <span slot="span"> 123 </span>
     </check-box>
@@ -37,6 +37,7 @@
 <script>
 import CheckBox from "@/components/checkBox";
 import CheckBoxAll from "@/components/checkBoxAll";
+import "./css/app.css";
 export default {
   name: "app",
   components: { CheckBoxAll, CheckBox },
