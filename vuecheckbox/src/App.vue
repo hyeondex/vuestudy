@@ -4,7 +4,7 @@
 
     <check-box-all
       v-model="checkList.allChecked"
-      :value = "checkList.allChecked"
+      :value="checkList.allChecked"
       :noneCheckList="checkList.itemCheck"
       :checklist="checkList.list"
     >
@@ -72,8 +72,7 @@ export default {
       },
     };
   },
-  computed: {
-  },
+  computed: {},
 };
 </script>
 
