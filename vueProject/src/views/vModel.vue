@@ -1,5 +1,5 @@
 <template>
-  <container class="wrap">
+  <div class="wrap">
     <h1>V-model</h1>
     <ul>
       <li>
@@ -187,14 +187,14 @@
         </div>
       </li>
     </ul>
-  </container>
+  </div>
 </template>
 
 <script>
-import TodoFooter from "../components/TodoFooter";
-import TodoHeader from "../components/TodoHeader";
-import TodoList from "../components/TodoList";
-import TodoInput from "../components/TodoInput";
+import TodoFooter from "../components/todo/TodoFooter";
+import TodoHeader from "../components/todo/TodoHeader";
+import TodoList from "../components/todo/TodoList";
+import TodoInput from "../components/todo/TodoInput";
 export default {
   name: "vModel",
   components: { TodoFooter, TodoHeader, TodoList, TodoInput },

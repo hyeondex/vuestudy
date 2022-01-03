@@ -1,5 +1,5 @@
 <template>
-  <container class="wrap">
+  <div class="wrap">
     <todo-header></todo-header>
     <todo-input v-on:addTodo="addTodo"></todo-input>
     <todo-list
@@ -7,14 +7,14 @@
       @removeTodo="removeTodo"
     ></todo-list>
     <todo-footer v-on:removeAll="clearAll"></todo-footer>
-  </container>
+  </div>
 </template>
 
 <script>
-import TodoFooter from "../../components/TodoFooter.vue";
-import TodoHeader from "../../components/TodoHeader";
-import TodoList from "../../components/TodoList";
-import TodoInput from "../../components/TodoInput";
+import TodoFooter from "../../components/todo/TodoFooter.vue";
+import TodoHeader from "../../components/todo/TodoHeader";
+import TodoList from "../../components/todo/TodoList";
+import TodoInput from "../../components/todo/TodoInput";
 
 export default {
   name: "todoMain",

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Modal from "./common/Modal.vue";
+import Modal from "../common/Modal.vue";
 
 export default {
   name: "TodoInput",

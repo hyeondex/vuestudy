@@ -48,22 +48,25 @@
 }
 .home {
   height: 100vh;
-  background: #0a0382;
-  padding: 150px 50px;
-}
-.home > h1 {
+  background: tomato;
+  padding: 150px;
   color: #fff;
+  box-sizing: border-box;
+}
+.home h1 {
+  font-family: "Press Start 2P";
 }
 h1 {
-  font-family: "Press Start 2P", "DungGeunMo";
   font-size: 2em;
 }
+
 button,
 a {
   font-family: "Press Start 2P";
   background: transparent;
   padding: 5px;
   cursor: pointer;
+  animation: scale 0.5s forwards;
 }
 
 .wrap {
@@ -72,10 +75,12 @@ a {
   height: auto;
   margin: 0 auto;
   padding: 150px 50px;
-  text-align: center;
 }
+
 .wrap h1 {
   color: #000;
+  text-align: center;
+  margin-bottom: 50px;
 }
 ul {
   margin-top: 10px;
@@ -172,4 +177,87 @@ input {
 .clearAllBtn {
   margin: 20px auto 0;
   display: block;
+}
+
+.link-box {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-box a {
+  color: #fff;
+}
+
+.label {
+  padding-left: 25px;
+  position: relative;
+}
+.label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #fff;
+
+  box-shadow: 0 0 0 3px #000 inset;
+}
+.label.checked:before {
+  box-shadow: 0 0 0 3px #000 inset;
+  background: #fff;
+  box-sizing: border-box;
+}
+.label.checked:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 12px;
+  height: 12px;
+  background: #000;
+}
+.label span {
+  font-size: 15px;
+  color: black;
+}
+.label.checked span {
+  color: #000000;
+  font-weight: 700;
+}
+label input[type="checkbox"],
+label input[type="radio"] {
+  display: none;
+}
+
+input {
+  /*display: block;*/
+  line-height: 25px;
+  border: 1px solid #000;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+}
+h2 {
+  font-size: 2rem;
+}
+.box {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+.box span {
+  font-size: 1.5rem;
+}
+.box + h2 {
+  margin-top: 50px;
+}
+.box .hlight {
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
 }

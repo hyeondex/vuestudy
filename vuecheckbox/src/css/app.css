@@ -150,7 +150,8 @@ ol li ol li {
   color: #000000;
   font-weight: 700;
 }
-label input[type="checkbox"] {
+label input[type="checkbox"],
+label input[type="radio"] {
   display: none;
 }
 

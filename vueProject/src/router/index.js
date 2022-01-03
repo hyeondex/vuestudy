@@ -4,6 +4,7 @@ import About from "../views/About.vue";
 import Home from "../views/Home.vue";
 import todoMain from "../views/todoList/todoMain.vue";
 import vModel from "../views/vModel.vue";
+import checkBox from "../views/checkBoxMain.vue";
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ export const router = new VueRouter({
       path: "/vModel",
       component: vModel,
       meta: { title: "vModel" },
+    },
+    {
+      path: "/checkBoxMain",
+      component: checkBox,
+      meta: { title: "checkbox" },
     },
   ],
 });
