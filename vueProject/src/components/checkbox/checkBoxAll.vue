@@ -19,9 +19,9 @@ export default {
           })
         : this.putCheckedList.splice(0, this.putCheckedList.length);
     },*/
-    putCheckedList(value){
-      this.$emit('change', value.length === this.checklist.length);
-    }
+    putCheckedList(value) {
+      this.$emit("change", value.length === this.checklist.length);
+    },
   },
   computed: {
     /*checking: {
@@ -31,7 +31,6 @@ export default {
 
   methods: {
     checkChange(event) {
-
       if (!this.checkType) {
         const idx = this.checked.indexOf(this.value);
         if (idx === -1) {
@@ -43,12 +42,14 @@ export default {
         }
         this.$emit("change", this.checked); // checked 된 배열
       } else {
-        console.log('실행')
-        const val = event.target.checked ? this.checklist.map((el)=>{
-          return el.value
-        }):[]
+        console.log("실행");
+        const val = event.target.checked
+          ? this.checklist.map((el) => {
+              return el.value;
+            })
+          : [];
         this.$emit("change", event.target.checked);
-        this.$emit('update:putCheckedList' , val)
+        this.$emit("update:putCheckedList", val);
         console.log(event.target.checked); // checkboxAll의 boolean
       }
     },
