@@ -10,8 +10,7 @@ export default {
     checklist: {
       type: Array,
     },
-  }, // 부모한테 받아야하는 값만 가져오기
-
+  },
   watch: {
     checked() {
       this.value
@@ -31,7 +30,7 @@ export default {
         this.noneCheckList = newValue
           ? this.checklist.map((el) => el.value)
           : [];
-        console.log(this.value)
+        //console.log(this.value)
 
       },
     },

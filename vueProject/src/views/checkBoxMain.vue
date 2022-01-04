@@ -30,7 +30,7 @@
       </check-box>
     </div>
 
-    <h2>radio(번외)</h2>
+    <h2>radio</h2>
     <div class="box">
       <radio-btn
         v-model="radioList.radioData"
@@ -45,7 +45,7 @@
       </radio-btn>
       <br />
       <p class="hlight">
-        <span>radiolist.radioData: {{ radioList.radioData }}</span>
+        <span>radioList.radioData: {{ radioList.radioData }}</span>
       </p>
     </div>
   </div>
