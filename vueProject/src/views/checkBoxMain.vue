@@ -6,7 +6,7 @@
       <check-box-all
         v-model="checkList.allChecked"
         :value="checkList.allChecked"
-        :noneCheckList="checkList.itemCheck"
+        :noneCheckList.sync="checkList.itemCheck"
         :checklist="checkList.list"
       >
         <span slot="span"> All</span>

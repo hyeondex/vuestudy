@@ -6,44 +6,28 @@
 }
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @font-face {
-  font-family: "DungGeunMo";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "SpoqaHanSansNeo";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/SpoqaHanSansNeo-Regular.woff") format("woff"),
-    url("../fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "SpoqaHanSansNeo";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/SpoqaHanSansNeo-Regular.woff") format("woff"),
-    url("../fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "SpoqaHanSansNeo";
+  font-family: 'SpoqaHanSansNeo';
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/SpoqaHanSansNeo-Medium.woff") format("woff"),
-    url("../fonts/SpoqaHanSansNeo-Medium.woff2") format("woff2");
+  font-display: swap;
+  src: url(../fonts/SpoqaHanSansNeo-Bold.woff) format('woff2');
 }
-
 @font-face {
-  font-family: "SpoqaHanSansNeo";
+  font-family: 'SpoqaHanSansNeo';
   font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/SpoqaHanSansNeo-Bold.woff") format("woff"),
-    url("../fonts/SpoqaHanSansNeo-Bold.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/SpoqaHanSansNeo-Regular.woff) format('woff2');
 }
 
+/*@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/PressStart2P.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}*/
 #app {
 }
 .home {
@@ -52,6 +36,7 @@
   padding: 150px;
   color: #fff;
   box-sizing: border-box;
+  font-family: 'SpoqaHanSansNeo';
 }
 .home h1 {
   font-family: "Press Start 2P";
@@ -59,7 +44,9 @@
 h1 {
   font-size: 2em;
 }
-
+p,span{
+  font-family: 'SpoqaHanSansNeo';
+}
 button,
 a {
   font-family: "Press Start 2P";
