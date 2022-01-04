@@ -20,14 +20,6 @@
   src: url(../fonts/SpoqaHanSansNeo-Regular.woff) format('woff2');
 }
 
-/*@font-face {
-  font-family: 'Press Start 2P';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fonts/PressStart2P.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}*/
 #app {
 }
 .home {
@@ -69,30 +61,39 @@ a {
   text-align: center;
   margin-bottom: 50px;
 }
-ul {
+ul.list {
   margin-top: 10px;
 }
 
-ul li {
+ul.list li {
   padding: 5px 15px 10px 25px;
   list-style: none;
   border: 1px solid #000;
   border-radius: 5px;
 }
 
-li + li {
+ul.list li + li {
   margin-top: 15px;
 }
 
-li:before {
+ul.list li:before {
   content: "📌";
   margin: 0 0 0 -20px;
 }
 
-li > .ex {
+ul.list li > .ex {
   margin-top: 7px;
 }
 
+ul.list li > ul li{
+  border:none;
+  background:#eee;
+}
+ul.list li > ul li:before{
+  content:'👀';
+  font-size:12px;line-height: 22px;
+  vertical-align: top;
+}
 .code {
   margin: 5px 0 0;
   padding: 5px 10px;

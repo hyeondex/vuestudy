@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <h1>V-model</h1>
-    <ul>
+    <ul class="list">
       <li>
         v-model은 data의 변화를 실시간으로 관찰할 수 있는 기능입니다. 양방향
         데이터 바인딩으로 내용을 작성하면 해당 내용이 선언한 데이터 값에 바로
