@@ -95,18 +95,18 @@ export default {
         radioData: "",
         list: [
           {
-            id: "ch1",
-            value: "ch1",
+            id: "radio1",
+            value: "radio1",
             name: "radio",
           },
           {
-            id: "ch2",
-            value: "ch2",
+            id: "radio2",
+            value: "radio2",
             name: "radio",
           },
           {
-            id: "ch3",
-            value: "ch3",
+            id: "radio3",
+            value: "radio3",
             name: "radio",
           },
         ],
