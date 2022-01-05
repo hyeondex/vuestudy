@@ -5,6 +5,7 @@ import Home from "../views/Home.vue";
 import todoMain from "../views/todoList/todoMain.vue";
 import vModel from "../views/vModel.vue";
 import checkBox from "../views/checkBoxMain.vue";
+import adrMain from "../views/address/adrMain";
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,11 @@ export const router = new VueRouter({
       path: "/checkBoxMain",
       component: checkBox,
       meta: { title: "checkbox" },
+    },
+    {
+      path: "/adrMain",
+      component: adrMain,
+      meta: { title: "address main" },
     },
   ],
 });

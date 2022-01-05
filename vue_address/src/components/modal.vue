@@ -1,3 +1,4 @@
+<!--
 <template name="modal">
   <div class="modal-mask">
     <div class="modal-wrap">
@@ -134,3 +135,4 @@ export default {
   transform: scale(1.1);
 }
 </style>
+-->

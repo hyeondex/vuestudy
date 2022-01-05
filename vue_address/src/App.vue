@@ -1,12 +1,14 @@
+<!--
 <template>
   <div id="app">
     <input type="text" v-model="inputText" readonly />
     <input type="text" v-model="inputText1" readonly />
     <input type="text" v-model="inputText2" />
-    <!--    <button type="button" @click="testText">검색</button>-->
+    &lt;!&ndash;    <button type="button" @click="testText">검색</button>&ndash;&gt;
 
-    <button type="button" @click="modalOpen">모달 오픈</button>
-    <modal v-if="modal" @closeModal="closeModal">
+    <button type="button" @click="">모달 오픈</button>
+
+    <modal v-if="modal" @closeModal="">
       <template #body> </template>
     </modal>
   </div>
@@ -30,32 +32,12 @@ export default {
     modal,
   },
   methods: {
-    // 값을 가지고 옴 > 그 값을 뿌릴 메소드 제작 > 메소드를 실행시킬 이벤트 > 그 이벤트를 html 영역에 붙이기
-    modalOpen() {
-      this.modal = true;
-      console.log("modal open");
-    },
-    closeModal() {
-      this.modal = false;
-      console.log("close");
-    },
+
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-table {
-  background: red;
-}
-input {
-  display: block;
-}
+
 </style>
+-->
