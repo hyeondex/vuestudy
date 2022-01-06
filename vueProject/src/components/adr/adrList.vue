@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button type="button" @click="postAdrEvent">respone</button>
-    <input type="text" />
+    <input type="text" v-model="keywordAdr" />
+    <button type="button" @click="postAdrEvent">response</button>
     <ul class="container">
       <!--      <li v-for="adrList in adrList" v-slot:>
         <button type="button">
@@ -9,35 +9,32 @@
         </button>
       </li>-->
     </ul>
+    {{ this.adrList }}
   </div>
 </template>
 
 <script>
 import { getData } from "../../api";
-import axios from "axios";
 
 export default {
   name: "adrList",
   data() {
     return {
-      adrList: {
-        common: [totalCount],
-      },
+      keywordAdr: "",
+      adrList: [],
     };
   },
   methods: {
     postAdrEvent() {
       console.log("test");
-      let vm = this;
-      axios
-        .get(getData)
-        .then(function (responese) {
-          console.log(responese);
-          vm.adr = responese.data;
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+      getData({
+        currentPage: "",
+        countPerPage: "",
+        keyword: this.keywordAdr,
+      }).then((response) => {
+        console.log(response);
+        /*this.adrList = response.map((el) =)*/
+      });
     },
     //let vm = this;
   },
