@@ -32,7 +32,11 @@ export default {
         countPerPage: "",
         keyword: this.keywordAdr,
       }).then((response) => {
-        console.log(response);
+        /*  response.data.result.juso.forEach((item, idx) => {
+          this.adrList.push(parseInt(item, idx));
+        });*/
+        console.log(this.adrList);
+        console.log(response.data);
         /*this.adrList = response.map((el) =)*/
       });
     },
