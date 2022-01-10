@@ -182,6 +182,11 @@
   &lt;p&gt;내가 고른거 ~ : {{ selected }}&lt;/p&gt;</pre>
             </div>
           </li>
+        </ul>
+      </li>
+      <li>
+        async
+        <ul class="list">
           <li></li>
         </ul>
       </li>
@@ -203,7 +208,7 @@ export default {
   },
   methods: {
     updateInput() {
-      this.inputText = this.updateInputVmodel;
+      this.inputText = this.updateInputVmodel; // v-model 없는 경우
     },
   },
 };
