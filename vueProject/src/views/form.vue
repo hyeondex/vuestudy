@@ -80,28 +80,37 @@
           <tr>
             <th>채팅상담 가능 시간</th>
             <td>
-              <all-check-box
-                :class="{ borderCheck: true }"
-                v-model="inputData.weeklyCheckboxData.allChecked"
-                :value="inputData.weeklyCheckboxData.allChecked"
-                :checkedArray.sync="inputData.weeklyCheckboxData.checked"
-                :checkList="inputData.weeklyCheckboxData.weekly"
-              >
-                <span slot="span"> All</span>
-              </all-check-box>
-              {{ inputData.weeklyCheckboxData.allChecked }}
-              <check-box
-                :class="{ borderCheck: true }"
-                v-model="inputData.weeklyCheckboxData.checked"
-                v-for="(item, idx) in inputData.weeklyCheckboxData.weekly"
-                :key="idx"
-                :value="item.value"
-                :disabled="item.disabled"
-              >
-                <span slot="span">
-                  {{ item.value }}
-                </span>
-              </check-box>
+              <div class="left">
+                <all-check-box
+                  :class="{ borderCheck: true }"
+                  v-model="inputData.weeklyCheckboxData.allChecked"
+                  :value="inputData.weeklyCheckboxData.allChecked"
+                  :checkedArray.sync="inputData.weeklyCheckboxData.checked"
+                  :checkList="inputData.weeklyCheckboxData.weekly"
+                >
+                  <span slot="span"> All</span>
+                </all-check-box>
+                <check-box
+                  :class="{ borderCheck: true }"
+                  v-model="inputData.weeklyCheckboxData.checked"
+                  v-for="(item, idx) in inputData.weeklyCheckboxData.weekly"
+                  :key="idx"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                >
+                  <span slot="span">
+                    {{ item.value }}
+                  </span>
+                </check-box>
+              </div>
+
+              <div class="right">
+                <form-select
+                  v-model="inputData.selectTime1.value"
+                  :list="inputData.selectTime1.timeList"
+                  :placeholder="inputData.selectTime1.placeholder"
+                ></form-select>
+              </div>
             </td>
           </tr>
         </table>
@@ -116,7 +125,6 @@
         >
           <span slot="span"> 모든 약관에 동의합니다.</span>
         </all-check-box>
-
         <div class="checklist">
           <check-box
             v-model="inputData.agreeCheckboxData.checked"
@@ -138,13 +146,19 @@
 </template>
 
 <script>
-import checkBox from "../components/form/checkBox";
-import InputText from "../components/form/inputText";
-import allCheckBox from "../components/form/allCheckBox";
+import checkBox from "@/components/test/checkBox";
+import InputText from "@/components/test/inputText";
+import allCheckBox from "@/components/test/allCheckBox";
+import FormSelect from "@/components/test/formSelect";
 
 export default {
-  name: "form",
-  components: { allCheckBox, InputText, checkBox },
+  name: "soohyeon",
+  components: {
+    FormSelect,
+    allCheckBox,
+    InputText,
+    checkBox,
+  },
   data() {
     return {
       inputData: {
@@ -177,7 +191,6 @@ export default {
           placeholder: "이메일을 입력해주세요",
           error: "",
         },
-
         weeklyCheckboxData: {
           allChecked: false,
           allDisabled: false,
@@ -190,6 +203,51 @@ export default {
             { value: "금" },
             { value: "토" },
             { value: "일" },
+          ],
+        },
+        selectTime1: {
+          value: "", // select는 배열 X string
+          placeholder: "상담 시작 시간",
+          timeList: [
+            { value: "09:00" },
+            { value: "10:00" },
+            { value: "11:00" },
+            { value: "12:00" },
+            { value: "13:00" },
+            { value: "14:00" },
+            { value: "15:00" },
+            { value: "16:00" },
+            { value: "17:00" },
+            { value: "18:00" },
+            { value: "19:00" },
+            { value: "20:00" },
+            { value: "21:00" },
+            { value: "22:00" },
+            { value: "23:00" },
+            { value: "24:00" },
+          ],
+        },
+        selectTime2: {
+          value: "",
+          placeholder: "상담 종료 시간",
+
+          timeList: [
+            { value: "09:00", disabled: true },
+            { value: "10:00" },
+            { value: "11:00" },
+            { value: "12:00" },
+            { value: "13:00" },
+            { value: "14:00" },
+            { value: "15:00" },
+            { value: "16:00" },
+            { value: "17:00" },
+            { value: "18:00" },
+            { value: "19:00" },
+            { value: "20:00" },
+            { value: "21:00" },
+            { value: "22:00" },
+            { value: "23:00" },
+            { value: "24:00" },
           ],
         },
         agreeCheckboxData: {
@@ -221,23 +279,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 table {
   margin-top: 35px;
-}
-th {
-  text-align: left;
-  font-weight: 700;
-  font-size: 14px;
-}
-td {
-  padding: 15px 0;
+  th {
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  td {
+    padding: 15px 0;
+  }
 }
 
 .desc {
   margin-top: 10px;
   font-size: 12px;
   line-height: 18px;
-  color: #888;
+  color: $gray-60;
 }
 </style>
