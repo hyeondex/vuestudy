@@ -6,7 +6,7 @@ import todoMain from "../views/todoList/todoMain.vue";
 import vModel from "../views/vModel.vue";
 import checkBox from "../views/checkBoxMain.vue";
 import adrMain from "../views/address/adrMain";
-import form from "../views/form";
+import form from "../views/inputForm";
 
 Vue.use(VueRouter);
 

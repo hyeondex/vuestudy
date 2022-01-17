@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "formSelect",
+  name: "formSelect.vue",
   props: {
     //바닥페이지의 v-모델
     placeholder: String, // 옵션이름

@@ -5,7 +5,7 @@
         기본 정보를 입력 후,<br />
         회원가입을 완료해주세요
       </h2>
-      <form>
+      <form action="">
         <table>
           <tr>
             <th>이름</th>
@@ -110,7 +110,6 @@
                   :list="inputData.selectTime1.timeList"
                   :placeholder="inputData.selectTime1.placeholder"
                 ></form-select>
-                value{{ inputData.selectTime1.value }}
               </div>
             </td>
           </tr>
@@ -150,12 +149,12 @@
 import checkBox from "../components/form/checkBox";
 import InputText from "../components/form/inputText";
 import allCheckBox from "../components/form/allCheckBox";
-import FormSelect from "../components/form/formSelect";
+import formSelect from "../components/form/formSelect";
 
 export default {
-  name: "form",
+  name: "inputForm",
   components: {
-    FormSelect,
+    formSelect,
     allCheckBox,
     InputText,
     checkBox,
@@ -208,6 +207,7 @@ export default {
         },
         selectTime1: {
           value: "", // select는 배열 X string
+          disabled: false,
           placeholder: "상담 시작 시간",
           timeList: [
             { value: "09:00" },
