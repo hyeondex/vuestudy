@@ -6,6 +6,7 @@ import todoMain from "../views/todoList/todoMain.vue";
 import vModel from "../views/vModel.vue";
 import checkBox from "../views/checkBoxMain.vue";
 import adrMain from "../views/address/adrMain";
+import form from "../views/form";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,11 @@ export const router = new VueRouter({
       path: "/adrMain",
       component: adrMain,
       meta: { title: "address main" },
+    },
+    {
+      path: "/form",
+      component: form,
+      meta: { title: "form main" },
     },
   ],
 });

@@ -110,6 +110,7 @@
                   :list="inputData.selectTime1.timeList"
                   :placeholder="inputData.selectTime1.placeholder"
                 ></form-select>
+                value{{ inputData.selectTime1.value }}
               </div>
             </td>
           </tr>
@@ -146,13 +147,13 @@
 </template>
 
 <script>
-import checkBox from "@/components/test/checkBox";
-import InputText from "@/components/test/inputText";
-import allCheckBox from "@/components/test/allCheckBox";
-import FormSelect from "@/components/test/formSelect";
+import checkBox from "../components/form/checkBox";
+import InputText from "../components/form/inputText";
+import allCheckBox from "../components/form/allCheckBox";
+import FormSelect from "../components/form/formSelect";
 
 export default {
-  name: "soohyeon",
+  name: "form",
   components: {
     FormSelect,
     allCheckBox,
@@ -279,19 +280,18 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 table {
   margin-top: 35px;
-  th {
-    text-align: left;
-    font-weight: 700;
-    font-size: 14px;
-  }
-  td {
-    padding: 15px 0;
-  }
 }
-
+th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+}
+td {
+  padding: 15px 0;
+}
 .desc {
   margin-top: 10px;
   font-size: 12px;
