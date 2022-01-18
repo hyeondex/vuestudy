@@ -1,9 +1,11 @@
 <template>
   <div>
     <input
+      :class="{ inputText: true }"
       :type="type ? type : 'text'"
       :placeholder="placeholder"
       :value="value"
+      :disabled="disabled"
       @input="$emit('test', $event.target.value)"
     />
     <p v-if="error">{{ error }}</p>
@@ -22,6 +24,9 @@ export default {
     error: {
       type: String,
     },
+    disabled: {
+      type: Boolean,
+    },
   },
   model: {
     prop: "value",
@@ -36,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-input {
+.inputText {
   font-size: inherit;
   width: 708px;
   padding: 11px 15px;
@@ -45,10 +50,10 @@ input {
   border: 1px solid #bbb;
   background: #fff;
 }
-input::placeholder {
+.inputText::placeholder {
   color: #bbb;
 }
-input:disabled {
+.inputText:disabled {
   background: red;
 }
 </style>

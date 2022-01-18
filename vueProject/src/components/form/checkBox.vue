@@ -9,6 +9,7 @@
       @change="checkboxEvent"
     />
     <slot name="span" />
+    <!-- component나 template에서만 사용 할 떄 상위 컴포넌트에 #이름 형식으로 쓸 수 있음  -->
   </label>
 </template>
 

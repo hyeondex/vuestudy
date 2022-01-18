@@ -14,7 +14,6 @@
                 v-model="inputData.name.value"
                 :placeholder="inputData.name.placeholder"
                 :error="inputData.name.error"
-                @test="test"
               />
             </td>
           </tr>
@@ -104,18 +103,19 @@
                   </span>
                 </check-box>
               </div>
-
               <div class="right">
                 <form-select
                   v-model="inputData.selectTime1.value"
                   :list="inputData.selectTime1.timeList"
                   :placeholder="inputData.selectTime1.placeholder"
+                  :disabled="inputData.selectTime1.disabled"
                 ></form-select>
               </div>
               <check-box
+                :class="{ lineCheckbox: true }"
                 @change="disabledCheck"
-                v-model="inputData.weeklyCheckboxData.allDisabled"
-                :value="inputData.weeklyCheckboxData.allDisabled"
+                v-model="inputData.weeklyCheckboxData.disabled"
+                :value="inputData.weeklyCheckboxData.disabled"
               >
                 <span slot="span">화상상담을 진행하지 않습니다.</span>
               </check-box>
@@ -201,7 +201,7 @@ export default {
         },
         weeklyCheckboxData: {
           allChecked: false,
-          allDisabled: false,
+          disabled: false,
           checked: [],
           weekly: [
             { value: "월", disabled: true },
@@ -216,6 +216,7 @@ export default {
         selectTime1: {
           value: "", // select는 배열 X string
           disabled: false,
+          selectItem: false,
           placeholder: "상담 시작 시간",
           timeList: [
             { value: "09:00" },
@@ -273,26 +274,32 @@ export default {
       //errorTxt: false,
     };
   },
+
   watch: {
     //watch에서는 데이터를 가져와서 데이터의 속성을 체킹하는데 그 체킹하는걸 데이터안에 데이터~~ 이런구조니까 "" 감아주면 됨
-    "inputData.weeklyCheckboxData.allDisabled"(value) {
+    "inputData.weeklyCheckboxData.disabled"(value) {
       // value를 받아서 변경되는 데이터를 아래 모양을 담아? (키, value)
-      this.disabledCheck(this.inputData.weeklyCheckboxData, value); //todo: 근데 키랑 벨류가 왜 필요한지는 정확하게 이해를 못했음
-      console.log("watch 감지");
+      this.disabledCheck(this.inputData, value);
+      //console.log("value", value);
+    },
+    "inputData.selectTime1.disabled"(value) {
+      this.disabledCheck(this.inputData, value);
     },
   },
   methods: {
-    //this.inputData.weeklyCheckboxData.weekly.value
     disabledCheck(key, value) {
+      key.weeklyCheckboxData.allDisabled = value;
+      key.weeklyCheckboxData.weekly.forEach((el) => (el.disabled = value));
+      key.selectTime1.disabled = value;
+      console.log(key, value);
+    },
+
+    /*disabledCheck(key, value) {
       //checkbox/select 모두 disabled :true;
-      console.log(key.allDisabled);
-      console.log(value);
-      key.allDisabled = value;
-      key.weekly.forEach((el) => (el.disabled = value));
-    },
-    test(e) {
-      console.log(e);
-    },
+
+
+    },*/
+
     // todo : post로 api주소 담아서 보내기
     /*const axios = require('axios')
     axios.post('api주소? ',{
@@ -309,6 +316,7 @@ table {
   margin-top: 35px;
 }
 th {
+  min-width: 236px;
   text-align: left;
   font-weight: 700;
   font-size: 14px;
@@ -316,10 +324,29 @@ th {
 td {
   padding: 15px 0;
 }
+.left {
+  display: inline-flex;
+}
+.right {
+  display: inline-flex;
+}
 .desc {
   margin-top: 10px;
   font-size: 12px;
   line-height: 18px;
   color: $gray-60;
+}
+.lineCheckbox {
+  //flex: 0 0 100%;
+}
+.lineCheckbox:before {
+  width: 18px;
+  height: 18px;
+  background: url("../assets/images/ic-checkbox-off-nomal-18.svg") no-repeat 50%
+    50%/100%;
+}
+.lineCheckbox.checked:before {
+  background: url("../assets/images/ic-checkbox-on-nomal-18.svg") no-repeat 50%
+    50%/100%;
 }
 </style>
