@@ -43,7 +43,7 @@ export default {
 <style scoped>
 .inputText {
   font-size: inherit;
-  width: 708px;
+  max-width: 708px;
   padding: 11px 15px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -56,4 +56,5 @@ export default {
 .inputText:disabled {
   background: red;
 }
+/*todo : input size 반  */
 </style>

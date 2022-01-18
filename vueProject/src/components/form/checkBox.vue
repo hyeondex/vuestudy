@@ -70,11 +70,11 @@ export default {
 
 <style scoped>
 label {
-  /*//icon + txt type*/
   position: relative;
   display: block;
-  padding-left: 34px;
-  line-height: 20px;
+}
+label span {
+  letter-spacing: -0.05em;
 }
 input {
   position: absolute;
@@ -86,10 +86,15 @@ input {
   opacity: 0;
   margin: 0;
 }
-label.checked:before {
+.agree-check-wrap label {
+  /*//icon + txt type*/
+  padding-left: 34px;
+  line-height: 20px;
+}
+.agree-check-wrap label.checked:before {
   background: url(../../assets/images/ic-check-on-24.svg) no-repeat 0 0/100%;
 }
-label:before {
+.agree-check-wrap label:before {
   content: "";
   position: absolute;
   top: 0;
@@ -98,10 +103,10 @@ label:before {
   height: 24px;
   background: url(../../assets/images/ic-check-off-24.svg) no-repeat 0 0/100%;
 }
-label.all {
+.agree-check-wrap label.all {
   padding-bottom: 20px;
 }
-label.all:after {
+.agree-check-wrap label.all:after {
   content: "";
   display: block;
   width: 100%;
@@ -109,13 +114,13 @@ label.all:after {
   background: #eee;
   margin: 20px 0 0 -34px;
 }
-label.all span {
+.agree-check-wrap label.all span {
   font-weight: 700;
 }
-label.all.checked:before {
+.agree-check-wrap label.all.checked:before {
   background: url(../../assets/images/ic-checkbox-on-24.svg) no-repeat 0 0/100%;
 }
-label.all:before {
+.agree-check-wrap label.all:before {
   content: "";
   position: absolute;
   top: 0;
@@ -127,30 +132,66 @@ label.all:before {
 
 /*// 네모 체크박스*/
 label.borderCheck {
+  position: relative;
   display: inline-flex;
   height: 44px;
   padding: 0 15px;
   line-height: 42px;
   background: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
+  border-right: none;
   box-sizing: border-box;
   text-align: center;
 }
-label.borderCheck:disabled {
-  background: #000;
+label.borderCheck span {
+  font-size: 14px;
 }
 label.borderCheck:before {
   display: none;
 }
 label.borderCheck.checked {
-  border-color: #00d4ac;
+  /*border-color: #00d4ac;*/
   color: #00d4ac;
 }
-label.borderCheck:first-child {
+
+label.borderCheck:first-child:not(.all) {
+  border-radius: 10px 0 0 10px;
+}
+label.borderCheck.checked:first-child:not(.all):after {
   border-radius: 10px 0 0 10px;
 }
 label.borderCheck:last-child {
-  border-radius: 10px 10px 0 0;
+  border-right: 1px solid #ddd;
+  border-radius: 0 10px 10px 0;
+}
+label.borderCheck.checked:last-child:after {
+  border-right: 1px solid #00d4ac;
+  border-radius: 0 10px 10px 0;
+}
+label.borderCheck.checked:after {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border: 1px solid #00d4ac;
+  box-sizing: border-box;
+}
+label.borderCheck.all {
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+}
+label.borderCheck.all span {
+  display: block;
+  font-weight: 400;
+}
+label.borderCheck.all:after {
+  margin: 0 auto;
+  border-radius: 10px;
+  background: transparent;
 }
 .checklist {
   margin-top: 20px;

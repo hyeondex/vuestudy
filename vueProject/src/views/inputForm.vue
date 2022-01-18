@@ -65,7 +65,7 @@
               />
             </td>
           </tr>
-          <tr>
+          <tr class="half-tr">
             <th>이메일</th>
             <td>
               <input-text
@@ -74,40 +74,55 @@
                 :placeholder="inputData.email.placeholder"
                 :error="inputData.email.error"
               />
+              <form-select
+                v-model="inputData.email.value"
+                :value="inputData.email.value"
+                :list="inputData.email.emailList"
+                :title="inputData.email.title"
+              ></form-select>
+
+              <!-- todo : select disabled  -->
             </td>
           </tr>
           <tr>
             <th>채팅상담 가능 시간</th>
             <td>
-              <div class="left">
-                <all-check-box
-                  :class="{ borderCheck: true }"
-                  v-model="inputData.weeklyCheckboxData.allChecked"
-                  :value="inputData.weeklyCheckboxData.allChecked"
-                  :checkedArray.sync="inputData.weeklyCheckboxData.checked"
-                  :checkList="inputData.weeklyCheckboxData.weekly"
-                  :disabled="inputData.weeklyCheckboxData.allDisabled"
-                >
-                  <span slot="span"> All</span>
-                </all-check-box>
+              <all-check-box
+                :class="{ borderCheck: true, all: true }"
+                v-model="inputData.weeklyCheckboxData.allChecked"
+                :value="inputData.weeklyCheckboxData.allChecked"
+                :checkedArray.sync="inputData.weeklyCheckboxData.checked"
+                :checkList="inputData.weeklyCheckboxData.weekly"
+                :disabled="inputData.weeklyCheckboxData.allDisabled"
+              >
+                <span slot="span">전체</span>
+              </all-check-box>
+              <div class="weekly-checkbox">
                 <check-box
                   :class="{ borderCheck: true }"
                   v-model="inputData.weeklyCheckboxData.checked"
                   v-for="(item, idx) in inputData.weeklyCheckboxData.weekly"
                   :key="idx"
-                  :value="item.value"
+                  :value="item.name"
                   :disabled="item.disabled"
                 >
                   <span slot="span">
-                    {{ item.value }}
+                    {{ item.name }}
                   </span>
                 </check-box>
               </div>
-              <div class="right">
+              <div class="time-select">
                 <form-select
                   v-model="inputData.selectTime1.value"
                   :list="inputData.selectTime1.timeList"
-                  :placeholder="inputData.selectTime1.placeholder"
+                  :title="inputData.selectTime1.title"
+                  :disabled="inputData.selectTime1.disabled"
+                ></form-select>
+                <span>~</span>
+                <form-select
+                  v-model="inputData.selectTime1.value"
+                  :list="inputData.selectTime1.timeList"
+                  :title="inputData.selectTime1.title"
                   :disabled="inputData.selectTime1.disabled"
                 ></form-select>
               </div>
@@ -133,6 +148,7 @@
         >
           <span slot="span"> 모든 약관에 동의합니다.</span>
         </all-check-box>
+
         <div class="checklist">
           <check-box
             v-model="inputData.agreeCheckboxData.checked"
@@ -143,7 +159,7 @@
           >
             <!--필수로 들어가야하는 요소 데이터에 boolean 값으로 담아줌 (required) prop으로 자식 컴포넌트에 값 내려주고  -->
             <span slot="span">
-              {{ item.value }}
+              {{ item.name }}
               <span class="mint-60" v-if="item.required">(필수)</span>
             </span>
           </check-box>
@@ -198,75 +214,85 @@ export default {
           value: "",
           placeholder: "이메일을 입력해주세요",
           error: "",
+          title: "선택",
+          emailList: [
+            { value: "0", name: "naver.com" },
+            { value: "1", name: "naver.com" },
+            { value: "2", name: "naver.com" },
+            { value: "3", name: "naver.com" },
+            { value: "4", name: "naver.com" },
+            { value: "5", name: "naver.com" },
+            { value: "6", name: "naver.com" },
+          ],
         },
         weeklyCheckboxData: {
           allChecked: false,
           disabled: false,
           checked: [],
           weekly: [
-            { value: "월", disabled: true },
-            { value: "화", disabled: false },
-            { value: "수", disabled: false },
-            { value: "목", disabled: false },
-            { value: "금", disabled: false },
-            { value: "토", disabled: false },
-            { value: "일", disabled: false },
+            { name: "월", value: "0", disabled: true },
+            { name: "화", value: "1", disabled: false },
+            { name: "수", value: "2", disabled: false },
+            { name: "목", value: "3", disabled: false },
+            { name: "금", value: "4", disabled: false },
+            { name: "토", value: "5", disabled: false },
+            { name: "일", value: "6", disabled: false },
           ],
         },
         selectTime1: {
           value: "", // select는 배열 X string
           disabled: false,
           selectItem: false,
-          placeholder: "상담 시작 시간",
+          title: "상담 시작 시간",
           timeList: [
-            { value: "09:00" },
-            { value: "10:00" },
-            { value: "11:00" },
-            { value: "12:00" },
-            { value: "13:00" },
-            { value: "14:00" },
-            { value: "15:00" },
-            { value: "16:00" },
-            { value: "17:00" },
-            { value: "18:00" },
-            { value: "19:00" },
-            { value: "20:00" },
-            { value: "21:00" },
-            { value: "22:00" },
-            { value: "23:00" },
-            { value: "24:00" },
+            { value: "0", name: "09:00" },
+            { value: "1", name: "10:00" },
+            { value: "2", name: "11:00" },
+            { value: "3", name: "12:00" },
+            { value: "4", name: "13:00" },
+            { value: "5", name: "14:00" },
+            { value: "6", name: "15:00" },
+            { value: "7", name: "16:00" },
+            { value: "8", name: "17:00" },
+            { value: "9", name: "18:00" },
+            { value: "10", name: "19:00" },
+            { value: "11", name: "20:00" },
+            { value: "12", name: "21:00" },
+            { value: "13", name: "22:00" },
+            { value: "14", name: "23:00" },
+            { value: "15", name: "24:00" },
           ],
         },
         selectTime2: {
           value: "",
-          placeholder: "상담 종료 시간",
+          title: "상담 종료 시간",
           disabled: false,
           timeList: [
-            { value: "09:00", disabled: true },
-            { value: "10:00" },
-            { value: "11:00" },
-            { value: "12:00" },
-            { value: "13:00" },
-            { value: "14:00" },
-            { value: "15:00" },
-            { value: "16:00" },
-            { value: "17:00" },
-            { value: "18:00" },
-            { value: "19:00" },
-            { value: "20:00" },
-            { value: "21:00" },
-            { value: "22:00" },
-            { value: "23:00" },
-            { value: "24:00" },
+            { value: "0", name: "09:00", disabled: true },
+            { value: "1", name: "10:00" },
+            { value: "2", name: "11:00" },
+            { value: "3", name: "12:00" },
+            { value: "4", name: "13:00" },
+            { value: "5", name: "14:00" },
+            { value: "6", name: "15:00" },
+            { value: "7", name: "16:00" },
+            { value: "8", name: "17:00" },
+            { value: "9", name: "18:00" },
+            { value: "10", name: "19:00" },
+            { value: "11", name: "20:00" },
+            { value: "12", name: "21:00" },
+            { value: "13", name: "22:00" },
+            { value: "14", name: "23:00" },
+            { value: "15", name: "24:00" },
           ],
         },
         agreeCheckboxData: {
           allChecked: false,
           checked: [],
           list: [
-            { value: "핑글커넥트 이용약관", required: true },
-            { value: "개인정보 수집 및 이용 동의", required: true },
-            { value: "마케팅/이벤트 정보 수신 동의" },
+            { value: 1, name: "핑글커넥트 이용약관", required: true },
+            { value: 2, name: "개인정보 수집 및 이용 동의", required: true },
+            { value: 3, name: "마케팅/이벤트 정보 수신 동의" },
           ],
         },
       },
@@ -322,13 +348,22 @@ th {
   font-size: 14px;
 }
 td {
+  width: 708px;
+  display: flex;
+  flex-wrap: wrap;
   padding: 15px 0;
 }
-.left {
+
+.weekly-checkbox {
   display: inline-flex;
 }
-.right {
+.time-select {
+  margin-left: 10px;
   display: inline-flex;
+  align-items: center;
+}
+.time-select span {
+  margin: 0 10px;
 }
 .desc {
   margin-top: 10px;
@@ -337,9 +372,15 @@ td {
   color: $gray-60;
 }
 .lineCheckbox {
-  //flex: 0 0 100%;
+  margin-top: 10px;
+  padding-left: 24px;
 }
 .lineCheckbox:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
   width: 18px;
   height: 18px;
   background: url("../assets/images/ic-checkbox-off-nomal-18.svg") no-repeat 50%
