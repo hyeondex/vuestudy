@@ -87,6 +87,7 @@
                   :value="inputData.weeklyCheckboxData.allChecked"
                   :checkedArray.sync="inputData.weeklyCheckboxData.checked"
                   :checkList="inputData.weeklyCheckboxData.weekly"
+                  :disabled="inputData.weeklyCheckboxData.allDisabled"
                 >
                   <span slot="span"> All</span>
                 </all-check-box>
@@ -111,6 +112,13 @@
                   :placeholder="inputData.selectTime1.placeholder"
                 ></form-select>
               </div>
+              <check-box
+                @change="disabledCheck"
+                v-model="inputData.weeklyCheckboxData.allDisabled"
+                :value="inputData.weeklyCheckboxData.allDisabled"
+              >
+                <span slot="span">화상상담을 진행하지 않습니다.</span>
+              </check-box>
             </td>
           </tr>
         </table>
@@ -197,12 +205,12 @@ export default {
           checked: [],
           weekly: [
             { value: "월", disabled: true },
-            { value: "화" },
-            { value: "수" },
-            { value: "목" },
-            { value: "금" },
-            { value: "토" },
-            { value: "일" },
+            { value: "화", disabled: false },
+            { value: "수", disabled: false },
+            { value: "목", disabled: false },
+            { value: "금", disabled: false },
+            { value: "토", disabled: false },
+            { value: "일", disabled: false },
           ],
         },
         selectTime1: {
@@ -231,7 +239,7 @@ export default {
         selectTime2: {
           value: "",
           placeholder: "상담 종료 시간",
-
+          disabled: false,
           timeList: [
             { value: "09:00", disabled: true },
             { value: "10:00" },
@@ -265,7 +273,23 @@ export default {
       //errorTxt: false,
     };
   },
+  watch: {
+    //watch에서는 데이터를 가져와서 데이터의 속성을 체킹하는데 그 체킹하는걸 데이터안에 데이터~~ 이런구조니까 "" 감아주면 됨
+    "inputData.weeklyCheckboxData.allDisabled"(value) {
+      // value를 받아서 변경되는 데이터를 아래 모양을 담아? (키, value)
+      this.disabledCheck(this.inputData.weeklyCheckboxData, value); //todo: 근데 키랑 벨류가 왜 필요한지는 정확하게 이해를 못했음
+      console.log("watch 감지");
+    },
+  },
   methods: {
+    //this.inputData.weeklyCheckboxData.weekly.value
+    disabledCheck(key, value) {
+      //checkbox/select 모두 disabled :true;
+      console.log(key.allDisabled);
+      console.log(value);
+      key.allDisabled = value;
+      key.weekly.forEach((el) => (el.disabled = value));
+    },
     test(e) {
       console.log(e);
     },

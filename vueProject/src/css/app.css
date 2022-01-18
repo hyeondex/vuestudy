@@ -6,18 +6,18 @@
 }
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @font-face {
-  font-family: 'SpoqaHanSansNeo';
+  font-family: "SpoqaHanSansNeo";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(../fonts/SpoqaHanSansNeo-Bold.woff) format('woff2');
+  src: url(../fonts/SpoqaHanSansNeo-Bold.woff) format("woff2");
 }
 @font-face {
-  font-family: 'SpoqaHanSansNeo';
+  font-family: "SpoqaHanSansNeo";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../fonts/SpoqaHanSansNeo-Regular.woff) format('woff2');
+  src: url(../fonts/SpoqaHanSansNeo-Regular.woff) format("woff2");
 }
 
 #app {
@@ -28,7 +28,7 @@
   padding: 150px;
   color: #fff;
   box-sizing: border-box;
-  font-family: 'SpoqaHanSansNeo';
+  font-family: "SpoqaHanSansNeo";
 }
 .home h1 {
   font-family: "Press Start 2P";
@@ -36,8 +36,9 @@
 h1 {
   font-size: 2em;
 }
-p,span{
-  font-family: 'SpoqaHanSansNeo';
+p,
+span {
+  font-family: "SpoqaHanSansNeo";
 }
 button,
 a {
@@ -85,13 +86,14 @@ ul.list li > .ex {
   margin-top: 7px;
 }
 
-ul.list li > ul li{
-  border:none;
-  background:#eee;
+ul.list li > ul li {
+  border: none;
+  background: #eee;
 }
-ul.list li > ul li:before{
-  content:'👀';
-  font-size:12px;line-height: 22px;
+ul.list li > ul li:before {
+  content: "👀";
+  font-size: 12px;
+  line-height: 22px;
   vertical-align: top;
 }
 .code {
@@ -111,9 +113,9 @@ ul.list li > ul li:before{
   font-weight: 700;
 }
 
-label + label {
+/*label + label {
   margin-left: 15px;
-}
+}*/
 
 label input {
   width: 30px;

@@ -1,7 +1,6 @@
 <template>
   <!-- todo: 전체 체크 올리기 -->
   <label :class="{ checked: checking, borderCheck: false, disabled: disabled }">
-    {{ disabled }}
     <input
       type="checkbox"
       :value="value"
@@ -58,7 +57,6 @@ export default {
         const idx = this.checked.indexOf(this.value);
         if (idx === -1) {
           this.checked.push(this.value);
-          console.log(this.disabled);
         } else {
           this.checked.splice(idx, 1);
         }
@@ -158,5 +156,12 @@ label.borderCheck:last-child {
 }
 .checklist label + label {
   margin-top: 15px;
+}
+label.disabled {
+  border-color: #dddddd;
+  background: #f7f7f7;
+}
+label.disabled span {
+  color: #bbb;
 }
 </style>
