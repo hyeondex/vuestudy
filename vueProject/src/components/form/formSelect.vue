@@ -50,11 +50,11 @@ export default {
 
 <style scoped>
 .select-box {
+  width: 100%;
   position: relative;
 }
-
 select {
-  flex: 1 0 auto;
+  width: 100%;
   height: 44px;
   padding: 12px 15px;
   border: 1px solid #ddd;

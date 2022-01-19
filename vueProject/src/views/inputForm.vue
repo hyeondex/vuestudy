@@ -91,19 +91,101 @@
             <td>
               <all-check-box
                 :class="{ borderCheck: true, all: true }"
-                v-model="inputData.weeklyCheckboxData.allChecked"
-                :value="inputData.weeklyCheckboxData.allChecked"
-                :checkedArray.sync="inputData.weeklyCheckboxData.checked"
-                :checkList="inputData.weeklyCheckboxData.weekly"
-                :disabled="inputData.weeklyCheckboxData.allDisabled"
+                v-model="
+                  inputData.chatAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :value="
+                  inputData.chatAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :checkedArray.sync="
+                  inputData.chatAvailableTime.weeklyCheckboxData.checked
+                "
+                :checkList="
+                  inputData.chatAvailableTime.weeklyCheckboxData.weekly
+                "
+                :disabled="
+                  inputData.chatAvailableTime.weeklyCheckboxData.disabled
+                "
               >
                 <span slot="span">전체</span>
               </all-check-box>
               <div class="weekly-checkbox">
                 <check-box
                   :class="{ borderCheck: true }"
-                  v-model="inputData.weeklyCheckboxData.checked"
-                  v-for="(item, idx) in inputData.weeklyCheckboxData.weekly"
+                  v-model="
+                    inputData.chatAvailableTime.weeklyCheckboxData.checked
+                  "
+                  v-for="(item, idx) in inputData.chatAvailableTime
+                    .weeklyCheckboxData.weekly"
+                  :key="idx"
+                  :value="item.value"
+                  :disabled="
+                    inputData.chatAvailableTime.weeklyCheckboxData.disabled
+                  "
+                >
+                  <span slot="span">
+                    {{ item.name }}
+                  </span>
+                </check-box>
+              </div>
+              <div class="time-select-box">
+                <form-select
+                  v-model="inputData.chatAvailableTime.selectTime1.value"
+                  :list="inputData.chatAvailableTime.selectTime1.timeList"
+                  :title="inputData.chatAvailableTime.selectTime1.title"
+                  :disabled="inputData.chatAvailableTime.selectTime1.disabled"
+                ></form-select>
+                <span>~</span>
+                <form-select
+                  v-model="inputData.chatAvailableTime.selectTime1.value"
+                  :list="inputData.chatAvailableTime.selectTime1.timeList"
+                  :title="inputData.chatAvailableTime.selectTime1.title"
+                  :disabled="inputData.chatAvailableTime.selectTime1.disabled"
+                ></form-select>
+              </div>
+              <check-box
+                :class="{ lineCheckbox: true }"
+                @change="disabledCheck"
+                v-model="
+                  inputData.chatAvailableTime.weeklyCheckboxData.disabled
+                "
+                :value="inputData.chatAvailableTime.weeklyCheckboxData.disabled"
+              >
+                <span slot="span">화상상담을 진행하지 않습니다.</span>
+              </check-box>
+            </td>
+          </tr>
+          <tr>
+            <th>화상상담 가능 시간</th>
+            <td>
+              <all-check-box
+                :class="{ borderCheck: true, all: true }"
+                v-model="
+                  inputData.videoAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :value="
+                  inputData.videoAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :checkedArray.sync="
+                  inputData.videoAvailableTime.weeklyCheckboxData.checked
+                "
+                :checkList="
+                  inputData.videoAvailableTime.weeklyCheckboxData.weekly
+                "
+                :disabled="
+                  inputData.videoAvailableTime.weeklyCheckboxData.disabled
+                "
+              >
+                <span slot="span">전체</span>
+              </all-check-box>
+              <div class="weekly-checkbox">
+                <check-box
+                  :class="{ borderCheck: true }"
+                  v-model="
+                    inputData.videoAvailableTime.weeklyCheckboxData.checked
+                  "
+                  v-for="(item, idx) in inputData.videoAvailableTime
+                    .weeklyCheckboxData.weekly"
                   :key="idx"
                   :value="item.name"
                   :disabled="item.disabled"
@@ -115,26 +197,164 @@
               </div>
               <div class="time-select-box">
                 <form-select
-                  v-model="inputData.selectTime1.value"
-                  :list="inputData.selectTime1.timeList"
-                  :title="inputData.selectTime1.title"
-                  :disabled="inputData.selectTime1.disabled"
+                  v-model="inputData.videoAvailableTime.selectTime1.value"
+                  :list="inputData.videoAvailableTime.selectTime1.timeList"
+                  :title="inputData.videoAvailableTime.selectTime1.title"
+                  :disabled="inputData.videoAvailableTime.selectTime1.disabled"
                 ></form-select>
                 <span>~</span>
                 <form-select
-                  v-model="inputData.selectTime1.value"
-                  :list="inputData.selectTime1.timeList"
-                  :title="inputData.selectTime1.title"
-                  :disabled="inputData.selectTime1.disabled"
+                  v-model="inputData.videoAvailableTime.selectTime1.value"
+                  :list="inputData.videoAvailableTime.selectTime1.timeList"
+                  :title="inputData.videoAvailableTime.selectTime1.title"
+                  :disabled="inputData.videoAvailableTime.selectTime1.disabled"
                 ></form-select>
               </div>
               <check-box
                 :class="{ lineCheckbox: true }"
                 @change="disabledCheck"
-                v-model="inputData.weeklyCheckboxData.disabled"
-                :value="inputData.weeklyCheckboxData.disabled"
+                v-model="
+                  inputData.videoAvailableTime.weeklyCheckboxData.disabled
+                "
+                :value="
+                  inputData.videoAvailableTime.weeklyCheckboxData.disabled
+                "
               >
                 <span slot="span">화상상담을 진행하지 않습니다.</span>
+              </check-box>
+            </td>
+          </tr>
+          <tr>
+            <th>화상상담 가능 시간</th>
+            <td>
+              <all-check-box
+                :class="{ borderCheck: true, all: true }"
+                v-model="
+                  inputData.callAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :value="
+                  inputData.callAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :checkedArray.sync="
+                  inputData.callAvailableTime.weeklyCheckboxData.checked
+                "
+                :checkList="
+                  inputData.callAvailableTime.weeklyCheckboxData.weekly
+                "
+                :disabled="
+                  inputData.callAvailableTime.weeklyCheckboxData.disabled
+                "
+              >
+                <span slot="span">전체</span>
+              </all-check-box>
+              <div class="weekly-checkbox">
+                <check-box
+                  :class="{ borderCheck: true }"
+                  v-model="
+                    inputData.callAvailableTime.weeklyCheckboxData.checked
+                  "
+                  v-for="(item, idx) in inputData.callAvailableTime
+                    .weeklyCheckboxData.weekly"
+                  :key="idx"
+                  :value="item.name"
+                  :disabled="item.disabled"
+                >
+                  <span slot="span">
+                    {{ item.name }}
+                  </span>
+                </check-box>
+              </div>
+              <div class="time-select-box">
+                <form-select
+                  v-model="inputData.callAvailableTime.selectTime1.value"
+                  :list="inputData.callAvailableTime.selectTime1.timeList"
+                  :title="inputData.callAvailableTime.selectTime1.title"
+                  :disabled="inputData.callAvailableTime.selectTime1.disabled"
+                ></form-select>
+                <span>~</span>
+                <form-select
+                  v-model="inputData.callAvailableTime.selectTime1.value"
+                  :list="inputData.callAvailableTime.selectTime1.timeList"
+                  :title="inputData.callAvailableTime.selectTime1.title"
+                  :disabled="inputData.callAvailableTime.selectTime1.disabled"
+                ></form-select>
+              </div>
+              <check-box
+                :class="{ lineCheckbox: true }"
+                @change="disabledCheck"
+                v-model="
+                  inputData.callAvailableTime.weeklyCheckboxData.disabled
+                "
+                :value="inputData.callAvailableTime.weeklyCheckboxData.disabled"
+              >
+                <span slot="span">전화상담을 진행하지 않습니다.</span>
+              </check-box>
+            </td>
+          </tr>
+          <tr>
+            <th>대면상담 가능 시간</th>
+            <td>
+              <all-check-box
+                :class="{ borderCheck: true, all: true }"
+                v-model="
+                  inputData.faceAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :value="
+                  inputData.faceAvailableTime.weeklyCheckboxData.allChecked
+                "
+                :checkedArray.sync="
+                  inputData.faceAvailableTime.weeklyCheckboxData.checked
+                "
+                :checkList="
+                  inputData.faceAvailableTime.weeklyCheckboxData.weekly
+                "
+                :disabled="
+                  inputData.faceAvailableTime.weeklyCheckboxData.disabled
+                "
+              >
+                <span slot="span">전체</span>
+              </all-check-box>
+              <div class="weekly-checkbox">
+                <check-box
+                  :class="{ borderCheck: true }"
+                  v-model="
+                    inputData.faceAvailableTime.weeklyCheckboxData.checked
+                  "
+                  v-for="(item, idx) in inputData.faceAvailableTime
+                    .weeklyCheckboxData.weekly"
+                  :key="idx"
+                  :value="item.name"
+                  :disabled="item.disabled"
+                >
+                  <span slot="span">
+                    {{ item.name }}
+                  </span>
+                </check-box>
+              </div>
+              <div class="time-select-box">
+                <form-select
+                  v-model="inputData.faceAvailableTime.selectTime1.value"
+                  :list="inputData.faceAvailableTime.selectTime1.timeList"
+                  :title="inputData.faceAvailableTime.selectTime1.title"
+                  :disabled="inputData.faceAvailableTime.selectTime1.disabled"
+                ></form-select>
+                <span>~</span>
+                <form-select
+                  v-model="inputData.faceAvailableTime.selectTime1.value"
+                  :list="inputData.faceAvailableTime.selectTime1.timeList"
+                  :title="inputData.faceAvailableTime.selectTime1.title"
+                  :disabled="inputData.faceAvailableTime.selectTime1.disabled"
+                ></form-select>
+              </div>
+              <check-box
+                :class="{ lineCheckbox: true }"
+                @change="disabledCheck"
+                v-model="
+                  inputData.faceAvailableTime.weeklyCheckboxData.disabled
+                "
+                :value="inputData.faceAvailableTime.weeklyCheckboxData.disabled"
+              >
+                <span slot="span">대면상담을 진행하지 않습니다.</span>
               </check-box>
             </td>
           </tr>
@@ -223,83 +443,279 @@ export default {
           error: "",
           title: "선택",
           emailList: [
-            { value: "0", name: "naver.com" },
-            { value: "1", name: "naver.com" },
-            { value: "2", name: "naver.com" },
-            { value: "3", name: "naver.com" },
-            { value: "4", name: "naver.com" },
-            { value: "5", name: "naver.com" },
-            { value: "6", name: "naver.com" },
+            { value: "email", name: "naver.com" },
+            { value: "email", name: "naver.com" },
+            { value: "email", name: "naver.com" },
+            { value: "email", name: "naver.com" },
+            { value: "email", name: "naver.com" },
+            { value: "email", name: "naver.com" },
+            { value: "email", name: "naver.com" },
           ],
         },
-        weeklyCheckboxData: {
-          allChecked: false,
-          disabled: false,
-          checked: [],
-          weekly: [
-            { name: "월", value: "0", disabled: true },
-            { name: "화", value: "1", disabled: false },
-            { name: "수", value: "2", disabled: false },
-            { name: "목", value: "3", disabled: false },
-            { name: "금", value: "4", disabled: false },
-            { name: "토", value: "5", disabled: false },
-            { name: "일", value: "6", disabled: false },
-          ],
+        chatAvailableTime: {
+          weeklyCheckboxData: {
+            allChecked: false,
+            disabled: false,
+            checked: [],
+            weekly: [
+              { name: "월", value: "mon", disabled: true },
+              { name: "화", value: "tue", disabled: false },
+              { name: "수", value: "wed", disabled: false },
+              { name: "목", value: "thu", disabled: false },
+              { name: "금", value: "Fri", disabled: false },
+              { name: "토", value: "sat", disabled: false },
+              { name: "일", value: "sun", disabled: false },
+            ],
+          },
+          selectTime1: {
+            value: "", // select는 배열 X string
+            disabled: false,
+            selectItem: false,
+            title: "상담 시작 시간",
+            timeList: [
+              { value: "0", name: "09:00" },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
+          selectTime2: {
+            value: "",
+            title: "상담 종료 시간",
+            disabled: false,
+            timeList: [
+              { value: "0", name: "09:00", disabled: true },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
         },
-        selectTime1: {
-          value: "", // select는 배열 X string
-          disabled: false,
-          selectItem: false,
-          title: "상담 시작 시간",
-          timeList: [
-            { value: "0", name: "09:00" },
-            { value: "1", name: "10:00" },
-            { value: "2", name: "11:00" },
-            { value: "3", name: "12:00" },
-            { value: "4", name: "13:00" },
-            { value: "5", name: "14:00" },
-            { value: "6", name: "15:00" },
-            { value: "7", name: "16:00" },
-            { value: "8", name: "17:00" },
-            { value: "9", name: "18:00" },
-            { value: "10", name: "19:00" },
-            { value: "11", name: "20:00" },
-            { value: "12", name: "21:00" },
-            { value: "13", name: "22:00" },
-            { value: "14", name: "23:00" },
-            { value: "15", name: "24:00" },
-          ],
+        callAvailableTime: {
+          weeklyCheckboxData: {
+            allChecked: false,
+            disabled: false,
+            checked: [],
+            weekly: [
+              { name: "월", value: "mon", disabled: true },
+              { name: "화", value: "tue", disabled: false },
+              { name: "수", value: "wed", disabled: false },
+              { name: "목", value: "thu", disabled: false },
+              { name: "금", value: "Fri", disabled: false },
+              { name: "토", value: "sat", disabled: false },
+              { name: "일", value: "sun", disabled: false },
+            ],
+          },
+          selectTime1: {
+            value: "", // select는 배열 X string
+            disabled: false,
+            selectItem: false,
+            title: "상담 시작 시간",
+            timeList: [
+              { value: "0", name: "09:00" },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
+          selectTime2: {
+            value: "",
+            title: "상담 종료 시간",
+            disabled: false,
+            timeList: [
+              { value: "0", name: "09:00", disabled: true },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
         },
-        selectTime2: {
-          value: "",
-          title: "상담 종료 시간",
-          disabled: false,
-          timeList: [
-            { value: "0", name: "09:00", disabled: true },
-            { value: "1", name: "10:00" },
-            { value: "2", name: "11:00" },
-            { value: "3", name: "12:00" },
-            { value: "4", name: "13:00" },
-            { value: "5", name: "14:00" },
-            { value: "6", name: "15:00" },
-            { value: "7", name: "16:00" },
-            { value: "8", name: "17:00" },
-            { value: "9", name: "18:00" },
-            { value: "10", name: "19:00" },
-            { value: "11", name: "20:00" },
-            { value: "12", name: "21:00" },
-            { value: "13", name: "22:00" },
-            { value: "14", name: "23:00" },
-            { value: "15", name: "24:00" },
-          ],
+        videoAvailableTime: {
+          weeklyCheckboxData: {
+            allChecked: false,
+            disabled: false,
+            checked: [],
+            weekly: [
+              { name: "월", value: "mon", disabled: true },
+              { name: "화", value: "tue", disabled: false },
+              { name: "수", value: "wed", disabled: false },
+              { name: "목", value: "thu", disabled: false },
+              { name: "금", value: "Fri", disabled: false },
+              { name: "토", value: "sat", disabled: false },
+              { name: "일", value: "sun", disabled: false },
+            ],
+          },
+          selectTime1: {
+            value: "", // select는 배열 X string
+            disabled: false,
+            selectItem: false,
+            title: "상담 시작 시간",
+            timeList: [
+              { value: "0", name: "09:00" },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
+          selectTime2: {
+            value: "",
+            title: "상담 종료 시간",
+            disabled: false,
+            timeList: [
+              { value: "0", name: "09:00", disabled: true },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
         },
+        faceAvailableTime: {
+          weeklyCheckboxData: {
+            allChecked: false,
+            disabled: false,
+            checked: [],
+            weekly: [
+              { name: "월", value: "mon", disabled: true },
+              { name: "화", value: "tue", disabled: false },
+              { name: "수", value: "wed", disabled: false },
+              { name: "목", value: "thu", disabled: false },
+              { name: "금", value: "Fri", disabled: false },
+              { name: "토", value: "sat", disabled: false },
+              { name: "일", value: "sun", disabled: false },
+            ],
+          },
+          selectTime1: {
+            value: "", // select는 배열 X string
+            disabled: false,
+            selectItem: false,
+            title: "상담 시작 시간",
+            timeList: [
+              { value: "0", name: "09:00" },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
+          selectTime2: {
+            value: "",
+            title: "상담 종료 시간",
+            disabled: false,
+            timeList: [
+              { value: "0", name: "09:00", disabled: true },
+              { value: "1", name: "10:00" },
+              { value: "2", name: "11:00" },
+              { value: "3", name: "12:00" },
+              { value: "4", name: "13:00" },
+              { value: "5", name: "14:00" },
+              { value: "6", name: "15:00" },
+              { value: "7", name: "16:00" },
+              { value: "8", name: "17:00" },
+              { value: "9", name: "18:00" },
+              { value: "10", name: "19:00" },
+              { value: "11", name: "20:00" },
+              { value: "12", name: "21:00" },
+              { value: "13", name: "22:00" },
+              { value: "14", name: "23:00" },
+              { value: "15", name: "24:00" },
+            ],
+          },
+        },
+
         agreeCheckboxData: {
           allChecked: false,
           checked: [],
           list: [
-            { value: 1, name: "핑글커넥트 이용약관", required: true },
-            { value: 2, name: "개인정보 수집 및 이용 동의", required: true },
-            { value: 3, name: "마케팅/이벤트 정보 수신 동의" },
+            { value: "list1", name: "핑글커넥트 이용약관", required: true },
+            {
+              value: "list2",
+              name: "개인정보 수집 및 이용 동의",
+              required: true,
+            },
+            { value: "list3", name: "마케팅/이벤트 정보 수신 동의" },
           ],
         },
       },
@@ -307,24 +723,44 @@ export default {
       //errorTxt: false,
     };
   },
-
   watch: {
     //watch에서는 데이터를 가져와서 데이터의 속성을 체킹하는데 그 체킹하는걸 데이터안에 데이터~~ 이런구조니까 "" 감아주면 됨
-    "inputData.weeklyCheckboxData.disabled"(value) {
+    /* "inputData.weeklyCheckboxData.disabled"(value) {
       // value를 받아서 변경되는 데이터를 아래 모양을 담아? (키, value)
       this.disabledCheck(this.inputData, value);
       //console.log("value", value);
     },
     "inputData.selectTime1.disabled"(value) {
       this.disabledCheck(this.inputData, value);
+    },*/
+    "inputData.chatAvailableTime.weeklyCheckboxData.disabled"(value) {
+      this.disabledCheck("inputData.chatAvailableTime", value);
+    },
+    "inputData.faceAvailableTime.weeklyCheckboxData.disabled"(value) {
+      this.disabledCheck("inputData.faceAvailableTime", value);
+    },
+    "inputData.callAvailableTime.weeklyCheckboxData.disabled"(value) {
+      this.disabledCheck("inputData.callAvailableTime", value);
+    },
+    "inputData.videoAvailableTime.weeklyCheckboxData.disabled"(value) {
+      this.disabledCheck("inputData.videoAvailableTime", value);
     },
   },
   methods: {
     disabledCheck(key, value) {
-      key.weeklyCheckboxData.allDisabled = value;
-      key.weeklyCheckboxData.weekly.forEach((el) => (el.disabled = value));
-      key.selectTime1.disabled = value;
-      console.log(key, value);
+      if (key === "") {
+        this[key].weeklyCheckboxData.allDisabled = value;
+        this[key].weeklyCheckboxData.weekly.forEach(
+          (el) => (el.disabled = value)
+        );
+      }
+      this[key].selectTime1.disabled = value;
+      this[key].selectTime2.disabled = value;
+      //console.log(value);
+      //inputData.faceAvailableTime.weeklyCheckboxData.disabled;
+
+      /*;
+       */
     },
 
     /*disabledCheck(key, value) {
@@ -354,6 +790,8 @@ table {
 }
 th {
   min-width: 236px;
+  padding-top: 25px;
+  vertical-align: top;
   text-align: left;
   font-weight: 700;
   font-size: 14px;
@@ -368,12 +806,11 @@ td {
 .weekly-checkbox {
   display: inline-flex;
 }
-.time-select {
-  margin-left: 10px;
-  display: inline-flex;
+.time-select-box {
+  display: flex;
   align-items: center;
 }
-.time-select span {
+.time-select-box span {
   margin: 0 10px;
 }
 .desc {
@@ -406,5 +843,8 @@ td {
 [class$="box"] + [class$="box"] {
   margin-left: 10px;
   flex: 0 0 50%;
+}
+[class$="box"] + .time-select-box {
+  flex: auto;
 }
 </style>
