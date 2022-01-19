@@ -13,6 +13,7 @@
               <input-text
                 v-model="inputData.name.value"
                 :placeholder="inputData.name.placeholder"
+                :disabled="inputData.name.disabled"
                 :error="inputData.name.error"
               />
             </td>
@@ -22,6 +23,7 @@
             <td>
               <input-text
                 v-model="inputData.tel.value"
+                :disabled="inputData.tel.disabled"
                 :placeholder="inputData.tel.placeholder"
                 :error="inputData.tel.error"
               />
@@ -31,9 +33,9 @@
             <th>아이디</th>
             <td>
               <input-text
-                v-model="inputData.tel.value"
-                :placeholder="inputData.tel.placeholder"
-                :error="inputData.tel.error"
+                v-model="inputData.id.value"
+                :placeholder="inputData.id.placeholder"
+                :error="inputData.id.error"
               />
               <p class="desc">아이디는 최소 3글자 이상 입력해주세요.</p>
             </td>
@@ -111,7 +113,7 @@
                   </span>
                 </check-box>
               </div>
-              <div class="time-select">
+              <div class="time-select-box">
                 <form-select
                   v-model="inputData.selectTime1.value"
                   :list="inputData.selectTime1.timeList"
@@ -194,8 +196,13 @@ export default {
         },
         tel: {
           value: "01086884617 ",
-          disabled: "disabled",
+          disabled: true,
           //placeholder: '전화번호를 입력하세요',
+        },
+        id: {
+          value: "",
+          placeholder: "아이디를 입력하세요",
+          error: "",
         },
         psw: {
           type: "password",
@@ -338,8 +345,12 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  width: 950px;
+  margin: 50px auto;
+}
 table {
-  margin-top: 35px;
+  margin: 35px auto 0;
 }
 th {
   min-width: 236px;
@@ -366,6 +377,7 @@ td {
   margin: 0 10px;
 }
 .desc {
+  flex: 1 0 100%;
   margin-top: 10px;
   font-size: 12px;
   line-height: 18px;
@@ -389,5 +401,10 @@ td {
 .lineCheckbox.checked:before {
   background: url("../assets/images/ic-checkbox-on-nomal-18.svg") no-repeat 50%
     50%/100%;
+}
+
+[class$="box"] + [class$="box"] {
+  margin-left: 10px;
+  flex: 0 0 50%;
 }
 </style>

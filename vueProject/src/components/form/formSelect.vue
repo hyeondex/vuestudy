@@ -54,7 +54,7 @@ export default {
 }
 
 select {
-  width: 151px;
+  flex: 1 0 auto;
   height: 44px;
   padding: 12px 15px;
   border: 1px solid #ddd;

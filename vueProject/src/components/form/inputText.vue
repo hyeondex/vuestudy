@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="input-box">
     <input
-      :class="{ inputText: true }"
+      :class="{ inputText: true, disabled: disabled }"
       :type="type ? type : 'text'"
       :placeholder="placeholder"
       :value="value"
@@ -41,20 +41,25 @@ export default {
 </script>
 
 <style scoped>
+.input-box {
+  flex: 1 1;
+}
 .inputText {
-  font-size: inherit;
-  max-width: 708px;
+  width: 100%;
   padding: 11px 15px;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid #bbb;
   background: #fff;
+  line-height: 20px;
+  font-size: 14px;
 }
 .inputText::placeholder {
   color: #bbb;
 }
-.inputText:disabled {
-  background: red;
+.inputText.disabled {
+  color: #bbb;
+  background: #f7f7f7;
 }
 /*todo : input size 반  */
 </style>
