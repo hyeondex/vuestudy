@@ -28,7 +28,7 @@ export default {
       //required: true,
       // TODO: required 이거 왜 내려오는거에요?
     },
-    disabled: { type: Boolean },
+    disabled: { type: Array },
     value: {
       // checkbox에 담기는 배열
       type: [Boolean, String],
@@ -43,8 +43,8 @@ export default {
       if (this.checkType) {
         return this.value;
       } else {
-        console.log();
         const disabledCheck = this.checked.filter((el) => !el.disabled);
+        console.log(disabledCheck);
         return disabledCheck.some((el) => el === this.value);
       }
     },
