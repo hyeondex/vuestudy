@@ -95,7 +95,7 @@
                 :value="inputData.chatAvailableTime.allChecked"
                 :checkedArray.sync="inputData.chatAvailableTime.checked"
                 :checkList="inputData.weekly"
-                :disabled="inputData.chatAvailableTime.disabled"
+                :disabled="inputData.chatAvailableTime.allDisabled"
               >
                 <span slot="span">전체</span>
               </all-check-box>
@@ -106,38 +106,43 @@
                   v-for="(item, idx) in inputData.weekly"
                   :key="idx"
                   :value="item.value"
-                  :disabled="inputData.chatAvailableTime.disabled"
+                  :disabled="
+                    item.disabled || inputData.chatAvailableTime.allDisabled
+                  "
                 >
+                  <!--                  disabled는 무조건 Boolean으로 받는 것-->
                   <span slot="span">
                     {{ item.name }}
                   </span>
                 </check-box>
               </div>
+              <!-- 와 이거는 진짜 쉬운거엮ㅈㄷ             -->
               <div class="time-select-box">
                 <form-select
-                  v-model="inputData.selectTime1.timeList.value"
-                  :list="inputData.selectTime1.timeList"
-                  :title="inputData.selectTime1.title"
-                  :disabled="inputData.chatAvailableTime.disabled"
+                  v-model="inputData.selectTime.timeStart.value"
+                  :list="inputData.selectTime.timeStart"
+                  :title="inputData.selectTime.title1"
+                  :disabled="inputData.chatAvailableTime.allDisabled"
                 ></form-select>
                 <span>~</span>
                 <form-select
-                  v-model="inputData.selectTime1.timeList.value"
-                  :list="inputData.selectTime1.timeList"
-                  :title="inputData.selectTime1.title"
-                  :disabled="inputData.chatAvailableTime.disabled"
+                  v-model="inputData.selectTime.timeEnd.value"
+                  :list="inputData.selectTime.timeEnd"
+                  :title="inputData.selectTime.title2"
+                  :disabled="inputData.chatAvailableTime.allDisabled"
                 ></form-select>
               </div>
+
               <check-box
                 :class="{ lineCheckbox: true }"
-                v-model="inputData.chatAvailableTime.disabled"
-                :value="inputData.chatAvailableTime.disabled"
+                v-model="inputData.chatAvailableTime.allDisabled"
+                :value="inputData.chatAvailableTime.allDisabled"
               >
                 <span slot="span">화상상담을 진행하지 않습니다.</span>
               </check-box>
             </td>
           </tr>
-          <tr>
+          <!--          <tr>
             <th>화상상담 가능 시간</th>
             <td>
               <all-check-box
@@ -208,7 +213,7 @@
                   v-for="(item, idx) in inputData.weekly"
                   :key="idx"
                   :value="item.name"
-                  :disabled="item.disabled"
+                  :disabled="item.disabled || item.ddd"
                 >
                   <span slot="span">
                     {{ item.name }}
@@ -289,7 +294,7 @@
                 <span slot="span">대면상담을 진행하지 않습니다.</span>
               </check-box>
             </td>
-          </tr>
+          </tr>-->
         </table>
       </form>
       <div class="agree-check-wrap">
@@ -385,20 +390,21 @@ export default {
           ],
         },
         weekly: [
-          { name: "월", value: "mon", disabled: true },
-          { name: "화", value: "tue", disabled: false },
+          { name: "월", value: "mon", disabled: false },
+          { name: "화", value: "tue", disabled: true },
           { name: "수", value: "wed", disabled: false },
           { name: "목", value: "thu", disabled: false },
           { name: "금", value: "Fri", disabled: false },
           { name: "토", value: "sat", disabled: false },
           { name: "일", value: "sun", disabled: false },
         ],
-        selectTime1: {
+
+        selectTime: {
           value: "", // select는 배열 X string
-          disabled: false,
           selectItem: false,
-          title: "상담 시작 시간",
-          timeList: [
+          title1: "상담 시작 시간",
+          title2: "상담 종료 시간",
+          timeStart: [
             { value: "0", name: "09:00" },
             { value: "1", name: "10:00" },
             { value: "2", name: "11:00" },
@@ -416,12 +422,7 @@ export default {
             { value: "14", name: "23:00" },
             { value: "15", name: "24:00" },
           ],
-        },
-        selectTime2: {
-          value: "",
-          title: "상담 종료 시간",
-          disabled: false,
-          timeList: [
+          timeEnd: [
             { value: "0", name: "09:00", disabled: true },
             { value: "1", name: "10:00" },
             { value: "2", name: "11:00" },
@@ -440,10 +441,11 @@ export default {
             { value: "15", name: "24:00" },
           ],
         },
+        selectTime2: {},
         chatAvailableTime: {
           allChecked: false,
           allDisabled: false,
-          disabled: [],
+          disabled: false,
           checked: [],
           selected: "",
           selected2: "",
@@ -501,10 +503,7 @@ export default {
     "inputData.selectTime1.disabled"(value) {
       this.disabledCheck(this.inputData, value);
     },*/
-    "inputData.chatAvailableTime.disabled"(value) {
-      this.disabledCheck("chatAvailableTime", value);
-    },
-    "inputData.faceAvailableTime.disabled"(value) {
+    /* "inputData.faceAvailableTime.disabled"(value) {
       this.disabledCheck("faceAvailableTime", value);
     },
     "inputData.callAvailableTime.disabled"(value) {
@@ -512,29 +511,31 @@ export default {
     },
     "inputData.videoAvailableTime.disabled"(value) {
       this.disabledCheck("videoAvailableTime", value);
+    },*/
+    "inputData.chatAvailableTime.allDisabled"(value) {
+      this.disabledCheck("chatAvailableTime", value);
     },
+  },
+  computed: {
+    /* disabledValue() {
+      get(){
+        return this.checked
+      }
+    },*/
   },
   methods: {
     disabledCheck(key, value) {
       //key 받아와서 쓸때 너무 타고타고 쓰면 인식 못함!
       console.log(this.inputData[key]);
       this.inputData[key].allDisabled = value;
-      this.inputData[key].weekly.forEach((el) => (el.disabled = value));
-      this.inputData[key].selectTime1.disabled = value;
-      this.inputData[key].selectTime2.disabled = value;
-      //console.log(value);
+      if (this.inputData[key].allDisabled) {
+        this.inputData[key].checked = [];
+        console.log(this.inputData[key].checked);
+      }
+
+      /* this.inputData.weekly.forEach((el) => (el.disabled = value));*/
       //inputData.faceAvailableTime.disabled;
-
-      /*;
-       */
     },
-
-    /*disabledCheck(key, value) {
-      //checkbox/select 모두 disabled :true;
-
-
-    },*/
-
     // todo : post로 api주소 담아서 보내기
     /*const axios = require('axios')
     axios.post('api주소? ',{

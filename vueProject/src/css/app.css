@@ -24,7 +24,7 @@
 }
 .home {
   height: 100vh;
-  background: tomato;
+  background: #000;
   padding: 150px;
   color: #fff;
   box-sizing: border-box;
@@ -172,6 +172,7 @@ input {
 .link-box {
   margin-top: 50px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 

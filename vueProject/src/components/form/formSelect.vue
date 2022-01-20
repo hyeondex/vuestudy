@@ -5,7 +5,6 @@
       @change="selected"
       :class="{ disabled: disabled, selected: selectItem }"
       :data-title="title"
-      :disabled="disabled"
     >
       <option value="">
         {{ title }}
