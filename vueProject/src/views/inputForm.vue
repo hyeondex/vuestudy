@@ -106,7 +106,8 @@
                   v-for="(item, idx) in inputData.weekly"
                   :key="idx"
                   :value="item.value"
-                  :disabled="
+                  :disabled="disabledCheckBox(item.value)"
+                  :allDisabled="
                     item.disabled || inputData.chatAvailableTime.allDisabled
                   "
                 >
@@ -116,7 +117,6 @@
                   </span>
                 </check-box>
               </div>
-              <!-- 와 이거는 진짜 쉬운거엮ㅈㄷ             -->
               <div class="time-select-box">
                 <form-select
                   v-model="inputData.selectTime.timeStart.value"
@@ -142,7 +142,7 @@
               </check-box>
             </td>
           </tr>
-          <!--          <tr>
+          <tr>
             <th>화상상담 가능 시간</th>
             <td>
               <all-check-box
@@ -161,8 +161,8 @@
                   v-model="inputData.videoAvailableTime.checked"
                   v-for="(item, idx) in inputData.weekly"
                   :key="idx"
-                  :value="item.name"
-                  :disabled="item.disabled"
+                  :value="item.value"
+                  :disabled="disabledCheckBox(item.value)"
                 >
                   <span slot="span">
                     {{ item.name }}
@@ -171,28 +171,29 @@
               </div>
               <div class="time-select-box">
                 <form-select
-                  v-model="inputData.videoAvailableTime.selected"
-                  :list="inputData.selectTime1.timeList"
-                  :title="inputData.selectTime1.title"
-                  :disabled="inputData.videoAvailableTime.disabled"
+                  v-model="inputData.selectTime.timeStart.value"
+                  :list="inputData.selectTime.timeStart"
+                  :title="inputData.selectTime.title1"
+                  :disabled="inputData.videoAvailableTime.allDisabled"
                 ></form-select>
                 <span>~</span>
                 <form-select
-                  v-model="inputData.videoAvailableTime.selected2"
-                  :list="inputData.selectTime2.timeList"
-                  :title="inputData.selectTime2.title"
-                  :disabled="inputData.videoAvailableTime.disabled"
+                  v-model="inputData.selectTime.timeEnd.value"
+                  :list="inputData.selectTime.timeEnd"
+                  :title="inputData.selectTime.title2"
+                  :disabled="inputData.videoAvailableTime.allDisabled"
                 ></form-select>
               </div>
               <check-box
                 :class="{ lineCheckbox: true }"
-                v-model="inputData.videoAvailableTime.disabled"
-                :value="inputData.videoAvailableTime.disabled"
+                v-model="inputData.videoAvailableTime.allDisabled"
+                :value="inputData.videoAvailableTime.allDisabled"
               >
                 <span slot="span">화상상담을 진행하지 않습니다.</span>
               </check-box>
             </td>
           </tr>
+          <!--
           <tr>
             <th>화상상담 가능 시간</th>
             <td>
@@ -441,11 +442,11 @@ export default {
             { value: "15", name: "24:00" },
           ],
         },
-        selectTime2: {},
         chatAvailableTime: {
           allChecked: false,
           allDisabled: false,
           disabled: false,
+          disabledList: ["mon", "tue", "wed"],
           checked: [],
           selected: "",
           selected2: "",
@@ -462,6 +463,7 @@ export default {
           allChecked: false,
           allDisabled: false,
           disabled: false,
+          disabledList: ["mon", "tue", "wed"],
           checked: [],
           selected: "",
           selected2: "",
@@ -495,46 +497,38 @@ export default {
   },
   watch: {
     //watch에서는 데이터를 가져와서 데이터의 속성을 체킹하는데 그 체킹하는걸 데이터안에 데이터~~ 이런구조니까 "" 감아주면 됨
-    /* "inputData.disabled"(value) {
+    "inputData.disabled"(value) {
       // value를 받아서 변경되는 데이터를 아래 모양을 담아? (키, value)
       this.disabledCheck(this.inputData, value);
-      //console.log("value", value);
     },
     "inputData.selectTime1.disabled"(value) {
       this.disabledCheck(this.inputData, value);
-    },*/
-    /* "inputData.faceAvailableTime.disabled"(value) {
-      this.disabledCheck("faceAvailableTime", value);
     },
-    "inputData.callAvailableTime.disabled"(value) {
-      this.disabledCheck("callAvailableTime", value);
+    "inputData.faceAvailableTime.disabled"(value) {
+      this.disabledCheck("faceAvailableTime", value);
     },
     "inputData.videoAvailableTime.disabled"(value) {
       this.disabledCheck("videoAvailableTime", value);
-    },*/
+    },
     "inputData.chatAvailableTime.allDisabled"(value) {
       this.disabledCheck("chatAvailableTime", value);
     },
   },
-  computed: {
-    /* disabledValue() {
-      get(){
-        return this.checked
-      }
-    },*/
-  },
   methods: {
-    disabledCheck(key, value) {
-      //key 받아와서 쓸때 너무 타고타고 쓰면 인식 못함!
-      console.log(this.inputData[key]);
-      this.inputData[key].allDisabled = value;
+    disabledCheckBox(key, value) {
+      console.log(value);
+      console.log(key);
+      //let temp = false;
       if (this.inputData[key].allDisabled) {
         this.inputData[key].checked = [];
         console.log(this.inputData[key].checked);
       }
-
-      /* this.inputData.weekly.forEach((el) => (el.disabled = value));*/
-      //inputData.faceAvailableTime.disabled;
+    },
+    disabledCheck(key, value) {
+      //key 받아와서 쓸때 너무 타고타고 쓰면 인식 못함!
+      //this.disabledCheckBox(key, value);
+      this.inputData[key].allDisabled = value;
+      this.inputData.weekly.forEach((el) => (el.disabled = value));
     },
     // todo : post로 api주소 담아서 보내기
     /*const axios = require('axios')

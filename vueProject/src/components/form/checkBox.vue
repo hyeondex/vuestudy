@@ -5,7 +5,6 @@
       type="checkbox"
       :value="value"
       :checked.sync="checking"
-      :disabled="disabled"
       @change="checkboxEvent"
     />
     <slot name="span" />
@@ -43,12 +42,12 @@ export default {
       if (this.checkType) {
         return this.value;
       } else {
-        const disabledCheck = this.checked.filter((el) => !el.disabled);
-        return disabledCheck.some((el) => el === this.value);
+        //return this.disabledListCheck.filter((el) => !el.disabled);
+        return this.checked.filter((el) => !el.disabled);
+        //return this.value;
       }
     },
   },
-
   methods: {
     checkboxEvent() {
       if (this.checkType) {
