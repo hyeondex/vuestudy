@@ -49,6 +49,8 @@ export default {
       if (this.checkType) {
         return this.value;
       } else {
+        //disabledList는 부모페이지에서 올라오니까
+        // 보지마세요....
         return this.checked.some((el) => el.value);
       }
     },
