@@ -106,7 +106,12 @@
                   v-for="(item, idx) in inputData.weekly"
                   :key="idx"
                   :value="item.value"
-                  :disabled="disabledCheckBox(item.value)"
+                  :disabled="
+                    disabledCheckBox(
+                      inputData.chatAvailableTime.disabledList,
+                      item.value
+                    )
+                  "
                   :allDisabled="
                     item.disabled || inputData.chatAvailableTime.allDisabled
                   "
@@ -162,7 +167,7 @@
                   v-for="(item, idx) in inputData.weekly"
                   :key="idx"
                   :value="item.value"
-                  :disabled="disabledCheckBox(item.value)"
+                  :alldisabled="inputData.videoAvailableTime.allDisabled"
                 >
                   <span slot="span">
                     {{ item.name }}
@@ -399,7 +404,6 @@ export default {
           { name: "토", value: "sat", disabled: false },
           { name: "일", value: "sun", disabled: false },
         ],
-
         selectTime: {
           value: "", // select는 배열 X string
           selectItem: false,
@@ -497,14 +501,15 @@ export default {
   },
   watch: {
     //watch에서는 데이터를 가져와서 데이터의 속성을 체킹하는데 그 체킹하는걸 데이터안에 데이터~~ 이런구조니까 "" 감아주면 됨
-    "inputData.disabled"(value) {
+    /* "inputData.disabled"(value) {
       // value를 받아서 변경되는 데이터를 아래 모양을 담아? (키, value)
       this.disabledCheck(this.inputData, value);
-    },
+    },*/
+
     "inputData.selectTime1.disabled"(value) {
       this.disabledCheck(this.inputData, value);
     },
-    "inputData.faceAvailableTime.disabled"(value) {
+    /* "inputData.faceAvailableTime.disabled"(value) {
       this.disabledCheck("faceAvailableTime", value);
     },
     "inputData.videoAvailableTime.disabled"(value) {
@@ -512,23 +517,31 @@ export default {
     },
     "inputData.chatAvailableTime.allDisabled"(value) {
       this.disabledCheck("chatAvailableTime", value);
+    },*/
+    "inputData.chatAvailableTime.allDisabled"(val) {
+      console.log(val);
+      this.disabledCheck(val, this.inputData.chatAvailableTime);
+    },
+    "inputData.videoAvailableTime.disabled"(val) {
+      console.log(val);
+      this.disabledCheck(val, this.inputData.videoAvailableTime);
     },
   },
+  computed: {},
   methods: {
-    disabledCheckBox(key, value) {
-      console.log(value);
-      console.log(key);
-      //let temp = false;
-      if (this.inputData[key].allDisabled) {
-        this.inputData[key].checked = [];
-        console.log(this.inputData[key].checked);
-      }
+    disabledCheckBox(val, item) {
+      const state = val.some((el) => el === item);
+      return state;
     },
-    disabledCheck(key, value) {
-      //key 받아와서 쓸때 너무 타고타고 쓰면 인식 못함!
-      //this.disabledCheckBox(key, value);
-      this.inputData[key].allDisabled = value;
-      this.inputData.weekly.forEach((el) => (el.disabled = value));
+    disabledCheck(val, list) {
+      if (val) {
+        list.disabledList = [];
+        this.inputData.weekly.forEach((el) => {
+          list.disabledList.push(el.value);
+        });
+      } else {
+        list.disabledList = [];
+      }
     },
     // todo : post로 api주소 담아서 보내기
     /*const axios = require('axios')

@@ -6,8 +6,10 @@
       :value="value"
       :checked.sync="checking"
       @change="checkboxEvent"
+      :disabled="disabled"
     />
     <slot name="span" />
+
     <!-- component나 template에서만 사용 할 떄 상위 컴포넌트에 #이름 형식으로 쓸 수 있음  -->
   </label>
 </template>
@@ -34,6 +36,10 @@ export default {
     },
   },
   inheritAttrs: false, // disabled가 label에 안 붙게 막는거 입니다.
+  mounted() {
+    //todo : 여기서 disabledCheck 미리 실행
+    //console.log(this.checking);
+  },
   computed: {
     checkType() {
       return typeof this.checked === "boolean";
@@ -42,8 +48,8 @@ export default {
       if (this.checkType) {
         return this.value;
       } else {
-        //return this.disabledListCheck.filter((el) => !el.disabled);
-        return this.checked.filter((el) => !el.disabled);
+        console.log(1231);
+        return this.checked.some((el) => el === this.value);
         //return this.value;
       }
     },
@@ -54,12 +60,14 @@ export default {
         this.$emit("change", event.target.checked);
       } else {
         const idx = this.checked.indexOf(this.value);
+        console.log(this.value);
         if (idx === -1) {
           this.checked.push(this.value);
         } else {
           this.checked.splice(idx, 1);
         }
         this.$emit("change", this.checked);
+        console.log("마지막", this.checked);
       }
     },
   },
