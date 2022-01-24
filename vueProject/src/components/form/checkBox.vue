@@ -1,6 +1,7 @@
 <template>
   <!-- todo: 전체 체크 올리기 -->
   <label :class="{ checked: checking, borderCheck: false, disabled: disabled }">
+    {{ this.checked }}
     <input
       type="checkbox"
       :value="value"
@@ -48,14 +49,13 @@ export default {
       if (this.checkType) {
         return this.value;
       } else {
-        console.log(1231);
-        return this.checked.some((el) => el === this.value);
-        //return this.value;
+        return this.checked.some((el) => el.value);
       }
     },
   },
   methods: {
     checkboxEvent() {
+      console.log(this.disabled);
       if (this.checkType) {
         this.$emit("change", event.target.checked);
       } else {

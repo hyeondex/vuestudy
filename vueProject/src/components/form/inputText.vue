@@ -61,5 +61,4 @@ export default {
   color: #bbb;
   background: #f7f7f7;
 }
-/*todo : input size 반  */
 </style>

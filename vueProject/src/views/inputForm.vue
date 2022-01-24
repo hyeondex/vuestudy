@@ -56,7 +56,7 @@
             </td>
           </tr>
           <tr>
-            <!--todo: 비밀번호 확인 어떻게 하는거지? 비교 해야되는건가? value랑 length 둘다 따로 받아서 만드는건가?  -->
+            <!--todo: 비밀번호 확인  -->
             <th>비밀번호 확인</th>
             <td>
               <input-text
@@ -82,8 +82,6 @@
                 :list="inputData.email.emailList"
                 :title="inputData.email.title"
               ></form-select>
-
-              <!-- todo : select disabled  -->
             </td>
           </tr>
           <tr>
@@ -117,6 +115,12 @@
                   "
                 >
                   <!--                  disabled는 무조건 Boolean으로 받는 것-->
+                  <!-- 하단으로 넘어가는 값 이렇게 설정함
+                  :disabled="
+                    disabledCheckBox(
+                      inputData.chatAvailableTime.disabledList, //key
+                      item.value// value
+                    )                  -->
                   <span slot="span">
                     {{ item.name }}
                   </span>
@@ -354,13 +358,13 @@ export default {
         name: {
           value: "이수현",
           disabled: true,
-          //todo : disabled 어떻게 처리해야되지?
-          //placeholder: '이름을 입력하세요',
+          //todo : 입력되어야할 폼이 입력되지 않았을 때 넘어가는 버튼 disabled
+          placeholder: "이름을 입력하세요",
         },
         tel: {
           value: "01086884617 ",
           disabled: true,
-          //placeholder: '전화번호를 입력하세요',
+          placeholder: "전화번호를 입력하세요",
         },
         id: {
           value: "",
@@ -377,7 +381,8 @@ export default {
           type: "password",
           value: "",
           placeholder: "비밀번호를 한번 더 입력해주세요.",
-          error: "", //todo: validation 체크
+          error: "",
+          //todo: validation 체크
         },
         email: {
           type: "email",

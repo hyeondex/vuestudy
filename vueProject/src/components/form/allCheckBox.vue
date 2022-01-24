@@ -21,7 +21,7 @@ export default {
       );
     },
   },
-  //todo: 여기에 methode 하나 더 붙여서 사용하기
+  //TODO ALLCHECKED ALLDISABLED 수정
   methods: {
     checkboxEvent(event) {
       if (this.checkType) {
