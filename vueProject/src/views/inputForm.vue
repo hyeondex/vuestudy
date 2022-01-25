@@ -93,7 +93,8 @@
                 :value="inputData.chatAvailableTime.allChecked"
                 :checkedArray.sync="inputData.chatAvailableTime.checked"
                 :checkList="inputData.weekly"
-                :disabled="inputData.chatAvailableTime.allDisabled"
+                :disabled="inputData.chatAvailableTime.disabled"
+                :disabled-list="inputData.chatAvailableTime.disabledList"
               >
                 <span slot="span">전체</span>
               </all-check-box>
@@ -514,6 +515,13 @@ export default {
     "inputData.selectTime1.disabled"(value) {
       this.disabledCheck(this.inputData, value);
     },
+
+    "inputData.chatAvailableTime.allDisabled"(val) {
+      this.disabledCheck(val, this.inputData.chatAvailableTime);
+    },
+    "inputData.videoAvailableTime.disabled"(val) {
+      this.disabledCheck(val, this.inputData.videoAvailableTime);
+    },
     /* "inputData.faceAvailableTime.disabled"(value) {
       this.disabledCheck("faceAvailableTime", value);
     },
@@ -523,22 +531,16 @@ export default {
     "inputData.chatAvailableTime.allDisabled"(value) {
       this.disabledCheck("chatAvailableTime", value);
     },*/
-    "inputData.chatAvailableTime.allDisabled"(val) {
-      console.log(val);
-      this.disabledCheck(val, this.inputData.chatAvailableTime);
-    },
-    "inputData.videoAvailableTime.disabled"(val) {
-      console.log(val);
-      this.disabledCheck(val, this.inputData.videoAvailableTime);
-    },
   },
   computed: {},
   methods: {
     disabledCheckBox(val, item) {
       const state = val.some((el) => el === item);
+      console.log(state);
       return state;
     },
     disabledCheck(val, list) {
+      console.log(val);
       if (val) {
         list.disabledList = [];
         this.inputData.weekly.forEach((el) => {

@@ -39,7 +39,6 @@ export default {
   inheritAttrs: false, // disabled가 label에 안 붙게 막는거 입니다.
   mounted() {
     //todo : 여기서 disabledCheck 미리 실행
-    //console.log(this.checking);
   },
   computed: {
     checkType() {
@@ -50,7 +49,6 @@ export default {
         return this.value;
       } else {
         //disabledList는 부모페이지에서 올라오니까
-        // 보지마세요....
         return this.checked.some((el) => el.value);
       }
     },
