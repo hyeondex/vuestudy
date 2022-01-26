@@ -35,6 +35,9 @@ export default {
       // checkbox에 담기는 배열
       type: [Boolean, String],
     },
+    disabledList: {
+      type: Array,
+    },
   },
   inheritAttrs: false, // disabled가 label에 안 붙게 막는거 입니다.
   mounted() {
@@ -49,7 +52,7 @@ export default {
         return this.value;
       } else {
         //disabledList는 부모페이지에서 올라오니까
-        return this.checked.some((el) => el.value);
+        return this.checked.some((el) => el === this.value);
       }
     },
   },
@@ -63,11 +66,11 @@ export default {
         console.log(this.value);
         if (idx === -1) {
           this.checked.push(this.value);
+          console.log(this.checking);
         } else {
           this.checked.splice(idx, 1);
         }
         this.$emit("change", this.checked);
-        console.log("마지막", this.checked);
       }
     },
   },

@@ -16,15 +16,23 @@ export default {
       type: Array,
     },
   },
+  computed: {
+    lastChecked() {
+      //const test = [...new Set([...this.disabledList, this.checkedList])]; //합집합
+      /*  const test = this.checkList.filter((el) =>
+        this.disabledList.includes(el.value)
+      );*/ // 합집합
+      console.log(this.disabledList);
+      return this.checkList.filter(
+        (el) => !this.disabledList.includes(el.value)
+      );
+    },
+  },
   watch: {
     checkedArray(value) {
-      console.log(value);
-      const test = this.checkList.forEach((el) => {
-        this.disabledList.splice(el.value);
-      });
-      console.log(test);
-      this.$emit("change", value.length === test.length);
-      //checked 된 배열 === disalbled된 배열 length 체크
+      this.$emit("change", value);
+      this.$emit("change", value.length === this.lastChecked.length);
+      //checked 된 배열 === disalbled 제외한 배열 length 체크
     },
   },
   //TODO ALLCHECKED ALLDISABLED 수정
@@ -32,9 +40,9 @@ export default {
     checkboxEvent(event) {
       if (this.checkType) {
         // todo :다시 붙여 !!!!!
-        const t = this.checkList.filter((el) => !el.disabled); // 기존 diasbled
+        //const t = this.checkList.filter((el) => !el.disabled); // 기존 diasbled
         const updateAllCheck = event.target.checked
-          ? t.map((el) => {
+          ? this.lastChecked.map((el) => {
               return el.value;
             })
           : [];

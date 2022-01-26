@@ -94,7 +94,7 @@
                 :checkedArray.sync="inputData.chatAvailableTime.checked"
                 :checkList="inputData.weekly"
                 :disabled="inputData.chatAvailableTime.disabled"
-                :disabled-list="inputData.chatAvailableTime.disabledList"
+                :disabledList="inputData.chatAvailableTime.disabledList"
               >
                 <span slot="span">전체</span>
               </all-check-box>
@@ -114,6 +114,7 @@
                   :allDisabled="
                     item.disabled || inputData.chatAvailableTime.allDisabled
                   "
+                  :disabledList="inputData.chatAvailableTime.disabledList"
                 >
                   <!--                  disabled는 무조건 Boolean으로 받는 것-->
                   <!-- 하단으로 넘어가는 값 이렇게 설정함
@@ -536,7 +537,7 @@ export default {
   methods: {
     disabledCheckBox(val, item) {
       const state = val.some((el) => el === item);
-      console.log(state);
+      // console.log(state);
       return state;
     },
     disabledCheck(val, list) {
