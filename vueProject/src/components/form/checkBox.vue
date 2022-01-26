@@ -1,7 +1,6 @@
 <template>
   <!-- todo: 전체 체크 올리기 -->
   <label :class="{ checked: checking, borderCheck: false, disabled: disabled }">
-    {{ this.checked }}
     <input
       type="checkbox"
       :value="value"
@@ -51,24 +50,24 @@ export default {
       if (this.checkType) {
         return this.value;
       } else {
-        //disabledList는 부모페이지에서 올라오니까
+        //disabledList는 부모페이지에서 올라오니까 여기서는 checked 배열에 담기는 this.value 포커싱
         return this.checked.some((el) => el === this.value);
       }
     },
   },
   methods: {
     checkboxEvent() {
-      console.log(this.disabled);
       if (this.checkType) {
         this.$emit("change", event.target.checked);
       } else {
         const idx = this.checked.indexOf(this.value);
-        console.log(this.value);
         if (idx === -1) {
           this.checked.push(this.value);
-          console.log(this.checking);
         } else {
           this.checked.splice(idx, 1);
+          if (this.disabled) {
+            this.checked.splice(idx, 1);
+          }
         }
         this.$emit("change", this.checked);
       }

@@ -79,7 +79,7 @@
               <form-select
                 v-model="inputData.email.value"
                 :value="inputData.email.value"
-                :list="inputData.email.emailList"
+                :list="emailList"
                 :title="inputData.email.title"
               ></form-select>
             </td>
@@ -87,22 +87,23 @@
           <tr>
             <th>채팅상담 가능 시간</th>
             <td>
-              <all-check-box
+              <weekly-all-checkbox
                 :class="{ borderCheck: true, all: true }"
                 v-model="inputData.chatAvailableTime.allChecked"
                 :value="inputData.chatAvailableTime.allChecked"
                 :checkedArray.sync="inputData.chatAvailableTime.checked"
-                :checkList="inputData.weekly"
-                :disabled="inputData.chatAvailableTime.disabled"
+                :checkList="weekly"
+                :disabled="inputData.chatAvailableTime.allDisabled"
                 :disabledList="inputData.chatAvailableTime.disabledList"
               >
                 <span slot="span">전체</span>
-              </all-check-box>
+              </weekly-all-checkbox>
+
               <div class="weekly-checkbox">
                 <check-box
                   :class="{ borderCheck: true }"
                   v-model="inputData.chatAvailableTime.checked"
-                  v-for="(item, idx) in inputData.weekly"
+                  v-for="(item, idx) in weekly"
                   :key="idx"
                   :value="item.value"
                   :disabled="
@@ -130,20 +131,19 @@
               </div>
               <div class="time-select-box">
                 <form-select
-                  v-model="inputData.selectTime.timeStart.value"
-                  :list="inputData.selectTime.timeStart"
-                  :title="inputData.selectTime.title1"
+                  v-model="inputData.chatAvailableTime.selected"
+                  :list="selectTime.timeStart"
+                  :title="selectTime.title1"
                   :disabled="inputData.chatAvailableTime.allDisabled"
                 ></form-select>
                 <span>~</span>
                 <form-select
-                  v-model="inputData.selectTime.timeEnd.value"
-                  :list="inputData.selectTime.timeEnd"
-                  :title="inputData.selectTime.title2"
+                  v-model="inputData.chatAvailableTime.selected2"
+                  :list="selectTime.timeEnd"
+                  :title="selectTime.title2"
                   :disabled="inputData.chatAvailableTime.allDisabled"
                 ></form-select>
               </div>
-
               <check-box
                 :class="{ lineCheckbox: true }"
                 v-model="inputData.chatAvailableTime.allDisabled"
@@ -156,21 +156,21 @@
           <tr>
             <th>화상상담 가능 시간</th>
             <td>
-              <all-check-box
+              <weekly-all-checkbox
                 :class="{ borderCheck: true, all: true }"
                 v-model="inputData.videoAvailableTime.allChecked"
                 :value="inputData.videoAvailableTime.allChecked"
                 :checkedArray.sync="inputData.videoAvailableTime.checked"
-                :checkList="inputData.weekly"
+                :checkList="weekly"
                 :disabled="inputData.videoAvailableTime.allDisabled"
               >
                 <span slot="span">전체</span>
-              </all-check-box>
+              </weekly-all-checkbox>
               <div class="weekly-checkbox">
                 <check-box
                   :class="{ borderCheck: true }"
                   v-model="inputData.videoAvailableTime.checked"
-                  v-for="(item, idx) in inputData.weekly"
+                  v-for="(item, idx) in weekly"
                   :key="idx"
                   :value="item.value"
                   :alldisabled="inputData.videoAvailableTime.allDisabled"
@@ -182,16 +182,16 @@
               </div>
               <div class="time-select-box">
                 <form-select
-                  v-model="inputData.selectTime.timeStart.value"
-                  :list="inputData.selectTime.timeStart"
-                  :title="inputData.selectTime.title1"
+                  v-model="inputData.videoAvailableTime.selected"
+                  :list="selectTime.timeStart"
+                  :title="selectTime.title1"
                   :disabled="inputData.videoAvailableTime.allDisabled"
                 ></form-select>
                 <span>~</span>
                 <form-select
-                  v-model="inputData.selectTime.timeEnd.value"
-                  :list="inputData.selectTime.timeEnd"
-                  :title="inputData.selectTime.title2"
+                  v-model="inputData.videoAvailableTime.selected2"
+                  :list="selectTime.timeEnd"
+                  :title="selectTime.title2"
                   :disabled="inputData.videoAvailableTime.allDisabled"
                 ></form-select>
               </div>
@@ -343,12 +343,14 @@
 <script>
 import checkBox from "../components/form/checkBox";
 import InputText from "../components/form/inputText";
-import allCheckBox from "../components/form/allCheckBox";
+import allCheckBox from "../components/form/allCheckbox";
 import formSelect from "../components/form/formSelect";
+import WeeklyAllCheckbox from "../components/form/weeklyAllcheckbox";
 
 export default {
   name: "inputForm",
   components: {
+    WeeklyAllCheckbox,
     formSelect,
     allCheckBox,
     InputText,
@@ -356,6 +358,66 @@ export default {
   },
   data() {
     return {
+      weekly: [
+        { name: "월", value: "mon", disabled: false },
+        { name: "화", value: "tue", disabled: true },
+        { name: "수", value: "wed", disabled: false },
+        { name: "목", value: "thu", disabled: false },
+        { name: "금", value: "Fri", disabled: false },
+        { name: "토", value: "sat", disabled: false },
+        { name: "일", value: "sun", disabled: false },
+      ],
+      selectTime: {
+        value: "", // select는 배열 X string
+        selectItem: false,
+        title1: "상담 시작 시간",
+        title2: "상담 종료 시간",
+        timeStart: [
+          { value: "0", name: "09:00" },
+          { value: "1", name: "10:00" },
+          { value: "2", name: "11:00" },
+          { value: "3", name: "12:00" },
+          { value: "4", name: "13:00" },
+          { value: "5", name: "14:00" },
+          { value: "6", name: "15:00" },
+          { value: "7", name: "16:00" },
+          { value: "8", name: "17:00" },
+          { value: "9", name: "18:00" },
+          { value: "10", name: "19:00" },
+          { value: "11", name: "20:00" },
+          { value: "12", name: "21:00" },
+          { value: "13", name: "22:00" },
+          { value: "14", name: "23:00" },
+          { value: "15", name: "24:00" },
+        ],
+        timeEnd: [
+          { value: "0", name: "09:00", disabled: true },
+          { value: "1", name: "10:00" },
+          { value: "2", name: "11:00" },
+          { value: "3", name: "12:00" },
+          { value: "4", name: "13:00" },
+          { value: "5", name: "14:00" },
+          { value: "6", name: "15:00" },
+          { value: "7", name: "16:00" },
+          { value: "8", name: "17:00" },
+          { value: "9", name: "18:00" },
+          { value: "10", name: "19:00" },
+          { value: "11", name: "20:00" },
+          { value: "12", name: "21:00" },
+          { value: "13", name: "22:00" },
+          { value: "14", name: "23:00" },
+          { value: "15", name: "24:00" },
+        ],
+      },
+      emailList: [
+        { value: "email", name: "naver.com" },
+        { value: "email", name: "naver.com" },
+        { value: "email", name: "naver.com" },
+        { value: "email", name: "naver.com" },
+        { value: "email", name: "naver.com" },
+        { value: "email", name: "naver.com" },
+        { value: "email", name: "naver.com" },
+      ],
       inputData: {
         name: {
           value: "이수현",
@@ -392,66 +454,6 @@ export default {
           placeholder: "이메일을 입력해주세요",
           error: "",
           title: "선택",
-          emailList: [
-            { value: "email", name: "naver.com" },
-            { value: "email", name: "naver.com" },
-            { value: "email", name: "naver.com" },
-            { value: "email", name: "naver.com" },
-            { value: "email", name: "naver.com" },
-            { value: "email", name: "naver.com" },
-            { value: "email", name: "naver.com" },
-          ],
-        },
-        weekly: [
-          { name: "월", value: "mon", disabled: false },
-          { name: "화", value: "tue", disabled: true },
-          { name: "수", value: "wed", disabled: false },
-          { name: "목", value: "thu", disabled: false },
-          { name: "금", value: "Fri", disabled: false },
-          { name: "토", value: "sat", disabled: false },
-          { name: "일", value: "sun", disabled: false },
-        ],
-        selectTime: {
-          value: "", // select는 배열 X string
-          selectItem: false,
-          title1: "상담 시작 시간",
-          title2: "상담 종료 시간",
-          timeStart: [
-            { value: "0", name: "09:00" },
-            { value: "1", name: "10:00" },
-            { value: "2", name: "11:00" },
-            { value: "3", name: "12:00" },
-            { value: "4", name: "13:00" },
-            { value: "5", name: "14:00" },
-            { value: "6", name: "15:00" },
-            { value: "7", name: "16:00" },
-            { value: "8", name: "17:00" },
-            { value: "9", name: "18:00" },
-            { value: "10", name: "19:00" },
-            { value: "11", name: "20:00" },
-            { value: "12", name: "21:00" },
-            { value: "13", name: "22:00" },
-            { value: "14", name: "23:00" },
-            { value: "15", name: "24:00" },
-          ],
-          timeEnd: [
-            { value: "0", name: "09:00", disabled: true },
-            { value: "1", name: "10:00" },
-            { value: "2", name: "11:00" },
-            { value: "3", name: "12:00" },
-            { value: "4", name: "13:00" },
-            { value: "5", name: "14:00" },
-            { value: "6", name: "15:00" },
-            { value: "7", name: "16:00" },
-            { value: "8", name: "17:00" },
-            { value: "9", name: "18:00" },
-            { value: "10", name: "19:00" },
-            { value: "11", name: "20:00" },
-            { value: "12", name: "21:00" },
-            { value: "13", name: "22:00" },
-            { value: "14", name: "23:00" },
-            { value: "15", name: "24:00" },
-          ],
         },
         chatAvailableTime: {
           allChecked: false,
@@ -537,15 +539,16 @@ export default {
   methods: {
     disabledCheckBox(val, item) {
       const state = val.some((el) => el === item);
-      // console.log(state);
+      //console.log("state", state);
       return state;
     },
     disabledCheck(val, list) {
-      console.log(val);
+      console.log(val, list);
       if (val) {
         list.disabledList = [];
-        this.inputData.weekly.forEach((el) => {
+        this.weekly.forEach((el) => {
           list.disabledList.push(el.value);
+          list.checked.splice();
         });
       } else {
         list.disabledList = [];
