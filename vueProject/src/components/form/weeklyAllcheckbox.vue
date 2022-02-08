@@ -3,8 +3,8 @@ import checkBox from "./checkBox.vue";
 export default {
   name: "weeklyAllCheckbox",
   extends: checkBox,
-  props: {
-    checkedArray: {
+  /* props: {
+    checked: {
       // 담기는 배열
       type: Array,
     },
@@ -20,21 +20,16 @@ export default {
     //전체 체크 배열 - disabled 되는 배열
     detectionChecked() {
       //const test = [...new Set([...this.disabledList, this.checkedList])]; //합집합
-      /*  const test = this.checkList.filter((el) =>
+      /!*  const test = this.checkList.filter((el) =>
         this.disabledList.includes(el.value)
-      );*/ // 합집합
+      );*!/ // 합집합
       return this.checkList.filter(
         (el) => !this.disabledList.includes(el.value)
       );
+      //
     },
   },
-  watch: {
-    checkedArray(value) {
-      // 각각 하나씩 눌렀을 watch
-      this.$emit("change", value);
-      this.$emit("change", value.length === this.detectionChecked.length);
-      //checked 된 배열 === disalbled 제외한 배열 length 체크
-    },
+  watch: {z
   },
   //TODO ALLCHECKED ALLDISABLED 수정
   methods: {
@@ -61,6 +56,6 @@ export default {
         this.$emit("change", this.checked);
       }
     },
-  },
+  },*/
 };
 </script>

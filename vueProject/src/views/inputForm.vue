@@ -87,22 +87,23 @@
           <tr>
             <th>채팅상담 가능 시간</th>
             <td>
-              <weekly-all-checkbox
+              <!--              <weekly-all-checkbox
                 :class="{ borderCheck: true, all: true }"
-                v-model="inputData.chatAvailableTime.allChecked"
                 :value="inputData.chatAvailableTime.allChecked"
                 :checkedArray.sync="inputData.chatAvailableTime.checked"
-                :checkList="weekly"
-                :disabled="inputData.chatAvailableTime.allDisabled"
-                :disabledList="inputData.chatAvailableTime.disabledList"
               >
                 <span slot="span">전체</span>
-              </weekly-all-checkbox>
+              </weekly-all-checkbox>-->
+              <weekly-checkbox
+                v-model="inputData.chatAvailableTime.checked"
+                :checkList="weekly"
+                :value="inputData.callAvailableTime.checked"
+                :disabled="inputData.chatAvailableTime.allDisabled"
+                :disabledList="inputData.chatAvailableTime.disabledList"
+              ></weekly-checkbox>
 
-              <div class="weekly-checkbox">
+              <!--              <div class="weekly-checkbox">
                 <check-box
-                  :class="{ borderCheck: true }"
-                  v-model="inputData.chatAvailableTime.checked"
                   v-for="(item, idx) in weekly"
                   :key="idx"
                   :value="item.value"
@@ -117,18 +118,18 @@
                   "
                   :disabledList="inputData.chatAvailableTime.disabledList"
                 >
-                  <!--                  disabled는 무조건 Boolean으로 받는 것-->
-                  <!-- 하단으로 넘어가는 값 이렇게 설정함
+                  &lt;!&ndash;                  disabled는 무조건 Boolean으로 받는 것&ndash;&gt;
+                  &lt;!&ndash; 하단으로 넘어가는 값 이렇게 설정함
                   :disabled="
                     disabledCheckBox(
                       inputData.chatAvailableTime.disabledList, //key
                       item.value// value
-                    )                  -->
+                    )                  &ndash;&gt;
                   <span slot="span">
                     {{ item.name }}
                   </span>
                 </check-box>
-              </div>
+              </div>-->
               <div class="time-select-box">
                 <form-select
                   v-model="inputData.chatAvailableTime.selected"
@@ -346,10 +347,12 @@ import InputText from "../components/form/inputText";
 import allCheckBox from "../components/form/allCheckbox";
 import formSelect from "../components/form/formSelect";
 import WeeklyAllCheckbox from "../components/form/weeklyAllcheckbox";
+import WeeklyCheckbox from "../components/form/weeklyCheckbox";
 
 export default {
   name: "inputForm",
   components: {
+    WeeklyCheckbox,
     WeeklyAllCheckbox,
     formSelect,
     allCheckBox,
@@ -456,11 +459,11 @@ export default {
           title: "선택",
         },
         chatAvailableTime: {
-          allChecked: false,
+          allChecked: false, //
           allDisabled: false,
           disabled: false,
           disabledList: ["mon", "tue", "wed"],
-          checked: [],
+          checked: [], //["mon", "tue", "wed"],없이
           selected: "",
           selected2: "",
         },
