@@ -58,6 +58,7 @@ export default {
   methods: {
     checkboxEvent() {
       if (this.checkType) {
+        console.log("이게 올라가나? ");
         this.$emit("change", event.target.checked);
       } else {
         const idx = this.checked.indexOf(this.value);

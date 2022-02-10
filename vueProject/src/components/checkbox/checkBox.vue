@@ -57,7 +57,7 @@ export default {
         }
         this.$emit("change", this.checked); // checked 된 배열
       } else {
-      // console.log(event.target.checked); // checkboxAll의 boolean
+        // console.log(event.target.checked); // checkboxAll의 boolean
         this.$emit("change", event.target.checked);
       }
     },

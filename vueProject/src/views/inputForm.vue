@@ -95,11 +95,10 @@
                 <span slot="span">전체</span>
               </weekly-all-checkbox>-->
               <weekly-checkbox
-                v-model="inputData.chatAvailableTime.checked"
-                :checkList="weekly"
+                v-model="inputData.callAvailableTime.checked"
+                :disabled="inputData.callAvailableTime.disabled"
+                :weeklyList="weekly"
                 :value="inputData.callAvailableTime.checked"
-                :disabled="inputData.chatAvailableTime.allDisabled"
-                :disabledList="inputData.chatAvailableTime.disabledList"
               ></weekly-checkbox>
 
               <!--              <div class="weekly-checkbox">

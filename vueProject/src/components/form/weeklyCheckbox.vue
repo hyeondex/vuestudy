@@ -1,17 +1,17 @@
 <template>
-  <ul class="weeklyCheckboxWrap">
-    <li v-for="(item, idx) in checkList" :key="idx">
-      <check-box
-        :value="checkList.value"
-        :class="{ borderCheck: true }"
-        :checked="checked"
-      >
-        <span slot="span">
-          {{ item.name }}
-        </span>
-      </check-box>
-    </li>
-  </ul>
+  <div>
+    <check-box
+      :class="{ borderCheck: true }"
+      v-for="(item, idx) in weeklyList"
+      :key="idx"
+      :value="item.value"
+      :checked="checked"
+    >
+      <span slot="span">
+        {{ item.name }}
+      </span>
+    </check-box>
+  </div>
 </template>
 <script>
 import checkBox from "./checkBox.vue";
@@ -25,11 +25,7 @@ export default {
     value: {
       type: Array,
     },
-    checked: {
-      // 담기는 배열
-      type: Array,
-    },
-    checkList: {
+    weeklyList: {
       // 기존배멸
       type: Array,
     },
@@ -39,6 +35,7 @@ export default {
     disabledList: {
       type: Array,
     },
+    checked: { type: Array },
   },
   mounted() {
     //console.log(1231231321);
@@ -67,7 +64,7 @@ export default {
   },
   //TODO ALLCHECKED ALLDISABLED 수정
   methods: {
-    checkboxEvent(event) {
+    /* checkboxEvent(event) {
       if (this.checkType) {
         //요일 전체 체크 박스를 눌렀을 때 실행 되는
         //const t = this.checkList.filter((el) => !el.disabled); // 기존 diasbled
@@ -89,16 +86,13 @@ export default {
         }
         this.$emit("change", this.checked);
       }
-    },
+    },*/
   },
 };
 </script>
 
 <style scoped>
 /*// 네모 체크박스*/
-.weeklyCheckboxWrap {
-  display: flex;
-}
 label.borderCheck {
   position: relative;
   display: inline-flex;
