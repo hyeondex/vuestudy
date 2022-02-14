@@ -87,7 +87,10 @@
           <tr>
             <th>채팅상담 가능 시간</th>
             <td>
-              <weekly-checkbox> </weekly-checkbox>
+              <weekly-checkbox
+                :disabled-list="inputData.chatAvailableTime.disabledList"
+              >
+              </weekly-checkbox>
               <div class="time-select-box">
                 <form-select
                   v-model="inputData.chatAvailableTime.selected"

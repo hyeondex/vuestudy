@@ -7,7 +7,7 @@
       :class="{ borderCheck: true }"
       v-for="(item, idx) in weeklyList.list"
       :key="idx"
-      :disabledList="disabledList"
+      :disabled-list="disabledList"
       :checked="weeklyList.checked"
       :value="item.value"
     >
@@ -50,6 +50,21 @@ export default {
     },
     disabledList: {
       type: Array,
+    },
+  },
+  mounted() {
+    console.log(this.disabledList);
+    // todo : props로 disabled list 데려 왔는데...
+    // todo: disabledcheck 바닥에서 해야하는지 자식에서 해야하는지 확인하기
+  },
+  updated: {
+    checklist(val) {
+      this.weeklyList.list.value = val;
+      console.log("val : ", val);
+      if (this.disabledList.value === val) {
+        console.log("val : ", val);
+        this.checked.splice(val);
+      }
     },
   },
 };
