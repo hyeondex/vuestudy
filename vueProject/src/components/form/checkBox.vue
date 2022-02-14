@@ -48,9 +48,11 @@ export default {
     },
     checking() {
       if (this.checkType) {
+        console.log("this.value", this.value);
         return this.value;
       } else {
         //disabledList는 부모페이지에서 올라오니까 여기서는 checked 배열에 담기는 this.value 포커싱
+        console.log(this.value);
         return this.checked.some((el) => el === this.value);
       }
     },

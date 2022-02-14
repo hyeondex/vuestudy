@@ -87,48 +87,7 @@
           <tr>
             <th>채팅상담 가능 시간</th>
             <td>
-              <!--              <weekly-all-checkbox
-                :class="{ borderCheck: true, all: true }"
-                :value="inputData.chatAvailableTime.allChecked"
-                :checkedArray.sync="inputData.chatAvailableTime.checked"
-              >
-                <span slot="span">전체</span>
-              </weekly-all-checkbox>-->
-              <weekly-checkbox
-                v-model="inputData.callAvailableTime.checked"
-                :disabled="inputData.callAvailableTime.disabled"
-                :weeklyList="weekly"
-                :value="inputData.callAvailableTime.checked"
-              ></weekly-checkbox>
-
-              <!--              <div class="weekly-checkbox">
-                <check-box
-                  v-for="(item, idx) in weekly"
-                  :key="idx"
-                  :value="item.value"
-                  :disabled="
-                    disabledCheckBox(
-                      inputData.chatAvailableTime.disabledList,
-                      item.value
-                    )
-                  "
-                  :allDisabled="
-                    item.disabled || inputData.chatAvailableTime.allDisabled
-                  "
-                  :disabledList="inputData.chatAvailableTime.disabledList"
-                >
-                  &lt;!&ndash;                  disabled는 무조건 Boolean으로 받는 것&ndash;&gt;
-                  &lt;!&ndash; 하단으로 넘어가는 값 이렇게 설정함
-                  :disabled="
-                    disabledCheckBox(
-                      inputData.chatAvailableTime.disabledList, //key
-                      item.value// value
-                    )                  &ndash;&gt;
-                  <span slot="span">
-                    {{ item.name }}
-                  </span>
-                </check-box>
-              </div>-->
+              <weekly-checkbox> </weekly-checkbox>
               <div class="time-select-box">
                 <form-select
                   v-model="inputData.chatAvailableTime.selected"
@@ -156,30 +115,6 @@
           <tr>
             <th>화상상담 가능 시간</th>
             <td>
-              <weekly-all-checkbox
-                :class="{ borderCheck: true, all: true }"
-                v-model="inputData.videoAvailableTime.allChecked"
-                :value="inputData.videoAvailableTime.allChecked"
-                :checkedArray.sync="inputData.videoAvailableTime.checked"
-                :checkList="weekly"
-                :disabled="inputData.videoAvailableTime.allDisabled"
-              >
-                <span slot="span">전체</span>
-              </weekly-all-checkbox>
-              <div class="weekly-checkbox">
-                <check-box
-                  :class="{ borderCheck: true }"
-                  v-model="inputData.videoAvailableTime.checked"
-                  v-for="(item, idx) in weekly"
-                  :key="idx"
-                  :value="item.value"
-                  :alldisabled="inputData.videoAvailableTime.allDisabled"
-                >
-                  <span slot="span">
-                    {{ item.name }}
-                  </span>
-                </check-box>
-              </div>
               <div class="time-select-box">
                 <form-select
                   v-model="inputData.videoAvailableTime.selected"
@@ -345,14 +280,12 @@ import checkBox from "../components/form/checkBox";
 import InputText from "../components/form/inputText";
 import allCheckBox from "../components/form/allCheckbox";
 import formSelect from "../components/form/formSelect";
-import WeeklyAllCheckbox from "../components/form/weeklyAllcheckbox";
 import WeeklyCheckbox from "../components/form/weeklyCheckbox";
 
 export default {
   name: "inputForm",
   components: {
     WeeklyCheckbox,
-    WeeklyAllCheckbox,
     formSelect,
     allCheckBox,
     InputText,
@@ -360,15 +293,6 @@ export default {
   },
   data() {
     return {
-      weekly: [
-        { name: "월", value: "mon", disabled: false },
-        { name: "화", value: "tue", disabled: true },
-        { name: "수", value: "wed", disabled: false },
-        { name: "목", value: "thu", disabled: false },
-        { name: "금", value: "Fri", disabled: false },
-        { name: "토", value: "sat", disabled: false },
-        { name: "일", value: "sun", disabled: false },
-      ],
       selectTime: {
         value: "", // select는 배열 X string
         selectItem: false,
@@ -470,7 +394,7 @@ export default {
           allChecked: false,
           allDisabled: false,
           disabled: false,
-          checked: [],
+          disabledList: ["mon", "tue", "wed"],
           selected: "",
           selected2: "",
         },
@@ -487,6 +411,7 @@ export default {
           allChecked: false,
           allDisabled: false,
           disabled: false,
+          disabledList: ["mon", "tue", "wed"],
           checked: [],
           selected: "",
           selected2: "",
