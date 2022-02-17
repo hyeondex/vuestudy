@@ -34,11 +34,8 @@ export default {
       // checkbox에 담기는 배열
       type: [Boolean, String],
     },
-    disabledList: {
-      type: Array,
-    },
   },
-  inheritAttrs: false, // disabled가 label에 안 붙게 막는거 입니다.
+  inheritAttrs: false, // disabled가 label에 안 붙게 막는거 입니다.model
   mounted() {
     //todo : 여기서 disabledCheck 미리 실행
   },
@@ -48,11 +45,9 @@ export default {
     },
     checking() {
       if (this.checkType) {
-        console.log("this.value", this.value);
         return this.value;
       } else {
         //disabledList는 부모페이지에서 올라오니까 여기서는 checked 배열에 담기는 this.value 포커싱
-        console.log(this.value);
         return this.checked.some((el) => el === this.value);
       }
     },
@@ -60,18 +55,14 @@ export default {
   methods: {
     checkboxEvent() {
       if (this.checkType) {
-        console.log("이게 올라가나? ");
         this.$emit("change", event.target.checked);
       } else {
+        console.log(123);
         const idx = this.checked.indexOf(this.value);
         if (idx === -1) {
           this.checked.push(this.value);
         } else {
-          console.log("담기냐?");
           this.checked.splice(idx, 1);
-          if (this.disabled) {
-            this.checked.splice(idx, 1);
-          }
         }
         this.$emit("change", this.checked);
       }

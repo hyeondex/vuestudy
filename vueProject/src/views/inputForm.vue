@@ -88,163 +88,20 @@
             <th>채팅상담 가능 시간</th>
             <td>
               <weekly-checkbox
+                v-model="inputData.chatAvailableTime.checked"
+                :all-checked="inputData.chatAvailableTime.allChecked"
+                :all-disabled="inputData.chatAvailableTime.allDisabled"
                 :disabled-list="inputData.chatAvailableTime.disabledList"
+                :selected="inputData.chatAvailableTime.selected"
+                text="채팅상담을 진행하지 않습니다."
               >
               </weekly-checkbox>
-              <div class="time-select-box">
-                <form-select
-                  v-model="inputData.chatAvailableTime.selected"
-                  :list="selectTime.timeStart"
-                  :title="selectTime.title1"
-                  :disabled="inputData.chatAvailableTime.allDisabled"
-                ></form-select>
-                <span>~</span>
-                <form-select
-                  v-model="inputData.chatAvailableTime.selected2"
-                  :list="selectTime.timeEnd"
-                  :title="selectTime.title2"
-                  :disabled="inputData.chatAvailableTime.allDisabled"
-                ></form-select>
-              </div>
-              <check-box
-                :class="{ lineCheckbox: true }"
-                v-model="inputData.chatAvailableTime.allDisabled"
-                :value="inputData.chatAvailableTime.allDisabled"
-              >
-                <span slot="span">화상상담을 진행하지 않습니다.</span>
-              </check-box>
             </td>
           </tr>
           <tr>
             <th>화상상담 가능 시간</th>
-            <td>
-              <div class="time-select-box">
-                <form-select
-                  v-model="inputData.videoAvailableTime.selected"
-                  :list="selectTime.timeStart"
-                  :title="selectTime.title1"
-                  :disabled="inputData.videoAvailableTime.allDisabled"
-                ></form-select>
-                <span>~</span>
-                <form-select
-                  v-model="inputData.videoAvailableTime.selected2"
-                  :list="selectTime.timeEnd"
-                  :title="selectTime.title2"
-                  :disabled="inputData.videoAvailableTime.allDisabled"
-                ></form-select>
-              </div>
-              <check-box
-                :class="{ lineCheckbox: true }"
-                v-model="inputData.videoAvailableTime.allDisabled"
-                :value="inputData.videoAvailableTime.allDisabled"
-              >
-                <span slot="span">화상상담을 진행하지 않습니다.</span>
-              </check-box>
-            </td>
+            <td></td>
           </tr>
-          <!--
-          <tr>
-            <th>화상상담 가능 시간</th>
-            <td>
-              <all-check-box
-                :class="{ borderCheck: true, all: true }"
-                v-model="inputData.callAvailableTime.allChecked"
-                :value="inputData.callAvailableTime.allChecked"
-                :disabled="inputData.callAvailableTime.allDisabled"
-                :checkedArray.sync="inputData.callAvailableTime.checked"
-                :checkList="inputData.weekly"
-              >
-                <span slot="span">전체</span>
-              </all-check-box>
-              <div class="weekly-checkbox">
-                <check-box
-                  :class="{ borderCheck: true }"
-                  v-model="inputData.callAvailableTime.checked"
-                  v-for="(item, idx) in inputData.weekly"
-                  :key="idx"
-                  :value="item.name"
-                  :disabled="item.disabled || item.ddd"
-                >
-                  <span slot="span">
-                    {{ item.name }}
-                  </span>
-                </check-box>
-              </div>
-              <div class="time-select-box">
-                <form-select
-                  v-model="inputData.selectTime1.value"
-                  :list="inputData.selectTime1.timeList"
-                  :title="inputData.selectTime1.title"
-                  :disabled="inputData.callAvailableTime.disabled"
-                ></form-select>
-                <span>~</span>
-                <form-select
-                  v-model="inputData.selectTime2.value"
-                  :list="inputData.selectTime2.timeList"
-                  :title="inputData.selectTime2.title"
-                  :disabled="inputData.callAvailableTime.disabled"
-                ></form-select>
-              </div>
-              <check-box
-                :class="{ lineCheckbox: true }"
-                v-model="inputData.callAvailableTime.disabled"
-                :value="inputData.callAvailableTime.disabled"
-              >
-                <span slot="span">전화상담을 진행하지 않습니다.</span>
-              </check-box>
-            </td>
-          </tr>
-          <tr>
-            <th>대면상담 가능 시간</th>
-            <td>
-              <all-check-box
-                :class="{ borderCheck: true, all: true }"
-                v-model="inputData.faceAvailableTime.allChecked"
-                :value="inputData.faceAvailableTime.allChecked"
-                :disabled="inputData.faceAvailableTime.allDisabled"
-                :checkedArray.sync="inputData.faceAvailableTime.checked"
-                :checkList="inputData.weekly"
-              >
-                <span slot="span">전체</span>
-              </all-check-box>
-              <div class="weekly-checkbox">
-                <check-box
-                  :class="{ borderCheck: true }"
-                  v-model="inputData.faceAvailableTime.checked"
-                  v-for="(item, idx) in inputData.weekly"
-                  :key="idx"
-                  :value="item.name"
-                  :disabled="item.disabled"
-                >
-                  <span slot="span">
-                    {{ item.name }}
-                  </span>
-                </check-box>
-              </div>
-              <div class="time-select-box">
-                <form-select
-                  v-model="inputData.selectTime1.value"
-                  :list="inputData.selectTime1.timeList"
-                  :title="inputData.selectTime1.title"
-                  :disabled="inputData.faceAvailableTime.disabled"
-                ></form-select>
-                <span>~</span>
-                <form-select
-                  v-model="inputData.selectTime2.value"
-                  :list="inputData.selectTime2.timeList"
-                  :title="inputData.selectTime2.title"
-                  :disabled="inputData.faceAvailableTime.disabled"
-                ></form-select>
-              </div>
-              <check-box
-                :class="{ lineCheckbox: true }"
-                v-model="inputData.disabled"
-                :value="inputData.faceAvailableTime.disabled"
-              >
-                <span slot="span">대면상담을 진행하지 않습니다.</span>
-              </check-box>
-            </td>
-          </tr>-->
         </table>
       </form>
       <div class="agree-check-wrap">
@@ -296,48 +153,6 @@ export default {
   },
   data() {
     return {
-      selectTime: {
-        value: "", // select는 배열 X string
-        selectItem: false,
-        title1: "상담 시작 시간",
-        title2: "상담 종료 시간",
-        timeStart: [
-          { value: "0", name: "09:00" },
-          { value: "1", name: "10:00" },
-          { value: "2", name: "11:00" },
-          { value: "3", name: "12:00" },
-          { value: "4", name: "13:00" },
-          { value: "5", name: "14:00" },
-          { value: "6", name: "15:00" },
-          { value: "7", name: "16:00" },
-          { value: "8", name: "17:00" },
-          { value: "9", name: "18:00" },
-          { value: "10", name: "19:00" },
-          { value: "11", name: "20:00" },
-          { value: "12", name: "21:00" },
-          { value: "13", name: "22:00" },
-          { value: "14", name: "23:00" },
-          { value: "15", name: "24:00" },
-        ],
-        timeEnd: [
-          { value: "0", name: "09:00", disabled: true },
-          { value: "1", name: "10:00" },
-          { value: "2", name: "11:00" },
-          { value: "3", name: "12:00" },
-          { value: "4", name: "13:00" },
-          { value: "5", name: "14:00" },
-          { value: "6", name: "15:00" },
-          { value: "7", name: "16:00" },
-          { value: "8", name: "17:00" },
-          { value: "9", name: "18:00" },
-          { value: "10", name: "19:00" },
-          { value: "11", name: "20:00" },
-          { value: "12", name: "21:00" },
-          { value: "13", name: "22:00" },
-          { value: "14", name: "23:00" },
-          { value: "15", name: "24:00" },
-        ],
-      },
       emailList: [
         { value: "email", name: "naver.com" },
         { value: "email", name: "naver.com" },
@@ -384,19 +199,17 @@ export default {
           error: "",
           title: "선택",
         },
+        // 여기서 줘야하는거 all checked랑 checked된 배열
         chatAvailableTime: {
-          allChecked: false, //
-          allDisabled: false,
-          disabled: false,
+          allChecked: false, //전체
+          allDisabled: false, //전체
           disabledList: ["mon", "tue", "wed"],
-          checked: [], //["mon", "tue", "wed"],없이
-          selected: "",
-          selected2: "",
+          checked: [], //v-model
+          selected: [], // select된 시간
         },
         callAvailableTime: {
           allChecked: false,
           allDisabled: false,
-          disabled: false,
           disabledList: ["mon", "tue", "wed"],
           selected: "",
           selected2: "",
@@ -404,7 +217,6 @@ export default {
         videoAvailableTime: {
           allChecked: false,
           allDisabled: false,
-          disabled: false,
           disabledList: ["mon", "tue", "wed"],
           checked: [],
           selected: "",
@@ -413,7 +225,6 @@ export default {
         faceAvailableTime: {
           allChecked: false,
           allDisabled: false,
-          disabled: false,
           disabledList: ["mon", "tue", "wed"],
           checked: [],
           selected: "",
@@ -421,6 +232,7 @@ export default {
         },
 
         agreeCheckboxData: {
+          // 모든 약관에 동의합니다.
           allChecked: false,
           checked: [],
           list: [
