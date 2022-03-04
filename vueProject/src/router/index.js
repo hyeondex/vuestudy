@@ -7,6 +7,7 @@ import vModel from "../views/vModel.vue";
 import checkBox from "../views/checkBoxMain.vue";
 import adrMain from "../views/address/adrMain";
 import form from "../views/inputForm";
+import login from "../views/testAxios/login";
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,16 @@ export const router = new VueRouter({
       path: "/form",
       component: form,
       meta: { title: "form main" },
+    },
+    { //axios test
+      path: "testAxios/login",
+      component: login,
+      meta: { title: "login" },
+    },
+    {//axios test
+      path: "testAxios/board/write",
+      component: board.write,
+      meta: { title: "board" },
     },
   ],
 });
