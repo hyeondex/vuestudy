@@ -14,23 +14,23 @@
         let result = [];
         totalPages = [];
         currentPage = '';
-        totalPages.forEach((el,i) => {
+        if(currentPage > 4 && currentPage < totalPages.length  -5){
+          result = totalPages.slice(currentPage - 5, currentPage +5);
+          console.log(currentPage ,result)
+        }else if( currentPage > 4 && currentPage <= totalPages.length ){
+          result = totalPages.slice(totalPages.length - 10, totalPages.length);
+          console.log(currentPage, result)
+        }else{
+          result = totalPages.slice(0, 10);
+          console.log(currentPage,result)
+        }
+        /*totalPages.forEach((el,i) => {
           currentPage = totalPages[i];
-          if(currentPage > 4 && currentPage < totalPages.length  -5){
-            result = totalPages.slice(currentPage - 5, currentPage +5);
-            console.log(currentPage ,result)
-          }else if( currentPage > 4 && currentPage <= totalPages.length ){
-            result = totalPages.slice(totalPages.length - 10, totalPages.length  );
-            console.log(currentPage, result)
-           }else{
-            result = totalPages.slice(0,10);
-            console.log(currentPage,result)
-          }
-        })
+
+        })*/
       }
 
       for (let i = 1; i <= 8; i++) {
-        console.log(pagination(i))
         console.log('pagenation : ', pagination(i, 8));
       //console.log('pagenation[i] : ', pagination(i));
       }
