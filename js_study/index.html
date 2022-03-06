@@ -8,32 +8,36 @@
     코딩테스트
 
     <script>
-      //const totalPages = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];// 예시 값
-      //const currentPage = '';
+      const currentPage = '';
+      const totalPages = [];
       function pagination(currentPage, totalPages) {
         let result = [];
-        totalPages = [];
-        currentPage = '';
-        if(currentPage > 4 && currentPage < totalPages.length  -5){
+        console.log(currentPage, totalPages)
+
+        if(currentPage > 4 && currentPage < totalPages -5){
           result = totalPages.slice(currentPage - 5, currentPage +5);
-          console.log(currentPage ,result)
-        }else if( currentPage > 4 && currentPage <= totalPages.length ){
-          result = totalPages.slice(totalPages.length - 10, totalPages.length);
-          console.log(currentPage, result)
+          //console.log(currentPage ,result)
+        }/*else if( currentPage > 4 && currentPage <= totalPages ){
+          result = totalPages.slice(totalPages - 10, totalPages);
+          //console.log(currentPage, result)
         }else{
           result = totalPages.slice(0, 10);
-          console.log(currentPage,result)
-        }
-        /*totalPages.forEach((el,i) => {
-          currentPage = totalPages[i];
-
-        })*/
+          //console.log(currentPage,result)
+        }*/
+        //console.log(result)
+        return result;
       }
+      //pagination(currentPage,totalPages)
+      // 1. 총 페이지 수가 20 인 경우
+      for (let i = 1; i <= 20; i++) {
 
-      for (let i = 1; i <= 8; i++) {
-        console.log('pagenation : ', pagination(i, 8));
-      //console.log('pagenation[i] : ', pagination(i));
+        console.log('pagination :',pagination(i ,20));
+
       }
-    </script>>
+      /*  // 1. 총 페이지 수가 8 인 경우
+        for (let i = 1; i <= 8; i++) {
+          console.log(pagination(i, 8));
+        }*/
+    </script>
   </body>
 </html>
