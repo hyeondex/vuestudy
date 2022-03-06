@@ -5,45 +5,72 @@
     <title>Title</title>
   </head>
   <body>
-    <button>Display message box</button>
+    코딩테스트
 
     <script>
-      //   function displayMessage() {
-      //     const html = document.querySelector("html");
-      //     const panel = document.createElement("div");
-      //     panel.setAttribute("class", "msgBox");
-      //     html.appendChild(panel);
+      const totalPages = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];// 예시 값
+      const currentPage = '';
+      function pagination(currentPage, totalPages) {
+        let result = [];
+        totalPages.forEach((el,i,result) => {
+          currentPage = totalPages[i];
 
-      //     const msg = document.createElement("p");
-      //     msg.textContent = "This is a message box";
-      //     panel.appendChild(msg);
+          if(currentPage > 4 && currentPage < totalPages.length  -5){
+            result = totalPages.slice(currentPage - 5, currentPage +5);
+            console.log(currentPage ,result)
+          }else if( currentPage > 4 && currentPage < totalPages.length ){
+            console.log('else if')
+            result = totalPages.slice(currentPage - 5, currentPage + 5  );
+            console.log(currentPage, result , totalPages.length -1)
+          }
+          /*console.log('currentPage ',currentPage, i ,Math.floor(totalPages.length - (currentPage / i ) ))
+            console.log(totalPages.length - currentPage ,i)*/
+          /*if(totalPages.length - currentPage > 10) {
+            totalPages.shift(5);
+            console.log(totalPages)
+          }*/
 
-      //     const closeBtn = document.createElement("button");
-      //     closeBtn.textContent = "x";
-      //     panel.appendChild(closeBtn);
 
-      //     closeBtn.onclick = function () {
-      //       panel.parentNode.removeChild(panel);
-      //     };
-      //   }
+          //return result.push(currentPage - 5 , currentPage + 5 );
+//this.currntPage = el ? el > 4 && currentPage < totalPages.length -1 : el <= 4 ;
 
-      //   const btn = document.querySelector("button");
-      //   btn.onclick = displayMessage();
+          /*if(currentPage){11
+            console.log("currentPage" , currentPage);
+            console.log(result.slice(currentPage - 5 , currentPage + 5 ));
+            return result.slice(currentPage - 5 , currentPage + 5 );
+          }else{
+            console.log("currentPage" , currentPage)
+            console.log('else' ,result.slice(currentPage, currentPage + 9));
+            return result.slice(currentPage, currentPage + 9);
+          }*/
+        })
+        /*if(totalPages.length >= 10){
+          return result;
+/!*          if(  currentPage > 4 && currentPage < totalPages.length -1 ){
+            this.curruntPage = Math.floor(totalPages.l1ength / 2 );
+            console.log('total' , totalPages.length , )
+            console.log('currentPage:', currentPage)
 
-      function test() {
-        const id_list = ["a", "b", "c", "d", "e"];
-        const report = ["a", "b", "c"];
-        const k = 2;
-        let answer = [];
-        console.log(id_list);
-        for (let id_list = 0; id_list > 0; id_list++) {
-          console.log(12313);
-          console.log(id_list);
-        }
+            result = totalPages.splice(currentPage, totalPages -1 );
+            console.log("result" , result)
+
+          }*!//!*else if(currentPage < totalPages.length / 2 ){
+            console.log('else if 조건')
+            console.log(currentPage , "는 5보다 작습니다.")
+          }*!/
+        }*/
+        // console.log(result)
+        // todo : 전체 노출하는 함수가 필요함 ( curruntPage , totalPage)
       }
-      test();
-      //   const btn = document.querySelector("button");
-      //   btn.onclick = test();
-    </script>
+
+
+      pagination(currentPage, totalPages);
+
+
+      /*for (let i = 1; i <= totalPages.length; i++) {
+        console.log('pagenation : ', pagination(i, 8));
+      //console.log('pagenation[i] : ', pagination(i));
+      }*/
+    </script>>
   </body>
 </html>
