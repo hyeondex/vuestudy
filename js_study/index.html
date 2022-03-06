@@ -8,69 +8,32 @@
     코딩테스트
 
     <script>
-      const totalPages = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];// 예시 값
-      const currentPage = '';
+      //const totalPages = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];// 예시 값
+      //const currentPage = '';
       function pagination(currentPage, totalPages) {
         let result = [];
-        totalPages.forEach((el,i,result) => {
+        totalPages = [];
+        currentPage = '';
+        totalPages.forEach((el,i) => {
           currentPage = totalPages[i];
-
           if(currentPage > 4 && currentPage < totalPages.length  -5){
             result = totalPages.slice(currentPage - 5, currentPage +5);
             console.log(currentPage ,result)
-          }else if( currentPage > 4 && currentPage < totalPages.length ){
-            console.log('else if')
-            result = totalPages.slice(currentPage - 5, currentPage + 5  );
-            console.log(currentPage, result , totalPages.length -1)
+          }else if( currentPage > 4 && currentPage <= totalPages.length ){
+            result = totalPages.slice(totalPages.length - 10, totalPages.length  );
+            console.log(currentPage, result)
+           }else{
+            result = totalPages.slice(0,10);
+            console.log(currentPage,result)
           }
-          /*console.log('currentPage ',currentPage, i ,Math.floor(totalPages.length - (currentPage / i ) ))
-            console.log(totalPages.length - currentPage ,i)*/
-          /*if(totalPages.length - currentPage > 10) {
-            totalPages.shift(5);
-            console.log(totalPages)
-          }*/
-
-
-          //return result.push(currentPage - 5 , currentPage + 5 );
-//this.currntPage = el ? el > 4 && currentPage < totalPages.length -1 : el <= 4 ;
-
-          /*if(currentPage){11
-            console.log("currentPage" , currentPage);
-            console.log(result.slice(currentPage - 5 , currentPage + 5 ));
-            return result.slice(currentPage - 5 , currentPage + 5 );
-          }else{
-            console.log("currentPage" , currentPage)
-            console.log('else' ,result.slice(currentPage, currentPage + 9));
-            return result.slice(currentPage, currentPage + 9);
-          }*/
         })
-        /*if(totalPages.length >= 10){
-          return result;
-/!*          if(  currentPage > 4 && currentPage < totalPages.length -1 ){
-            this.curruntPage = Math.floor(totalPages.l1ength / 2 );
-            console.log('total' , totalPages.length , )
-            console.log('currentPage:', currentPage)
-
-            result = totalPages.splice(currentPage, totalPages -1 );
-            console.log("result" , result)
-
-          }*!//!*else if(currentPage < totalPages.length / 2 ){
-            console.log('else if 조건')
-            console.log(currentPage , "는 5보다 작습니다.")
-          }*!/
-        }*/
-        // console.log(result)
-        // todo : 전체 노출하는 함수가 필요함 ( curruntPage , totalPage)
       }
 
-
-      pagination(currentPage, totalPages);
-
-
-      /*for (let i = 1; i <= totalPages.length; i++) {
+      for (let i = 1; i <= 8; i++) {
+        console.log(pagination(i))
         console.log('pagenation : ', pagination(i, 8));
       //console.log('pagenation[i] : ', pagination(i));
-      }*/
+      }
     </script>>
   </body>
 </html>
