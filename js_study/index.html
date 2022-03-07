@@ -18,20 +18,20 @@
           // 7 -14
           start = currentPage -  (Math.ceil(currentPage / totalPages) + 4 );
           end = currentPage + Math.floor(pageDft/2);
-          //
-
         } else if(totalPages <= Math.floor(pageDft/2) + currentPage){
           //15- 20
           start = totalPages - (pageDft - 1);
           end = totalPages
-          //console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
         } else{
           // 1 - 6 currentPage > Math.ceil(totalPages / pageDft)
           start  = (Math.ceil(currentPage / pageDft))
           end = pageDft
-          //console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
         }
-        console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
+        //console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
+        for (let i = start; i <= end ; i++){
+          result.push(i)
+          console.log(result)
+        }
         return result;
        }
 
