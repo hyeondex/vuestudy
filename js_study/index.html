@@ -6,38 +6,46 @@
   </head>
   <body>
     코딩테스트
+    11개만 나오게 하기.............
 
     <script>
-      const currentPage = '';
-      const totalPages = [];
       function pagination(currentPage, totalPages) {
         let result = [];
-        console.log(currentPage, totalPages)
+        const pageDft = 11;
+        let start = '';
+        let end = '';
+        if(currentPage > Math.ceil(totalPages / pageDft) + 4 && totalPages > Math.floor(pageDft/2) + currentPage ){
+          // 7 -14
+          start = currentPage -  (Math.ceil(currentPage / totalPages) + 4 );
+          end = currentPage + Math.floor(pageDft/2);
+          //
 
-        if(currentPage > 4 && currentPage < totalPages -5){
-          result = totalPages.slice(currentPage - 5, currentPage +5);
-          //console.log(currentPage ,result)
-        }/*else if( currentPage > 4 && currentPage <= totalPages ){
-          result = totalPages.slice(totalPages - 10, totalPages);
-          //console.log(currentPage, result)
-        }else{
-          result = totalPages.slice(0, 10);
-          //console.log(currentPage,result)
-        }*/
-        //console.log(result)
+        } else if(totalPages <= Math.floor(pageDft/2) + currentPage){
+          //15- 20
+          start = totalPages - (pageDft - 1);
+          end = totalPages
+          //console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
+        } else{
+          // 1 - 6 currentPage > Math.ceil(totalPages / pageDft)
+          start  = (Math.ceil(currentPage / pageDft))
+          end = pageDft
+          //console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
+        }
+        console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
         return result;
-      }
-      //pagination(currentPage,totalPages)
+       }
+
+      // 확인 방법
       // 1. 총 페이지 수가 20 인 경우
-      for (let i = 1; i <= 20; i++) {
+        for (let i = 1; i <= 20; i++) {
+          //console.log(pagination(i, 20));
+          pagination(i, 20);
+        }
 
-        console.log('pagination :',pagination(i ,20));
-
-      }
-      /*  // 1. 총 페이지 수가 8 인 경우
-        for (let i = 1; i <= 8; i++) {
-          console.log(pagination(i, 8));
-        }*/
+      // 1. 총 페이지 수가 8 인 경우
+      /*for (let i = 1; i <= 8; i++) {
+        console.log(pagination(i, 8));
+      }*/
     </script>
   </body>
 </html>
