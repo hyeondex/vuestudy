@@ -11,9 +11,10 @@
     <script>
       function pagination(currentPage, totalPages) {
         let result = [];
-        const pageDft = 11;
+        const pageDft = totalPages >  11 ? 11 : totalPages;
         let start = '';
         let end = '';
+
         if(currentPage > Math.ceil(totalPages / pageDft) + 4 && totalPages > Math.floor(pageDft/2) + currentPage ){
           // 7 -14
           start = currentPage -  (Math.ceil(currentPage / totalPages) + 4 );
