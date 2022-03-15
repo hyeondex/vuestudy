@@ -11,9 +11,44 @@
     <script>
       function pagination(currentPage, totalPages) {
         let result = [];
-        const pageDft = totalPages >  11 ? 11 : totalPages;
-        let start = '';
+
+        let start = 0;
+        let last = 0;
+
+        if (currentPage <= 6) {
+          start = 1;
+          last = 11;
+        }
+
+        // 현재 페이지가 6 보다 크면서 총 페이지가 현재 페이지 +5 보다 큰 경우는 start 에 현재 페이지에 -5 last 에 현재 페이지에 +5 를 해야한다.
+        if (currentPage > 6 && totalPages > 11) {
+          start = currentPage - 5;
+          last = currentPage + 5;
+        }
+
+        if (last > totalPages && totalPages > 11) {
+          start = totalPages - 10;
+          last = totalPages;
+        }
+
+        if (totalPages < 11) {
+          start = 1;
+          last = totalPages;
+        }
+
+        for (let i = start; i <= last; i++) {
+          result.push({
+            number: i,
+            flag: i === currentPage
+          });
+        }
+
+        /*const pageDft = totalPages > 11 ? 11 : totalPages; // total
+
+        let start = ''; // 문자열로 초기화하니까 하나씩 나오지 이사람아악! 숫자는 숫자 아니면 그냥 undefined
         let end = '';
+
+        console.log('pageDft',pageDft);
 
         if(currentPage > Math.ceil(totalPages / pageDft) + 4 && totalPages > Math.floor(pageDft/2) + currentPage ){
           // 7 -14
@@ -30,23 +65,25 @@
         }
         //console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
         for (let i = start; i <= end ; i++){
-          result.push(i)
-          console.log(result)
-        }
+
+          result = new Array(i,pageDft);
+          console.log(i,result)
+          //console.log(result)
+        }*/
         return result;
        }
 
       // 확인 방법
       // 1. 총 페이지 수가 20 인 경우
         for (let i = 1; i <= 20; i++) {
-          //console.log(pagination(i, 20));
-          pagination(i, 20);
+          console.log('current page', i, 'total page', 20, pagination(i, 20));
+          /*pagination(i, 20);*/
         }
 
       // 1. 총 페이지 수가 8 인 경우
-      /*for (let i = 1; i <= 8; i++) {
-        console.log(pagination(i, 8));
-      }*/
+      for (let i = 1; i <= 8; i++) {
+        console.log('current page', i, 'total page', 8, pagination(i, 8));
+      }
     </script>
   </body>
 </html>
