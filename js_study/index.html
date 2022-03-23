@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
+</head>
 <style>
 
     body {
@@ -33,12 +34,11 @@
 코딩테스트
 11개 노출
 조건
-<ol>
+<ul>
     <li>pageDft가 11인 경우
         <dl>
-
-            <dt>totalPages의 숫자가 11인 경우</dt>
-            <dd>예상 결과 currentPage의 숫자는 11보다 작거나 같아 11까지 노출되거나, totalPage까지 노출되어야함 <br>
+            <dt>totalPages의 숫자가 pageDft와 같거나 작은 경우</dt>
+            <dd>예상 결과 currentPage의 숫자는 pageDft까지 노출됨<br>
                 1인 경우 1,2,3,4,5,6,7,8,9,10,11 > 11개씩<br>
                 2인 경우 1,2,3,4,5,6,7,8,9,10,11 > 11개씩<br>
                 3인 경우 ....... 11인 경우까지 보여지는 전체 숫자의 개수는 변화할 수 없음
@@ -46,81 +46,88 @@
             </dd>
             <dt>totalPage의 숫자가 11보다 작은 경우</dt>
             <dd>예상 결과 currentPage에는 totalPage까지 노출되면 됨.<br>
-                1인 경우 1,2,3,4,5,6,7,8,9,10,11 > 11개씩
+                1인 경우 1,2,3,4,5,6,....totalPage까지 > totalPage 노출
             </dd>
-            <dt></dt>
-            <dd></dd>
+            <dt>totalpage의 숫자가 11보다 큰 경우/ pageDft가 11인 경우 </dt>
+            <dd>
+                예상결과
+                1-5인 경우 : 1.2.3.4.5.6.7.8.9.10.11까지 노출
+            </dd>
+            <dt>currentPage 중심으로, 노출되는 숫자의 시작값이 currentPage-5이고, 마지막 값이  currentPage +5가 totalPage과 같거나 작은 경우</dt>
+            <dd>- + 되는 값은 가운데 숫자가 currentPage로 가정할 때 pageDft/2의 값을 currentPage에 + , - 한 값을 의미함(현재 pageDft는 11로 설정했기 때문에 5의 값으로 설정됨)<br>
+                currentPage의 6인 경우  2.3.4.5.6.7.8.9.10.11.12 까지
+                currntPage 7인 경우  3.4.5.6.7.8.9.10.11.12.13 까지 .....</dd>
+            <dt>위의 조건에서 currentPage가 totalPage-5 보다 큰 경우</dt>
+            <dd>totalPage가 끝까지 노출되면 totalPage -11까지 숫자가 노출되어야함</dd>
         </dl>
     </li>
-</ol>
-<li>pageDft가 11인 경우</li>
-
-
-- 1. , 2. total
--
-- totalpages의 숫자가 11보다 작은 경우
-예상 결과 currentPage가 뭐가 나오든 11까지 노출되거나, totalPage까지 노출되어야함
-1인 경우 1,2,3,4,5,6,7,8,9,10,11 > 11개씩
-2인 경우 1,2,3,4,5,6,7,8,9,10,11 > 11개씩
-3인 경우 ....... 11인 경우까지 보여지는 전체 숫자의 개수는 변화할 수 없음
-
-
+</ul>
 <script>
     function pagination(currentPage, totalPages) {
         let result = [];
-
         /*  let start = 0;
-          let last = 0;
+		let last = 0;
 
-          if (currentPage <= 6) {
-            start = 1;
-            last = 11;
-          }
+		if (currentPage <= 6) {
+		start = 1;
+		last = 11;
+		}
 
-          // 현재 페이지가 6 보다 크면서 총 페이지가 현재 페이지 +5 보다 큰 경우는 start 에 현재 페이지에 -5 last 에 현재 페이지에 +5 를 해야한다.
-          if (currentPage > 6 && totalPages > 11) {
-            start = currentPage - 5;
-            last = currentPage + 5;
-          }
+		// 현재 페이지가 6 보다 크면서 총 페이지가 현재 페이지 +5 보다 큰 경우는 start 에 현재 페이지에 -5 last 에 현재 페이지에 +5 를 해야한다.
+		if (currentPage > 6 && totalPages > 11) {
+		start = currentPage - 5;
+		last = currentPage + 5;
+		}
 
-          if (last > totalPages && totalPages > 11) {
-            start = totalPages - 10;
-            last = totalPages;
-          }
+		if (last > totalPages && totalPages > 11) {
+		start = totalPages - 10;
+		last = totalPages;
+		}
 
-          if (totalPages < 11) {
-            start = 1;
-            last = totalPages;
-          }
+		if (totalPages < 11) {
+		start = 1;
+		last = totalPages;
+		}
 
-          for (let i = start; i <= last; i++) {
-            result.push({
-              number: i,
-              flag: i === currentPage
-            });
-          }
-  */
-        //조건 ::
-        // pageDft는
+		for (let i = start; i <= last; i++) {
+		result.push({
+		number: i,
+		flag: i === currentPage
+		});
+		}
+		*/
+
         let pageDft = totalPages <= 11 ? totalPages : 11; // totalpage가 11보다 작거나 같으면 totalpage만큼 한번에 노출 , false일때는 11
         let start = 0; // 문자열로 초기화하니까 하나씩 나오지 이사람아악! 숫자는 숫자 아니면 그냥 undefined
         let end = totalPages; // totalPage의 숫자가 제일 마지막 숫자
 
+        if(totalPages <= pageDft){ //totalpage가 pageDft보다 작거나 같은 경우
+            console.log(totalPages <= pageDft)
+            end = pageDft;
+        }
+        if(totalPages > pageDft){ //totalPage가 pageDft보다 큰 경우
+            console.log(totalPages ,pageDft)
+            start = currentPage - 5
+            //end= totalPages  - currentPage <= 5:
+            // 현재 페이지가 12 13 14 15 16 17 18 19 20 일 때 도 두번 꽈야되는데
+            //10 11 12 13 14 15 16 17 18 19 20 여기서
+            console.log()
+        }
+
         /* if(currentPage > Math.ceil(totalPages / pageDft) + 4 && totalPages > Math.floor(pageDft/2) + currentPage ){
-           // 7 -14
-           start = currentPage -  (Math.ceil(currentPage / totalPages) + 4 );
-           end = currentPage + Math.floor(pageDft/2);
-         } else if(totalPages <= Math.floor(pageDft/2) + currentPage){
-           //15- 20
-           start = totalPages - (pageDft - 1);
-           end = totalPages
-         } else{
-           // 1 - 6 currentPage > Math.ceil(totalPages / pageDft)
-           start  = (Math.ceil(currentPage / pageDft))
-           end = pageDft
-         }
-         //console.log( "currentPage : ",currentPage , "start : " , start  , 'end : ', end)
-        */
+		// 7 -14
+		start = currentPage -  (Math.ceil(currentPage / totalPages) + 4 );
+		end = currentPage + Math.floor(pageDft/2);
+		} else if(totalPages <= Math.floor(pageDft/2) + currentPage){
+		//15- 20
+		start = totalPages - (pageDft - 1);
+		end = totalPages
+		} else{
+		// 1 - 6 currentPage > Math.ceil(totalPages / pageDft)
+		start  = (Math.ceil(currentPage / pageDft))
+		end = pageDft
+		}
+		*/
         for (let i = start; i <= end; i++) {
             result.push(i);
             //console.log(result)
@@ -131,13 +138,14 @@
     // 확인 방법
     // 1. 총 페이지 수가 20 인 경우
     for (let i = 1; i <= 20; i++) {
-        console.log('current page', i, 'total page', 20, pagination(i, 20));
+        //console.log('current page', i, 'total page', 20, pagination(i, 20));
+        console.log(i, pagination(i, 20));
         /*pagination(i, 20);*/
     }
 
     // 1. 총 페이지 수가 8 인 경우
     for (let i = 1; i <= 8; i++) {
-        console.log('current page', i, 'total page', 8, pagination(i, 8));
+       console.log('current page', i, 'total page', 8, pagination(i, 8));
     }
 </script>
 </body>
