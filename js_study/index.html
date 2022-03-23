@@ -29,6 +29,10 @@
         content: counter(dt) '.';
         margin-right: 5px;
     }
+    .add:after{
+        content:'🍕';
+        display: inline-block;
+    }
 </style>
 <body>
 코딩테스트
@@ -59,6 +63,14 @@
                 currntPage 7인 경우  3.4.5.6.7.8.9.10.11.12.13 까지 .....</dd>
             <dt>위의 조건에서 currentPage가 totalPage-5 보다 큰 경우</dt>
             <dd>totalPage가 끝까지 노출되면 totalPage -11까지 숫자가 노출되어야함</dd>
+            <dt class="add">currentPage가 1인 경우, pageDft의 반 나누기 한 값보다 작은 경우?  (currentPage - pageDft/2 < 0 보다 작을 때 )</dt>
+            <dd>
+                start 숫자는 무조건 1 이어야함
+            </dd>
+            <dt class="add">totalPage</dt>
+            <dd>
+                start 숫자는 무조건 1 이어야함
+            </dd>
         </dl>
     </li>
 </ul>
@@ -98,21 +110,24 @@
 		*/
 
         let pageDft = totalPages <= 11 ? totalPages : 11; // totalpage가 11보다 작거나 같으면 totalpage만큼 한번에 노출 , false일때는 11
-        let start = 0; // 문자열로 초기화하니까 하나씩 나오지 이사람아악! 숫자는 숫자 아니면 그냥 undefined
+        let start = 1; // 문자열로 초기화하니까 하나씩 나오지 이사람아악! 숫자는 숫자 아니면 그냥 undefined
         let end = totalPages; // totalPage의 숫자가 제일 마지막 숫자
 
-        if(totalPages <= pageDft){ //totalpage가 pageDft보다 작거나 같은 경우
-            console.log(totalPages <= pageDft)
-            end = pageDft;
-        }
         if(totalPages > pageDft){ //totalPage가 pageDft보다 큰 경우
-            console.log(totalPages ,pageDft)
-            start = currentPage - 5
-            //end= totalPages  - currentPage <= 5:
-            // 현재 페이지가 12 13 14 15 16 17 18 19 20 일 때 도 두번 꽈야되는데
-            //10 11 12 13 14 15 16 17 18 19 20 여기서
-            console.log()
+            start = currentPage - Math.floor(pageDft/2);
+            end = currentPage + Math.floor(pageDft/2); //floor 반내림
+            if(currentPage < pageDft/2){ // 1 - 5인경우  pageDft는 11이니까
+                start = 1;
+                end = pageDft;
+            }else if(currentPage > totalPages - Math.floor(pageDft/2)){
+                console.log('start')
+                start = totalPages - pageDft+1 // 전체에서 pageDft를 뺴면 본인의 숫자까지 길이가 빠지기 때문에라고 설명을 적어두는게 맞나?
+                end = totalPages
+            }
+        }else{
+            end = pageDft; //totalPages <= pageDft 전체 페이지보다 설정한 PageDft가 작은 경우
         }
+
 
         /* if(currentPage > Math.ceil(totalPages / pageDft) + 4 && totalPages > Math.floor(pageDft/2) + currentPage ){
 		// 7 -14
