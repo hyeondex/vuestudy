@@ -37,6 +37,40 @@
         content:'🍺';
         display: inline-block;
     }
+    .pagination-wrap{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .pagination-wrap > button{
+        font-size: 0;
+        border:none;
+        padding:0;
+        line-height: 1;
+        background: transparent;
+    }
+    .pagination-wrap button:before{
+        content:'';
+        display: block;
+        padding: 5px;
+        font-size:15px;
+    }
+    .pagination-wrap > button:first-child:before {
+        content:'👈';
+    }
+    .pagination-wrap > button:last-child:before{
+        content:'👉';
+     }
+    .pagination{
+        padding:0;
+        margin:0;
+      }
+    .pagination li{
+        display: block;
+        border-top: 1px solid;
+    }
+
 </style>
 <body>
 코딩테스트
@@ -88,6 +122,13 @@
         </dl>
     </li>
 </ul>
+<div class="pagination-wrap">
+    <button>이전</button>
+    <ul class="pagination">
+    </ul>
+    <button>앞으로</button>
+</div>
+
 <script>
     function pagination(currentPage, totalPages) {
         let result = [];
@@ -124,7 +165,7 @@
 		*/
 
         let pageDft = totalPages <= 11 ? totalPages : 11; // totalpage가 11보다 작거나 같으면 totalpage만큼 한번에 노출 , false일때는 11
-        let start = 1; // 문자열로 초기화하니까 하나씩 나오지 이사람아악! 숫자는 숫자 아니면 그냥 undefined
+        let start = 1; // 숫자는 숫자 아니면 그냥 undefined
         let end = totalPages; // totalPage의 숫자가 제일 마지막 숫자
 
         if(totalPages > pageDft){ //totalPage가 pageDft보다 큰 경우
@@ -134,7 +175,7 @@
                 start = 1;
                 end = pageDft;
             }else if(currentPage > totalPages - Math.floor(pageDft/2)){
-                console.log('start')
+                //console.log('start')
                 start = totalPages - pageDft+1 // 전체에서 pageDft를 뺴면 본인의 숫자까지 길이가 빠지기 때문에라고 설명을 적어두는게 맞나?
                 end = totalPages
             }
@@ -142,39 +183,29 @@
             end = pageDft; //totalPages <= pageDft 전체 페이지보다 설정한 PageDft가 작은 경우
         }
 
-
-        /* if(currentPage > Math.ceil(totalPages / pageDft) + 4 && totalPages > Math.floor(pageDft/2) + currentPage ){
-		// 7 -14
-		start = currentPage -  (Math.ceil(currentPage / totalPages) + 4 );
-		end = currentPage + Math.floor(pageDft/2);
-		} else if(totalPages <= Math.floor(pageDft/2) + currentPage){
-		//15- 20
-		start = totalPages - (pageDft - 1);
-		end = totalPages
-		} else{
-		// 1 - 6 currentPage > Math.ceil(totalPages / pageDft)
-		start  = (Math.ceil(currentPage / pageDft))
-		end = pageDft
-		}
-		*/
         for (let i = start; i <= end; i++) {
             result.push(i);
-            //console.log(result)
         }
+
+        let pageList = document.querySelector('.pagination');
+        let list = document.createElement('li');
+        list.append( result )
+        pageList.appendChild(list);
+
         return result;
     }
 
     // 확인 방법
     // 1. 총 페이지 수가 20 인 경우
     for (let i = 1; i <= 20; i++) {
-        //console.log('current page', i, 'total page', 20, pagination(i, 20));
-        console.log(i, pagination(i, 20));
-        /*pagination(i, 20);*/
+        pagination(i, 20);
+        //console.log(pagination(i, 20));
     }
 
     // 1. 총 페이지 수가 8 인 경우
     for (let i = 1; i <= 8; i++) {
-       console.log('current page', i, 'total page', 8, pagination(i, 8));
+        pagination(i,8)
+       //console.log('current page', i, 'total page', 8, pagination(i, 8));
     }
 </script>
 </body>
