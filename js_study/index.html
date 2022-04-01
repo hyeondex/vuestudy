@@ -125,6 +125,7 @@
 <div class="pagination-wrap">
     <button>이전</button>
     <ul class="pagination">
+        <li></li>
     </ul>
     <button>앞으로</button>
 </div>
@@ -189,7 +190,15 @@
 
         let pageList = document.querySelector('.pagination');
         let list = document.createElement('li');
-        list.append( result )
+
+        pageList.append(result)
+
+
+        //let listNum = result.split(',');
+        //console.log(typeof result)
+        console.log(result)
+
+        list.append()
         pageList.appendChild(list);
 
         return result;
