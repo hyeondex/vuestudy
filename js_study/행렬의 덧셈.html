@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      let arr1 = [
+        [1, 2],
+        [2, 3],
+      ];
+      let arr2 = [
+        [3, 4],
+        [5, 6],
+      ];
+      solution(arr1, arr2);
+
+      function solution(arr1, arr2) {
+        let answer = new Array();
+        const arrayLength = arr1.length;
+        const arrayLengthHalf = arr2.length;
+
+        for (let i = 0; i < arr1.length; i++) {
+          let firstArray = new Array();
+          for (let j = 0; j < arr2.length; j++) {
+            firstArray.push(arr1[i][j] + arr2[i][j]);
+          }
+          answer.push(firstArray);
+          console.log(answer);
+        }
+        return answer;
+      }
+
+      const solution = (arr1, arr2) =>
+        arr1.reduce(
+          (acc, val, i) => [...acc, val.map((x, idx) => x + arr2[i][idx])],
+          []
+        );
+      reduce;
+      // 누산기, 현재값, 현재 인덱스, 원본배열
+    </script>
+  </body>
+</html>
+
+const solution = (arr1, arr2) => arr1.reduce((acc, val, i) => [...acc,
+val.map((x, idx) => x + arr2[i][idx])], []) function solution(arr1, arr2) {
+const answer = arr1.reduce((a, b, i) => (a[i] = b.reduce((q, w, j) => (q[j] +=
+w, q), a[i]), a), arr2.slice()); return answer; } function solution(arr1, arr2)
+{ const answer = []; arr1.forEach((arr, i) => answer.push(arr.map((v, j) => v +
+arr2[i][j]))); return answer; }
