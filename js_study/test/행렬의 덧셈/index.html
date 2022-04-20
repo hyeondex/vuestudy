@@ -15,7 +15,7 @@
         [5, 6],
       ];
       solution(arr1, arr2);
-
+      solution1(arr1, arr2);
       function solution(arr1, arr2) {
         let answer = new Array();
         const arrayLength = arr1.length;
@@ -32,12 +32,23 @@
         return answer;
       }
 
-      const solution = (arr1, arr2) =>
-        arr1.reduce(
-          (acc, val, i) => [...acc, val.map((x, idx) => x + arr2[i][idx])],
-          []
+      function solution1(arr1, arr2) {
+        const result = arr1.map((item, i) =>
+          item.map((jtem, j) => jtem + arr2[i][j])
         );
-      reduce;
+        answer.push(result);
+        //1. arr1.map의 item은 arr1[0],arr1[1]이다. 중첩배열의 내부 배열 출력 ([1,2], [3,4])
+        //2. 위의 배열을 map()으로 돌린다. jtem은 1,2,2,3 이다.
+        //3. 해당 배열을 가지고 arr2의배열을 순서대로 더해준다. arr2[i][j]은 앞서 map으로 돌린 i와 j의 순서대로 더해짐 4. 마지막으로 answer.push(result)해준다.
+        //console.log(result);
+      }
+
+      // const solution = (arr1, arr2) =>
+      //   arr1.reduce(
+      //     (acc, val, i) => [...acc, val.map((x, idx) => x + arr2[i][idx])],
+      //     []
+      //   );
+      // reduce;
       // 누산기, 현재값, 현재 인덱스, 원본배열
     </script>
   </body>

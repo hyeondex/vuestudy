@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <p>
+      x = 하샤드 수(기본 수 )<br />
+      1+8 = 9 (n+m = y)<br />
+      x / y 의 나머지는 z<br />
+      순서 <br />
+      1. 더한 수를 구한다 . 2. 기존 숫자 / 더한 숫자<br />
+
+      1. 나머지는 1<br />
+      2. 나눗셈의 몫은 0보다 큼<br />
+      3. 위 조건이 맞으면 true 틀리면 false
+    </p>
+  </body>
+  <script>
+    solution(1999);
+    /*function solution(x) {
+      let answer = true;
+      let numbersum = 0;
+      let numberArray = String(x)
+        .split("")
+        .map((x) => {
+          return Number(x);
+        });
+      numberArray.forEach((el) => {
+        numbersum += el;
+        return answer;
+      });
+      answer = x / numbersum > 0 && x % numbersum === 0 ? answer : !answer;
+      console.log(answer);
+      return answer;
+    }*/
+
+    function solution(x) {
+      let answer = true;
+
+      let numberArray = String(x)
+        .split("")
+        .map((x) => {
+          return Number(x);
+        });
+      let numberSum = 0;
+      numberArray.forEach((el) => {
+        numberSum += el;
+        return answer;
+      });
+      answer = x / numberSum > 0 && x % numberSum === 0 ? answer : !answer;
+      console.log(answer);
+      return answer;
+    }
+  </script>
+</html>

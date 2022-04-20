@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      const str = "01033334444";
+      //const str = "01033334sdsd4";
+      solution(str);
+
+      //   function solution(str) {
+      //     let answer = "";
+      //     let strLength = str.length - 4;
+      //     let strCut = str.substring(strLength, length);
+      //     let star = "*";
+      //     answer = str.replace(strCut, star.repeat(strLength));
+      //     console.log(answer);
+      //     return answer;
+      //   }
+      function solution(str) {
+        let answer = "";
+        let strLength = str.length - 4;
+        let strCut = str.slice(0, strLength);
+        let star = "*";
+        answer = str.replace(strCut, star.repeat(strLength));
+        return answer;
+      }
+    </script>
+  </body>
+</html>
