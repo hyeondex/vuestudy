@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <p>
+      평균 전체 값 다 더해서 사람 수 만큼 나누눈거 <br />1. 배열의 전체 값을 다
+      더한다. <br />
+      2. 배열의 length로 나눈다<br />
+      3. 그 값을 answer에 return한다.<br />
+    </p>
+    <p>
+      //배열 length의 길이만큼 for문 돌듯이 돌고, 내부 엘리먼트로 배열 내부가
+      foreach문을 돌려준다 > 설명 달아두기
+    </p>
+  </body>
+  <script>
+    const arr = [1, 2, 3, 4];
+    solution(arr);
+    /*function solution(x) {
+      let answer = 0;
+      let total = 0;
+      x.forEach((el) => {
+        total += el;
+      });
+      answer = total / x.length;
+      return answer;
+    }*/
+    /*function solution(x) {
+      let answer = 0;
+      answer = x.reduce((total, val) => total + val) / x.length;
+      console.log(answer);
+      return answer;
+    }*/
+    function solution(x) {
+      let answer = 0;
+      let sum = 0;
+      for (let i = 0; i < x.length; i++) {
+        sum += x[i];
+      }
+      answer = sum / x.length;
+      console.log(answer);
+      return answer;
+    }
+  </script>
+</html>
