@@ -63,9 +63,15 @@
     }*/
     function solution(num) {
       let answer = 0;
-      num === 1 ? answer : "";
+      if (num === 1) return answer; // 1인 경우에는 0 으로 return
+
+        const counter = num % 2 === 0 ? num = num / 2 : num = num * 3 + 1
+
     }
-    function solution(num) {
+
+    // 남의 답
+
+    /*function solution(num) {
       let answer = 0;
       while (num != 1 && answer != 500) {
         //조건
@@ -75,6 +81,6 @@
       }
       console.log(answer);
       return num === 1 ? answer : -1;
-    }
+    }*/
   </script>
 </html>
