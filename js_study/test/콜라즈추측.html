@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <p>1-1. 입력된 수가 짝수라면 2로 나눕니다.</p>
+    <p>1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다.</p>
+    <p>2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.</p>
+    예를 들어, 입력된 수가 6이라면 6→3→10→5→16→8→4→2→1 이 되어 총 8번 만에 1이
+    됩니다. 위 작업을 몇 번이나 반복해야하는지 반환하는 함수, solution을 완성해
+    주세요. 단, 작업을 500번을 반복해도 1이 되지 않는다면 –1을 반환해 주세요.
+
+    <p>제한 사항</p>
+    <p>입력된 수, num은 1 이상 8000000 미만인 정수입니다.</p>
+    n result
+    <p>6 8<br />입출력 예 설명 입출력 예 #1 문제의 설명과 같습니다.</p>
+    16 4 <br />
+    626331 -1 <br />
+
+    입출력 예 #2 16 -> 8 -> 4 -> 2 -> 1 이되어 총 4번만에 1이 됩니다. 입출력 예
+    #3 626331은 500번을 시도해도 1이 되지 못하므로 -1을 리턴해야합니다.
+
+    <br />
+    <br />
+    <strong>조건</strong>
+    <p>0. 반복문이 맞음?</p>
+    <p>1. 짝수인지 홀수인지 먼저 조건문 태우기</p>
+    <p>2. 조건이 짝수이면 n/2</p>
+    <p>3. 조건이 홀수이면 n*3 + 1</p>
+    <p>
+      근데 짝수 /2 했는데 홀수가 나오면 홀수 *3+1 을 하고 또 나온 숫자를
+      홀짝으로 맞춰야하는 그런 조건문이 필요함
+    </p>
+  </body>
+  <script>
+    //odd(홀)/ even(짝)
+    solution(1);
+    /*  function solution(num) {
+      let answer = 0;
+      if (num === 1) {
+        // 1인 경우
+        answer = 0;
+        return answer;
+      }
+      for (let i = 1; i <= 500; i++) {
+        if (num % 2 === 0) {
+          num = num / 2;
+        } else {
+          num = num * 3 + 1;
+        }
+        if (num === 1) {
+          answer = i;
+          break;
+        } else if (i === 500 || num < 0) {
+          answer = -1;
+        } else {
+          continue;
+        }
+      }
+      return answer;
+    }*/
+    function solution(num) {
+      let answer = 0;
+      num === 1 ? answer : "";
+    }
+    function solution(num) {
+      let answer = 0;
+      while (num != 1 && answer != 500) {
+        //조건
+        // false 일 때까지 함
+        num % 2 === 0 ? (num = num / 2) : (num = num * 3 + 1);
+        answer++;
+      }
+      console.log(answer);
+      return num === 1 ? answer : -1;
+    }
+  </script>
+</html>
