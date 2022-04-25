@@ -61,16 +61,7 @@
       }
       return answer;
     }*/
-    function solution(num) {
-      let answer = 0;
-      if (num === 1) return answer; // 1인 경우에는 0 으로 return
-
-        const counter = num % 2 === 0 ? num = num / 2 : num = num * 3 + 1
-
-    }
-
     // 남의 답
-
     /*function solution(num) {
       let answer = 0;
       while (num != 1 && answer != 500) {
@@ -82,5 +73,28 @@
       console.log(answer);
       return num === 1 ? answer : -1;
     }*/
+    function solution(num) {
+      let answer = -1; // 이러면 if 하나를 줄일 수 있음
+      if (num === 1) {
+        // 1인 경우
+        answer = 0;
+        console.log(answer);
+        return answer;
+      }
+      for (let i = 1; i <= 500; i++) {
+        if (num % 2 === 0) {
+          num = num / 2;
+        } else {
+          num = num * 3 + 1;
+        }
+        if (num === 1) {
+          answer = i;
+          break;
+        }
+      }
+      console.log(answer);
+      return answer;
+    }
+    //solution(1);
   </script>
 </html>
