@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
+  </head>
+  <body>
+    <p>유클리드 호제법</p>
+    숫자 a,b는 a>b, b/a의 나머지가 r인 경우
+    <br />
+    a와 b의 최대공약수 = b와 r의 최대 공약수 <br />
+    r= 0일때 b가 최대공약수 <br />
+    r= 0인경우 b/r로 나는 나머지 r0을 반복하여 나머지가 0이 되는 경우 나누는
+    수가 a,b의 최대 공약수 이다.
 
-</body>
+    <p>조건 1 : 나머지가 없는 경우 a가 최대 공약수</p>
+    <p>조건 2 : 나머지가 있는 경우는 나누기를 계속해야함</p>
+    <p>조건 3 : 나머지가 있지만 더이상 나눌 수가 없는 경우 return = 1</p>
+
+    최대 , 최소 공약수 구한 숫자 배열로 push하기 0426 조건
+    <p>m>n || n>0 일 때</p>
+
+    <p>Math.min()</p>
+  </body>
+  <script>
+    solution(2, 9);
+    function solution(n, m) {
+      let answer = [];
+      let gcd = Math.floor(m / n); // 최대 공약수
+      let lcm = 0; // 최소 공배수
+      console.log(gcd);
+      if (gcd > n) {
+        // 최대 공약수
+          while(gcd === 0 ){
+
+          }
+        for (let i = 0; i <= m; i++) {
+          if () {
+            console.log(123);
+          }
+        }
+        console.log(gcd);
+        return gcd;
+      }
+      // 최소 공배수
+    }
+  </script>
 </html>
