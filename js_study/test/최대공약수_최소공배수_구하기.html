@@ -23,26 +23,17 @@
     <p>Math.min()</p>
   </body>
   <script>
-    solution(2, 9);
+    solution(2, 3);
     function solution(n, m) {
       let answer = [];
-      let gcd = Math.floor(m / n); // 최대 공약수
-      let lcm = 0; // 최소 공배수
-      console.log(gcd);
-      if (gcd > n) {
-        // 최대 공약수
-          while(gcd === 0 ){
-
-          }
-        for (let i = 0; i <= m; i++) {
-          if () {
-            console.log(123);
-          }
-        }
-        console.log(gcd);
-        return gcd;
+      let gcd = 0;
+      while (n < m) {
+        gcd = n % m;
+        n = m;
+        console.log((n = m));
+        m = gcd;
       }
-      // 최소 공배수
+      console.log(gcd);
     }
   </script>
 </html>
