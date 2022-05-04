@@ -23,17 +23,24 @@
     <p>Math.min()</p>
   </body>
   <script>
-    solution(2, 3);
+    solution(2, 35);
     function solution(n, m) {
       let answer = [];
-      let gcd = 0;
-      while (n < m) {
-        gcd = n % m;
-        n = m;
-        console.log((n = m));
-        m = gcd;
+      let gcd = null;
+      let min = m > 0 && n > 0 ? Math.min(m, n) : null;
+      let max = m > 0 && n > 0 ? Math.max(m, n) : null;
+
+      console.log(min, max, max % min);
+      while (min > 0) {
+        gcd = max % min;
+        console.log(max % min);
+        max = min;
+        console.log(max);
+        min = gcd;
       }
       console.log(gcd);
+
+      // console.log(gcd);
     }
   </script>
 </html>
