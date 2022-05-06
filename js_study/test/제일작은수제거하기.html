@@ -21,9 +21,8 @@
     function solution(arr) {
       let answer = [];
       if (arr.length > 1) {
-        let minIndex = arr.indexOf(Math.min(...arr));
-        console.log(minIndex); //  왜 이거 삼 나와ㅕ?
-        answer.push(arr.filter((el) => el !== minIndex));
+        let minIndex = Math.min(...arr);
+        answer = arr.filter((el) => el !== minIndex);
       } else {
         answer.push(-1);
       }
