@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지 판단하려
+    합니다. <br />
+    n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고,<br />
+    n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.<br />
+    제한 사항 n은 1이상, 50000000000000 이하인 양의 정수입니다.
+    <br />
+    https://mathbang.net/634#recentEntries<br />
+    조선시대 방법 제곱근 구하기 > 근사값까지만 구해지는거라 정확하진 않음 ...
+    <br />
+    1.전체 나누기 / 2<br />
+    2. 위 나누기 값 - i씩<br />
+    3. 음수가 되거나 0이되면 멈추기 <br />
+    4. 멈춰진 숫자 *2
+    <ul>
+      <li>제곱근 구하기 완료</li>
+      <li>완료 시점에 제곱근끼리 곱한 값과 = 기존 숫자랑 같은가?</li>
+      <li>true: 기존 제곱근 + 1</li>
+      <li>false : -1</li>
+      <li></li>
+    </ul>
+  </body>
+  <script>
+    const num = 1;
+    solution(num);
+    //18번만 틀리는 예제....
+    /*function solution(num) {
+      let answer = "";
+      if (num > 1) {
+        let division = num / 2;
+        for (let i = 1; i <= num; i++) {
+          let div = division - i;
+          //let div = Math.floor(division) === 0 ? num : division - i;
+          division = div;
+          if (div <= i && div !== 0) {
+            let endDiv = div * 2;
+            answer = endDiv * endDiv === num ? (endDiv + 1) * (endDiv + 1) : -1;
+            break;
+          }
+        }
+      } else {
+        answer = num * 2;
+      }
+      return answer;
+    }*/
+    //2회차
+    function solution(num) {
+      let answer = "";
+      if (num > 1) {
+        console.log(num > 1);
+        let division = num / 2;
+        for (let i = 1; i <= num; i++) {
+          let div = division - i;
+          //let div = Math.floor(division) === 0 ? num : division - i;
+          division = div;
+          if (div <= i && div !== 0) {
+            let endDiv = div * 2;
+            answer = endDiv * endDiv === num ? (endDiv + 1) * (endDiv + 1) : -1;
+            break;
+          }
+        }
+      } else {
+        answer = (num + 1) * (num + 1);
+      }
+      console.log(answer);
+      return answer;
+    }
+  </script>
+</html>

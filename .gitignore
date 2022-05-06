@@ -2,3 +2,5 @@
 /v-model/node_modules/
 /v-model/.idea/jsLinters/
 /v-model/.idea/
+/.idea/inspectionProfiles/Project_Default.xml
+/v-model/package-lock.json
