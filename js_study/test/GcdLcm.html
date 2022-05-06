@@ -26,37 +26,34 @@
     최대공약수 = 최소 공배수랑 나머지들 곱해야되니까!
   </body>
   <script>
-    solution(1112, 695);
+    solution(5, 955);
     function solution(n, m) {
       let answer = [];
       let min = Math.min(m, n);
       let max = Math.max(m, n);
       answer[0] = gcd(min, max);
       answer[1] = (n * m) % answer[0];
+
       console.log(answer);
       return answer;
     }
     function gcd(min, max) {
       // 최소 공약수를 구하는 로직을 작성하시오.
       /* 작성 START */
-
-      //max 나누기 min의 나머지 값이 0 인 경우 min = gcd
-
-      function getGcd() {
-        while (max / min >= 1) {
-          // 조건 1번 이상 나뉘는 경우
+      if (Math.floor(max % min) === 0) {
+        return min; //max 나누기 min의 나머지 값이 0 인 경우 min = gcd
+      } else {
+        while (max / min > 1) {
+          //while의 조건 : 참일 때 실행됨 :: 조건 1번 이상 나뉘는 경우
           //max 나누기 min의 나머지가 min보다 작은 경우 min / 나머지로 계산하기
-          //while의 조건 : 참일 때 실행됨
           // 조건 : 나머지가 1 이상 일 때 조건 문
-          let kkk = max % min; // max/ min의 나머지가 0인 경우 최대 공약수
+          let num = max % min; // max/ min의 나머지가 0인 경우 최대 공약수
           max = min;
-          kkk = min;
-          if ((kkk = 0)) break;
+          min = num;
+          if (num === 0) break;
         }
+        return max;
       }
-
-      return Math.floor(max % min) === 0 ? min : getGcd();
-      // max와 min 나누기 나머지가 0인 경우에만 min
       /* 작성 END */
     }
   </script>
