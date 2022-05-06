@@ -32,29 +32,21 @@
       let min = Math.min(m, n);
       let max = Math.max(m, n);
       answer[0] = gcd(min, max);
-      answer[1] = (n * m) % answer[0];
-
-      console.log(answer);
+      answer[1] = (min * max) / answer[0];
       return answer;
     }
     function gcd(min, max) {
-      // 최소 공약수를 구하는 로직을 작성하시오.
-      /* 작성 START */
       if (Math.floor(max % min) === 0) {
-        return min; //max 나누기 min의 나머지 값이 0 인 경우 min = gcd
+        return min;
       } else {
         while (max / min > 1) {
-          //while의 조건 : 참일 때 실행됨 :: 조건 1번 이상 나뉘는 경우
-          //max 나누기 min의 나머지가 min보다 작은 경우 min / 나머지로 계산하기
-          // 조건 : 나머지가 1 이상 일 때 조건 문
-          let num = max % min; // max/ min의 나머지가 0인 경우 최대 공약수
+          let num = max % min;
           max = min;
           min = num;
           if (num === 0) break;
         }
         return max;
       }
-      /* 작성 END */
     }
   </script>
 </html>
