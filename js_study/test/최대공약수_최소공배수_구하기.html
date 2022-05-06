@@ -26,45 +26,38 @@
     최대공약수 = 최소 공배수랑 나머지들 곱해야되니까!
   </body>
   <script>
-    solution(1000000, 999999);
+    solution(1112, 695);
     function solution(n, m) {
       let answer = [];
-      let min = m > 0 && n > 0 ? Math.min(m, n) : null;
-      let max = m > 0 && n > 0 ? Math.max(m, n) : null;
+      let min = Math.min(m, n);
+      let max = Math.max(m, n);
       answer[0] = gcd(min, max);
-      answer[1] = lcm(min, max);
+      answer[1] = (n * m) % answer[0];
       console.log(answer);
       return answer;
     }
     function gcd(min, max) {
-      if (max % min === 0) {
-        return min;
-      } else {
-        while (min > 0) {
-          let val = max % min;
+      // 최소 공약수를 구하는 로직을 작성하시오.
+      /* 작성 START */
+
+      //max 나누기 min의 나머지 값이 0 인 경우 min = gcd
+
+      function getGcd() {
+        while (max / min >= 1) {
+          // 조건 1번 이상 나뉘는 경우
+          //max 나누기 min의 나머지가 min보다 작은 경우 min / 나머지로 계산하기
+          //while의 조건 : 참일 때 실행됨
+          // 조건 : 나머지가 1 이상 일 때 조건 문
+          let kkk = max % min; // max/ min의 나머지가 0인 경우 최대 공약수
           max = min;
-          min = val;
-          return val;
+          kkk = min;
+          if ((kkk = 0)) break;
         }
       }
-    }
-    function lcm(min, max) {
-      return Math.floor(
-        gcd(min, max) * (min / gcd(min, max)) * (max / gcd(min, max))
-      );
-    }
 
-    /*
-function solution(num1, num2) {
-  const gcd = (a, b) => (a % b === 0 ? b : gcd(b, a % b));
-  const lcm = (a, b) => (a * b) / gcd(a, b);
-  return [gcd(num1, num2), lcm(num1, num2)];
-}*/
-    /*function solution(num1, num2) {
-      const gcd = (a, b) => (a % b === 0 ? b : gcd(b, a % b));
-      const lcm = (a, b) => (a * b) / gcd(a, b);
-      console.log(gcd(num1, num2), lcm(num1, num2));
-      return [gcd(num1, num2), lcm(num1, num2)];
-    }*/
+      return Math.floor(max % min) === 0 ? min : getGcd();
+      // max와 min 나누기 나머지가 0인 경우에만 min
+      /* 작성 END */
+    }
   </script>
 </html>
