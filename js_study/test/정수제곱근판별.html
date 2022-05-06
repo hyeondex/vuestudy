@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지 판단하려
+    합니다. <br />
+    n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고,<br />
+    n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.<br />
+    제한 사항 n은 1이상, 50000000000000 이하인 양의 정수입니다.
+    <br />
+    https://mathbang.net/634#recentEntries<br />
+    조선시대 방법 제곱근 구하기<br />
+    1.전체 나누기 / 2<br />
+    2. 그 나눈 값은 for문의 i로 돌리기<br />
+    3. 음수가 되거나 0이되면 멈추기 <br />
+    4. 멈춰진 숫자 *2
+  </body>
+  <script>
+    const num = 121;
+    solution(num);
+    function solution(num) {
+      let answer = "";
+      let division = num / 2;
+      for (let i = 0; i < num; i++) {
+        let div = Math.floor(division / i++);
+        if (div === 1) {
+          div = i * 2;
+          break;
+        }
+        console.log(132, div);
+      }
+      return answer;
+    }
+  </script>
+</html>
