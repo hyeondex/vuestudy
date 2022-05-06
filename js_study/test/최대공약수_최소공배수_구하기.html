@@ -21,26 +21,50 @@
     <p>m>n || n>0 일 때</p>
 
     <p>Math.min()</p>
+
+    <p>lcm = gcd * (num1/gcd) * (num2/gcd)</p>
+    최대공약수 = 최소 공배수랑 나머지들 곱해야되니까!
   </body>
   <script>
-    solution(2, 35);
+    solution(1000000, 999999);
     function solution(n, m) {
       let answer = [];
-      let gcd = null;
       let min = m > 0 && n > 0 ? Math.min(m, n) : null;
       let max = m > 0 && n > 0 ? Math.max(m, n) : null;
-
-      console.log(min, max, max % min);
-      while (min > 0) {
-        gcd = max % min;
-        console.log(max % min);
-        max = min;
-        console.log(max);
-        min = gcd;
-      }
-      console.log(gcd);
-
-      // console.log(gcd);
+      answer[0] = gcd(min, max);
+      answer[1] = lcm(min, max);
+      console.log(answer);
+      return answer;
     }
+    function gcd(min, max) {
+      if (max % min === 0) {
+        return min;
+      } else {
+        while (min > 0) {
+          let val = max % min;
+          max = min;
+          min = val;
+          return val;
+        }
+      }
+    }
+    function lcm(min, max) {
+      return Math.floor(
+        gcd(min, max) * (min / gcd(min, max)) * (max / gcd(min, max))
+      );
+    }
+
+    /*
+function solution(num1, num2) {
+  const gcd = (a, b) => (a % b === 0 ? b : gcd(b, a % b));
+  const lcm = (a, b) => (a * b) / gcd(a, b);
+  return [gcd(num1, num2), lcm(num1, num2)];
+}*/
+    /*function solution(num1, num2) {
+      const gcd = (a, b) => (a % b === 0 ? b : gcd(b, a % b));
+      const lcm = (a, b) => (a * b) / gcd(a, b);
+      console.log(gcd(num1, num2), lcm(num1, num2));
+      return [gcd(num1, num2), lcm(num1, num2)];
+    }*/
   </script>
 </html>
