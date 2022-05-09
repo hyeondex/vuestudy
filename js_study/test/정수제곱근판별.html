@@ -31,26 +31,26 @@
     solution(num);
     //18번만 틀리는 예제....
     /*function solution(num) {
-      let answer = "";
-      if (num > 1) {
-        let division = num / 2;
-        for (let i = 1; i <= num; i++) {
-          let div = division - i;
-          //let div = Math.floor(division) === 0 ? num : division - i;
-          division = div;
-          if (div <= i && div !== 0) {
-            let endDiv = div * 2;
-            answer = endDiv * endDiv === num ? (endDiv + 1) * (endDiv + 1) : -1;
-            break;
-          }
-        }
-      } else {
-        answer = num * 2;
-      }
-      return answer;
-    }*/
+         let answer = "";
+         if (num > 1) {
+           let division = num / 2;
+           for (let i = 1; i <= num; i++) {
+             let div = division - i;
+             //let div = Math.floor(division) === 0 ? num : division - i;
+             division = div;
+             if (div <= i && div !== 0) {
+               let endDiv = div * 2;
+               answer = endDiv * endDiv === num ? (endDiv + 1) * (endDiv + 1) : -1;
+               break;
+             }
+           }
+         } else {
+           answer = num * 2;
+         }
+         return answer;
+       }*/
     //2회차
-    function solution(num) {
+    /*function solution(num) {
       let answer = "";
       if (num > 1) {
         console.log(num > 1);
@@ -67,6 +67,23 @@
         }
       } else {
         answer = (num + 1) * (num + 1);
+      }
+      console.log(answer);
+      return answer;
+    }*/
+    // 피드백
+    /*
+     * 이건 좀 더 깔끔하게 표현할 수 있습니다.
+     * 깔끔하게 표현하기 위해서는 몇 가지 메서드를 알아야하지만요.
+     */
+    function solution(n) {
+      let answer = 0;
+      let square = Math.sqrt(n); // 제곱근을 구하는 메서드
+      let flag = Number.isInteger(square); // 값이 정수인지 체크하는 메서드(소수점이 있어도 false)
+      if (flag) {
+        answer = (square + 1) ** 2; // 제곱은 ** 로 계산할 수 있음
+      } else {
+        answer = -1;
       }
       console.log(answer);
       return answer;
