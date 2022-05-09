@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body></body>
+  <script>
+    const n = 118372;
+    solution(n); /*
+    function solution(n) {
+      let answer = 0;
+      const sortArray = Array.from(String(n)).sort((a, b) => b - a);
+      answer = parseInt(sortArray.join(""));
+      return answer;
+    }*/
+
+    function solution(n) {
+      const newN = n + ""; // 문자열로 변환
+      console.log(newN.split("")); // > 배열로 변환
+      console.log(newN.split("").sort()); // 해당 배열 순서대로 변환
+      console.log(newN.split("").sort().reverse()); // 반대로 변환
+      console.log(newN.split("").sort().reverse().join("")); //"" > , 빠지고 문자열로
+      const newArr = newN.split("").sort().reverse().join("");
+      console.log(newArr, +newArr);
+      return +newArr;
+    }
+    function solution(n) {
+      return parseInt(String(n).split("").sort().reverse().join(""));
+    }
+  </script>
+</html>
