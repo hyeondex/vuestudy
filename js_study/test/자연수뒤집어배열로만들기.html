@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body></body>
+  <script>
+    const n = 123;
+    solution(n);
+    function solution(n) {
+      let arr = [];
+      do {
+        arr.push(n % 10);
+        n = Math.floor(n / 10);
+        console.log(n, n / 10);
+      } while (n > 0);
+      console.log(arr);
+      return arr;
+
+      //return Array.from(String(n), Number).reverse();
+    }
+  </script>
+</html>
