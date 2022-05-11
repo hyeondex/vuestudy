@@ -17,30 +17,20 @@
     solution(s);
     function solution(s) {
       let answer = "";
-      let splitWord = s.split(" ");
-      /*let splitWord = s.split(" ");
-          console.log(splitWord);
-          splitWord.forEach((i, j) => {
-            let splitWord2 = splitWord[i].split[""];
-            console.log(splitWord2);
-            if(j % 2 ===0){
-
-            }
-          });
-    */
-      for (let i = 0; i <= s.length; i++) {
-        let nsw = splitWord.map((el) => el.split(i));
-        console.log(nsw);
-        for (let j = 0; j <= s.length; j++) {
-          if (j % 2 === 0) {
-            console.log(j);
-          } else {
-            console.log(j);
-            answer = nsw.splice(j, 1, nsw[j]);
-          }
+      const words = s.split(" "); // 문자열 > 배열로  단어들을 띄어쓰기를 기준으로 배열로 만들기
+      for (let i = 0; i < words.length; i++) {
+        const word = Array.from(words[i]); //단어를 쪼개서 담는 배열이 필요하지 이건 데이터가 변하지 않을때니까 const
+        let convertWord = ""; // 하단에서 바뀌는 단어를 담는 곳
+        let convertSpellingArray = [];
+        for (let j = 0; j < word.length; j++) {
+          let spelling = word[j];
+          let convertSpelling =
+            j % 2 === 0 ? spelling.toUpperCase() : spelling.toLowerCase();
+          convertSpellingArray.push(convertSpelling);
         }
+        answer = convertSpellingArray.join("");
+        console.log(answer);
       }
-
       return answer;
     }
   </script>
