@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body></body>
+  <script>
+    const s = "try hello world";
+    solution(s);
+    /*function solution(s) {
+      let answer = "";
+      const words = s.split(" "); // 문장을 띄어쓰기를 기준으로 단어 배열로 변환
+      const wordsLength = words.length;
+      let convertWords = []; // 변환된 단어가 들어갈 배열
+      for (let i = 0; i < wordsLength; i++) {
+        // 단어의 수만큼 반복
+        const word = words[i]; // 단어를 하나씩 조회
+        const spellings = Array.from(word); // 단어를 음절 배열로 변환
+        const spellingsLength = spellings.length;
+        let convertWord = ""; // 변환된 단어를 저장할 변수
+        let convertSpellings = []; // 변환된 음절이 들어갈 배열
+        for (let j = 0; j < spellingsLength; j++) {
+          // 음절의 수만큼 반복
+          const spelling = spellings[j]; // 음절을 하나씩 조회
+          let convertSpelling = ""; // 변환된 음절을 저장할 변수
+          /!*
+           * 조건에 따라 음절을 대소문자 변환
+           *!/
+          if (j % 2 == 0) {
+            convertSpelling = spelling.toUpperCase();
+          } else {
+            convertSpelling = spelling.toLowerCase();
+          }
+          convertSpellings.push(convertSpelling); // 변환된 음절을 배열에 저장
+          console.log(convertSpellings);
+        }
+        convertWord = convertSpellings.join(""); // 음절 배열을 단어로 변경
+        console.log(convertWord);
+        convertWords.push(convertWord); // 변환된 단어를 배열에 저장
+      }
+      answer = convertWords.join(" "); // 변환된 단어 배열을 문장으로 변환
+      return answer;
+    }*/
+    // 짧은 버전
+    function solution(s) {
+      let answer = s
+        .split(" ")
+        .map((item) =>
+          Array.from(item)
+            .map((jtem, index) =>
+              index % 2 == 0 ? jtem.toUpperCase() : jtem.toLowerCase()
+            )
+            .join("")
+        )
+        .join(" ");
+      return answer;
+    }
+  </script>
+</html>
