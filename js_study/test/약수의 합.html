@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body></body>
+  <script>
+    const n = 0; // 987
+    solution(n);
+    function solution(n) {
+      let answer = 0;
+      for (let i = 0; i <= 3000; i++) {
+        if (n % i === 0) {
+          answer += i;
+        } else if (n === 0) {
+          console.log(answer);
+        }
+      }
+      return answer;
+    }
+  </script>
+</html>
