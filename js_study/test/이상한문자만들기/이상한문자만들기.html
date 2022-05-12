@@ -18,6 +18,7 @@
     function solution(s) {
       let answer = "";
       const words = s.split(" "); // 문자열 > 배열로  단어들을 띄어쓰기를 기준으로 배열로 만들기
+      let arr = [];
       for (let i = 0; i < words.length; i++) {
         const word = Array.from(words[i]); //단어를 쪼개서 담는 배열이 필요하지 이건 데이터가 변하지 않을때니까 const
         let convertWord = ""; // 하단에서 바뀌는 단어를 담는 곳
@@ -28,10 +29,56 @@
             j % 2 === 0 ? spelling.toUpperCase() : spelling.toLowerCase();
           convertSpellingArray.push(convertSpelling);
         }
-        answer = convertSpellingArray.join("");
-        console.log(answer);
+        convertWord = convertSpellingArray.join("");
+        arr.push(convertWord);
       }
+      answer = arr.join(" ");
       return answer;
     }
+    //남의 코드
+    function toWeirdCase(s) {
+      let result = "";
+
+      for (let word of s.split(" ")) {
+        for (let i in word) {
+          result +=
+            word[i][parseInt(i) % 2 === 0 ? "toUpperCase" : "toLowerCase"]();
+          // 짝수 일때 ["toUpperCase"]()
+          console.log(word[i]["toUpperCase"]());
+        }
+        result += " ";
+      }
+
+      return result.slice(0, -1);
+    }
+    console.log("결과 : " + toWeirdCase("try hello world"));
+
+    // 남의 코드 2
+
+    function toWeirdCase2(s) {
+      var result = "";
+      var num = 0;
+
+      console.log(s.length);
+
+      for (var i = 0; i < s.length; i++) {
+        if (s.charAt(i) == " ") {
+          num = 0;
+          result += " ";
+          continue;
+        } else if (num % 2 == 0) {
+          result += s.charAt(i).toUpperCase();
+          console.log(s.charAt(i));
+          num++;
+        } else {
+          result += s.charAt(i).toLowerCase();
+          console.log(s.charAt(i));
+          num++;
+        }
+      }
+      return result;
+    }
+
+    console.log(999999, toWeirdCase2("try hello world"));
   </script>
 </html>
