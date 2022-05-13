@@ -6,18 +6,26 @@
   </head>
   <body></body>
   <script>
-    const n = 0; // 987
-    solution(n);
+    const n = 0;
+    //solution(n);
     function solution(n) {
       let answer = 0;
-      for (let i = 0; i <= 3000; i++) {
+      for (let i = 1; i <= n; i++) {
         if (n % i === 0) {
           answer += i;
-        } else if (n === 0) {
-          console.log(answer);
         }
       }
       return answer;
     }
+    function sol(n, a = 0, b = 0) {
+      // 남의 코드
+      console.log(a, b);
+      console.log(n <= a / 2);
+      return n <= a / 2 ? b : sol(n, a + 1, (b += n % a ? 0 : a));
+
+      // n은 a나누기 2 보다 작거나 같다 : true 인경우
+      // b 는 solution에 n, a+1 , b는 n 나누기 a의 나머지가 0 일때는 b += 0 : a
+    }
+    console.log(sol(12));
   </script>
 </html>
