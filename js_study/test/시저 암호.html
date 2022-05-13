@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body></body>
+  <script>
+    const s = "a B z"; //"ab";  // 1- 26 사이
+    const n = 4;
+    solution(s, n);
+    function solution(s, n) {
+      let str = s; //s.indexOf(" ") > 0 ? s.replace(/ /g, "") : s;
+      let answer = str
+        .split("")
+        .map((el) => {
+          let num = 0;
+          if (el !== " ") {
+            num = String.fromCharCode(el.charCodeAt() + n);
+            console.log(num);
+          } else if (el === "z" || el === "Z") {
+            console.log(el);
+            console.log(
+              123,
+              String.fromCharCode(el.charCodeAt - "A".charCodeAt)
+            );
+          }
+        })
+        .join("");
+      console.log(answer);
+      return answer;
+    }
+  </script>
+</html>
