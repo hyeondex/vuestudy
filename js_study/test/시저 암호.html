@@ -6,57 +6,44 @@
   </head>
   <body></body>
   <script>
-    const s = "a B z"; // e f a
+    const s = "P"; // e f a
     //"ab";  // 1- 26 사이
-    const n = 4;
+    const n = 15;
+    //solution("P", 15); : 오류 나는 케이스 E로 리턴되야함
     solution(s, n);
     function solution(s, n) {
-      //s.indexOf(" ") > 0 ? s.replace(/ /g, "") : s;
       let num = 0;
       let str = "";
       let answer = "";
-      /* let arr = [];
-      s.split("").map((el) => {
-        console.log(1, el);
-        if (el !== " ") {
-          //공백이 있는 경우
-          //num = String.fromCharCode(el.charCodeAt() + n);
-          num = el.charCodeAt() + n;
-          str = String.fromCharCode(num);
-          if (el === "z" || el === "Z") {
-            // z, Z 인견우
-            num = el === "z" ? "a".charCodeAt() : "A".charCodeAt();
-            str = String.fromCharCode(num);
-          }
-        } else {
-          // 공백이 없는 경우
-          str = " ";
-        }
-        el = str;
-      });*/
-      //.join("");
-      let arr = s.split("");
       let answerArr = [];
-      //let test =
+      let arr = s.length > 1 ? s.split("") : s;
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] === " ") {
           str = " ";
         }
         //z,Z 케이스
         else if (arr[i] === "z" || arr[i] === "Z") {
-          let test = arr.indexOf("z") || arr.indexOf("Z");
-          let newNum = arr[test].charCodeAt(0);
+          //let test = arr.indexOf("z") ? arr.indexOf("z") : arr.indexOf("Z");
+          let newNum = arr[i].charCodeAt(0);
           let newStr = String.fromCharCode(
-            newNum - ("Z".charCodeAt(0) - "A".charCodeAt(0))
+            newNum - ("Z".charCodeAt(0) - "A".charCodeAt(0)) + n - 1
           );
           str = newStr;
         } else {
           num = arr[i].charCodeAt(0);
-          str = String.fromCharCode(num + n);
+          console.log(num);
+          str =
+            ("A".charCodeAt() < num + n && "Z" < num + n) ||
+            ("a".charCodeAt() < num + n && "z" < num + n)
+              ? String.fromCharCode(num + n)
+              : console.log("z");
+          // A(65) - Z(90)
+          // a(97) - b(122)
         }
         answerArr.push(str);
       }
       answer = answerArr.join("");
+      console.log(answer);
       return answer;
     }
   </script>
