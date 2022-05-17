@@ -6,28 +6,57 @@
   </head>
   <body></body>
   <script>
-    const s = "a B z"; //"ab";  // 1- 26 사이
+    const s = "a B z"; // e f a
+    //"ab";  // 1- 26 사이
     const n = 4;
     solution(s, n);
     function solution(s, n) {
-      let str = s; //s.indexOf(" ") > 0 ? s.replace(/ /g, "") : s;
-      let answer = str
-        .split("")
-        .map((el) => {
-          let num = 0;
-          if (el !== " ") {
-            num = String.fromCharCode(el.charCodeAt() + n);
-            console.log(num);
-          } else if (el === "z" || el === "Z") {
-            console.log(el);
-            console.log(
-              123,
-              String.fromCharCode(el.charCodeAt - "A".charCodeAt)
-            );
+      //s.indexOf(" ") > 0 ? s.replace(/ /g, "") : s;
+      let num = 0;
+      let str = "";
+      let answer = "";
+      /* let arr = [];
+      s.split("").map((el) => {
+        console.log(1, el);
+        if (el !== " ") {
+          //공백이 있는 경우
+          //num = String.fromCharCode(el.charCodeAt() + n);
+          num = el.charCodeAt() + n;
+          str = String.fromCharCode(num);
+          if (el === "z" || el === "Z") {
+            // z, Z 인견우
+            num = el === "z" ? "a".charCodeAt() : "A".charCodeAt();
+            str = String.fromCharCode(num);
           }
-        })
-        .join("");
-      console.log(answer);
+        } else {
+          // 공백이 없는 경우
+          str = " ";
+        }
+        el = str;
+      });*/
+      //.join("");
+      let arr = s.split("");
+      let answerArr = [];
+      //let test =
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === " ") {
+          str = " ";
+        }
+        //z,Z 케이스
+        else if (arr[i] === "z" || arr[i] === "Z") {
+          let test = arr.indexOf("z") || arr.indexOf("Z");
+          let newNum = arr[test].charCodeAt(0);
+          let newStr = String.fromCharCode(
+            newNum - ("Z".charCodeAt(0) - "A".charCodeAt(0))
+          );
+          str = newStr;
+        } else {
+          num = arr[i].charCodeAt(0);
+          str = String.fromCharCode(num + n);
+        }
+        answerArr.push(str);
+      }
+      answer = answerArr.join("");
       return answer;
     }
   </script>
