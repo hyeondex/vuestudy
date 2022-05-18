@@ -31,22 +31,29 @@
           str = newStr;
         } else {
           num = arr[i].charCodeAt(0) + n;
-          //대문자 > 대문자로 루프 돌아야됨
           if (num < "Z".charCodeAt(0) && num < "z".charCodeAt(0)) {
             //제일 큰 수를 기준으로 작은 경우에만 num 정상 출력
             str = String.fromCharCode(num);
           } else {
-            // 넘치면 for문 다시 돌려야지
-            if (num > "z".charCodeAt(0)) {
-              let max = "a".charCodeAt(0) + (num - "z".charCodeAt(0) - 1);
-
-              str = String.fromCharCode(max);
+            if (arr[i] === arr[i].toLowerCase()) {
+              //대소문자 구별해서
+              str =
+                num > "z".charCodeAt(0)
+                  ? String.fromCharCode(
+                      "a".charCodeAt(0) + (num - "z".charCodeAt(0) - 1)
+                    )
+                  : String.fromCharCode(num);
             } else {
-              let max = "A".charCodeAt(0) + (num - "Z".charCodeAt(0) - 1);
-              str = String.fromCharCode(max);
+              str =
+                num > "Z".charCodeAt(0)
+                  ? String.fromCharCode(
+                      "A".charCodeAt(0) + (num - "Z".charCodeAt(0) - 1)
+                    )
+                  : String.fromCharCode(num);
             }
           }
         }
+
         answerArr.push(str);
       }
       answer = answerArr.join("");
