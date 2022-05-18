@@ -9,7 +9,7 @@
     //const s = "a B z"; // e f a
     //"ab";  // 1- 26 사이
     //const n = 4;
-    solution("P", 15); //: 오류 나는 케이스 E로 리턴되야함
+    solution("z a b c d c d", 15); //: 오류 나는 케이스 E로 리턴되야함
     //solution(s, n);
     function solution(s, n) {
       let num = 0;
@@ -23,7 +23,6 @@
         }
         //z,Z 케이스
         else if (arr[i] === "z" || arr[i] === "Z") {
-          //let test = arr.indexOf("z") ? arr.indexOf("z") : arr.indexOf("Z");
           let newNum = arr[i].charCodeAt(0);
           let newStr = String.fromCharCode(
             newNum - ("Z".charCodeAt(0) - "A".charCodeAt(0)) + n - 1
@@ -57,6 +56,96 @@
         answerArr.push(str);
       }
       answer = answerArr.join("");
+      return answer;
+    }
+    // 남의 코드
+    function solution(s, n) {
+      let chars =
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXY                          ";
+      console.log(s.split("")); // 배열로 만든
+      console.log(s.split("").map((e) => e)); // 해당
+      console.log(s.split("").map((e) => chars[chars.indexOf(e)]));
+      console.log(s.split("").map((e) => chars.indexOf(e)));
+      console.log(s.split("").map((e) => chars.indexOf(e) + n));
+      console.log(s.split("").map((e) => chars[chars.indexOf(e) + n]));
+      return s
+        .split("")
+        .map((e) => chars[chars.indexOf(e) + n])
+        .join("");
+    }
+    // 남의 코드
+    function solution(s, n) {
+      let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let lower = "abcdefghijklmnopqrstuvwxyz";
+      let answer = "";
+
+      for (let i = 0; i < s.length; i++) {
+        let text = s[i];
+        if (text == " ") {
+          answer += " ";
+          continue;
+        }
+        let textArr = upper.includes(text) ? upper : lower;
+        console.log(upper.includes(text));
+        let index = textArr.indexOf(text) + n; // 더한 수
+        console.log(textArr, textArr.indexOf(text), index);
+        if (index >= textArr.length) index -= textArr.length;
+        console.log(26, textArr.length, index);
+        //해당 알파벳 배열과 index가 같거나 넘으면 textArr.length (26) - index(+n된 수) 반복
+        console.log(answer, index);
+        answer += textArr[index]; // 나올때까지 반복
+      }
+      return answer;
+    }
+    // 피드백 받은 코드
+    function solution(s, n) {
+      let answer = "";
+      const upperMinAscii = 65;
+      const upperMaxAscii = 90;
+      const lowerMinAscii = 97;
+      const lowerMaxAscii = 122;
+      const asciiArray = Array.from(s).map((item) => {
+        let ascii = item.charCodeAt(0);
+        const isWhite = item === " ";
+        if (isWhite) {
+          return ascii;
+        }
+        const isNotAlpahbet =
+          !(ascii >= upperMinAscii && ascii <= upperMaxAscii) &&
+          !(ascii >= lowerMinAscii && ascii <= lowerMaxAscii);
+        if (isNotAlpahbet) {
+          return ascii;
+        }
+        const isUpper = ascii < lowerMinAscii;
+        const min = isUpper ? upperMinAscii : lowerMinAscii;
+        const max = isUpper ? upperMaxAscii : lowerMaxAscii;
+        ascii += n;
+        if (ascii > max) {
+          return (ascii % max) + min - 1;
+        }
+        return ascii;
+      });
+      answer = String.fromCharCode.apply(null, asciiArray);
+      console.log(answer);
+      return answer;
+    }
+
+    function solution(s, n) {
+      let answer = "";
+      const upperMinAscii = 65;
+      const upperMaxAscii = 90;
+      const lowerMinAscii = 97;
+      const lowerMaxAscii = 122;
+
+      const arr = s.split("").map((el) => {
+        let codeNum = el.charCodeAt(0);
+        const getGap = el === " ";
+        if (getGap) return codeNum; // 왜 번호로 넘기는거지?
+        const isNotAlpahbet =
+          !(codeNum >= upperMinAscii && codeNum <= upperMaxAscii) &&
+          !(codeNum >= lowerMinAscii && codeNum <= lowerMaxAscii);
+        console.log(isNotAlpahbet, getGap);
+      });
       return answer;
     }
   </script>
