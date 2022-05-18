@@ -6,11 +6,11 @@
   </head>
   <body></body>
   <script>
-    const s = "P"; // e f a
+    //const s = "a B z"; // e f a
     //"ab";  // 1- 26 사이
-    const n = 15;
-    //solution("P", 15); : 오류 나는 케이스 E로 리턴되야함
-    solution(s, n);
+    //const n = 4;
+    solution("P", 15); //: 오류 나는 케이스 E로 리턴되야함
+    //solution(s, n);
     function solution(s, n) {
       let num = 0;
       let str = "";
@@ -30,20 +30,26 @@
           );
           str = newStr;
         } else {
-          num = arr[i].charCodeAt(0);
-          console.log(num);
-          str =
-            ("A".charCodeAt() < num + n && "Z" < num + n) ||
-            ("a".charCodeAt() < num + n && "z" < num + n)
-              ? String.fromCharCode(num + n)
-              : console.log("z");
-          // A(65) - Z(90)
-          // a(97) - b(122)
+          num = arr[i].charCodeAt(0) + n;
+          //대문자 > 대문자로 루프 돌아야됨
+          if (num < "Z".charCodeAt(0) && num < "z".charCodeAt(0)) {
+            //제일 큰 수를 기준으로 작은 경우에만 num 정상 출력
+            str = String.fromCharCode(num);
+          } else {
+            // 넘치면 for문 다시 돌려야지
+            if (num > "z".charCodeAt(0)) {
+              let max = "a".charCodeAt(0) + (num - "z".charCodeAt(0) - 1);
+
+              str = String.fromCharCode(max);
+            } else {
+              let max = "A".charCodeAt(0) + (num - "Z".charCodeAt(0) - 1);
+              str = String.fromCharCode(max);
+            }
+          }
         }
         answerArr.push(str);
       }
       answer = answerArr.join("");
-      console.log(answer);
       return answer;
     }
   </script>
