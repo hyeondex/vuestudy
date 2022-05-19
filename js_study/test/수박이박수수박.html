@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    길이 n <br />
+    수박수박수박수박수박~ 순으로 이어짐<br />
+    홀 짝 으로 리턴하면 될것같은데.....<br />
+    n은 10,000이하
+  </body>
+  <script>
+    const n = 9; // - 인경우도 확인해야함
+    const s = "수박";
+    solution(n);
+    function solution(n) {
+      let answer = " ";
+      let odd = "";
+      let even = "";
+      let answerArr = [];
+      //console.log(Array.from(s));
+      let arr = [];
+      s.split("").map((el, i) => {
+        arr.forEach((item) => {
+          item = el;
+          arr += item;
+          console.log(item);
+        });
+      });
+      //let arr = s.split("");
+      console.log(arr);
+      for (let i = 1; i <= n; i++) {
+        console.log(arr[i]);
+      }
+      console.log(arr);
+      return answer;
+    }
+  </script>
+</html>
