@@ -129,24 +129,5 @@
       console.log(answer);
       return answer;
     }
-
-    function solution(s, n) {
-      let answer = "";
-      const upperMinAscii = 65;
-      const upperMaxAscii = 90;
-      const lowerMinAscii = 97;
-      const lowerMaxAscii = 122;
-
-      const arr = s.split("").map((el) => {
-        let codeNum = el.charCodeAt(0);
-        const getGap = el === " ";
-        if (getGap) return codeNum; // 왜 번호로 넘기는거지?
-        const isNotAlpahbet =
-          !(codeNum >= upperMinAscii && codeNum <= upperMaxAscii) &&
-          !(codeNum >= lowerMinAscii && codeNum <= lowerMaxAscii);
-        console.log(isNotAlpahbet, getGap);
-      });
-      return answer;
-    }
   </script>
 </html>
