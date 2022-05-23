@@ -16,24 +16,11 @@
     solution(n);
     function solution(n) {
       let answer = " ";
-      let odd = "";
-      let even = "";
-      let answerArr = [];
-      //console.log(Array.from(s));
-      let arr = [];
-      s.split("").map((el, i) => {
-        arr.forEach((item) => {
-          item = el;
-          arr += item;
-          console.log(item);
-        });
-      });
-      //let arr = s.split("");
-      console.log(arr);
-      for (let i = 1; i <= n; i++) {
-        console.log(arr[i]);
+      //let arr = [];
+      for(let i = 1; i <= n; i++){
+        answer += i % 2 === 0 ? '박' :'수';
       }
-      console.log(arr);
+      console.log(answer)
       return answer;
     }
   </script>
