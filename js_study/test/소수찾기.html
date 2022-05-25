@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Title</title>
+</head>
+<body>
+1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을
+만들어 보세요. 소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다. (1은
+소수가 아닙니다.)<br>
+제한 조건 n > 2; n <= 1000000; n은 2이상 1000000이하의
+자연수입니다. 입출력 예
+</body>
+<script>
+    const n = 10; // 2 3 5 7
+    solution(n);
+
+    function solution(n) {
+        let answer = 0;
+        let arr = [];
+        let newArr = [];
+        //1. n만큼의 배열 만들기
+        for (let i = 1; i <= n; i++) {
+            arr.push(i);
+        }
+        // 2. 해당 배열을 가지고 map으로 el을 뺴줌
+        arr.map((el) => {
+            let square =  Number.isInteger(Math.sqrt(el))
+            console.log(el, square)
+            for (let j = 1; j <= n; j++) {
+                // for문으로 el 나누기 j를 했을 때 나머지가 없는 경우,,,,,,?
+                    if(el > 1 && el / j === 1){
+                        el / j === 1 ? newArr.push(j) : false;
+
+                }
+
+            }
+        });
+        return answer;
+    }
+</script>
+</html>
+
