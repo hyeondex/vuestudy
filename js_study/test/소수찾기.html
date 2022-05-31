@@ -12,9 +12,10 @@
 자연수입니다. 입출력 예
 </body>
 <script>
-    const n = 10; // 2 3 5 7
+    const n = 1000000; // 2 3 5 7
     solution(n);
 
+    // 첫번째 식 ( 마지막 테스트 미 통과 )
     function solution(n) {
         let answer = 0;
         let arr = [];
@@ -25,19 +26,31 @@
         }
         // 2. 해당 배열을 가지고 map으로 el을 뺴줌
         arr.map((el) => {
-            let square =  Number.isInteger(Math.sqrt(el))
-            console.log(el, square)
-            for (let j = 1; j <= n; j++) {
-                // for문으로 el 나누기 j를 했을 때 나머지가 없는 경우,,,,,,?
-                    if(el > 1 && el / j === 1){
-                        el / j === 1 ? newArr.push(j) : false;
-
+            for (let j = 2; j <= n; j++) {
+                if (el % j === 0) {
+                    if (el === j) newArr.push(j);
+                    break;
                 }
-
             }
         });
+        answer = newArr.length;
         return answer;
     }
+    // 놀랍게도 설명을 ㅇ;ㅣㅂ해를 못했답니다.?
+    // 두번째 식 ( 효율성 , n의 값이 max 값까지 가는 경우 돌 수 있는 식으로 )
+    // 1. 소수 판별식 만들기 (boolean 으로 떨어지게) 2. n을 소수 판별식으로 구별 하기  3. 개수 answer에 담기?
+    const isPrime = function (n) {
+        for (let i = 2; i < n; i++) {
+            if (n % i === 0) return false;
+        }
+        return true;
+    }
+    console.log(isPrime(n))
+
+    // 세번째 식
+    // 에라토스테네스의 체 ?
+
+
 </script>
 </html>
 

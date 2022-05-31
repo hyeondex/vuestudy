@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<a href="https://ko.javascript.info/arrow-functions-basics">link</a>
+</body>
+<script>
+    let ask = (question, yes, no)=>{
+        if(confirm(question)) yes()
+        else no();
+    };
+    ask(
+        '동의 하십니까? ',
+        ()=> alert('어 동의'),
+        ()=> alert('응 비동의')
+    )
+</script>
+</html>
