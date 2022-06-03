@@ -12,7 +12,33 @@
 자연수입니다. 입출력 예
 </body>
 <script>
-    const n = 1000000; // 2 3 5 7
+    const n = 100000; // 2 3 5 7
+    /*solution(n);
+
+    // 첫번째 식 ( 마지막 테스트 미 통과 )
+    function solution(n) {
+        let answer = 0;
+        let arr = [];
+        let newArr = [];
+        const num = n * n / n ? Math.sqrt(n) : n;
+        //1. n만큼의 배열 만들기
+        for (let i = 1; i <= num; i++) {
+            arr.push(i);
+        }
+        // 2. 해당 배열을 가지고 map으로 el을 뺴줌
+        arr.map((el) => {
+            for (let j = 2; j <= num; j++) {
+                if (el % j === 0) {
+                    if (el === j) newArr.push(j);
+                    break;
+                }
+            }
+        });
+        answer = newArr.length;
+        return answer;
+    }*/
+
+    //알고리즘 개선
     solution(n);
 
     // 첫번째 식 ( 마지막 테스트 미 통과 )
@@ -20,13 +46,14 @@
         let answer = 0;
         let arr = [];
         let newArr = [];
+
         //1. n만큼의 배열 만들기
         for (let i = 1; i <= n; i++) {
             arr.push(i);
         }
         // 2. 해당 배열을 가지고 map으로 el을 뺴줌
         arr.map((el) => {
-            for (let j = 2; j <= n; j++) {
+            for (let j = 2; j <= num; j++) {
                 if (el % j === 0) {
                     if (el === j) newArr.push(j);
                     break;
@@ -36,16 +63,18 @@
         answer = newArr.length;
         return answer;
     }
-    // 놀랍게도 설명을 ㅇ;ㅣㅂ해를 못했답니다.?
-    // 두번째 식 ( 효율성 , n의 값이 max 값까지 가는 경우 돌 수 있는 식으로 )
+
+
+    // 남의 식 ( 효율성 , n의 값이 max 값까지 가는 경우 돌 수 있는 식으로 )
     // 1. 소수 판별식 만들기 (boolean 으로 떨어지게) 2. n을 소수 판별식으로 구별 하기  3. 개수 answer에 담기?
-    const isPrime = function (n) {
-        for (let i = 2; i < n; i++) {
-            if (n % i === 0) return false;
+//https://tobegood.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-javascript-js-k%EC%A7%84%EC%88%98%EC%97%90%EC%84%9C-%EC%86%8C%EC%88%98-%EA%B0%9C%EC%88%98-%EA%B5%AC%ED%95%98%EA%B8%B0
+    const isPrime = function (num) {
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) return false;
         }
         return true;
     }
-    console.log(isPrime(n))
+    console.log('isPrime : ', isPrime(n))
 
     // 세번째 식
     // 에라토스테네스의 체 ?
