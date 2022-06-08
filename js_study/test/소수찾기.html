@@ -13,35 +13,32 @@
 </body>
 <script>
     const n = 100000; // 2 3 5 7
-    /*solution(n);
-
-    // 첫번째 식 ( 마지막 테스트 미 통과 )
+    //solution(n);
+    // 첫번째 식 ( 마지막 식 미 통과 )
     function solution(n) {
-        let answer = 0;
-        let arr = [];
-        let newArr = [];
-        const num = n * n / n ? Math.sqrt(n) : n;
-        //1. n만큼의 배열 만들기
-        for (let i = 1; i <= num; i++) {
-            arr.push(i);
-        }
-        // 2. 해당 배열을 가지고 map으로 el을 뺴줌
-        arr.map((el) => {
-            for (let j = 2; j <= num; j++) {
-                if (el % j === 0) {
-                    if (el === j) newArr.push(j);
-                    break;
-                }
+    let answer = 0;
+    let arr = [];
+    let newArr = [];
+    //const num = n * n / n ? Math.sqrt(n) : n;
+    //1. n만큼의 배열 만들기
+    for (let i = 1; i <= n; i++) {
+        arr.push(i);
+    }
+    // 2. 해당 배열을 가지고 map으로 el을 뺴줌
+    arr.map((el) => {
+        for (let j = 2; j <= n; j++) {
+            if (el % j === 0) {
+                if (el === j) newArr.push(j);
+                break;
             }
-        });
-        answer = newArr.length;
-        return answer;
-    }*/
+        }
+    });
+    answer = newArr.length;
+    return answer;
+  }
 
-    //알고리즘 개선
-    solution(n);
-
-    // 첫번째 식 ( 마지막 테스트 미 통과 )
+    // 첫번째 식 알고리즘 개선( 제곱근으로 구해보기)  false
+    /*solution(n);
     function solution(n) {
         let answer = 0;
         let arr = [];
@@ -62,22 +59,43 @@
         });
         answer = newArr.length;
         return answer;
-    }
-
+    }*/
 
     // 남의 식 ( 효율성 , n의 값이 max 값까지 가는 경우 돌 수 있는 식으로 )
     // 1. 소수 판별식 만들기 (boolean 으로 떨어지게) 2. n을 소수 판별식으로 구별 하기  3. 개수 answer에 담기?
-//https://tobegood.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-javascript-js-k%EC%A7%84%EC%88%98%EC%97%90%EC%84%9C-%EC%86%8C%EC%88%98-%EA%B0%9C%EC%88%98-%EA%B5%AC%ED%95%98%EA%B8%B0
-    const isPrime = function (num) {
+    //https://tobegood.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-javascript-js-k%EC%A7%84%EC%88%98%EC%97%90%EC%84%9C-%EC%86%8C%EC%88%98-%EA%B0%9C%EC%88%98-%EA%B5%AC%ED%95%98%EA%B8%B0
+    /*const isPrime = function (num) {
         for (let i = 2; i < num; i++) {
             if (num % i === 0) return false;
         }
         return true;
     }
-    console.log('isPrime : ', isPrime(n))
+    console.log('isPrime : ', isPrime(n))*/
 
-    // 세번째 식
-    // 에라토스테네스의 체 ?
+    // 2.에라토스테네스의 체
+    const m = 10; // 2 3 5 7
+    solution(m)
+    function solution(m){
+        let arr = Array(m+1).fill(true).fill(false, 0 , 2)
+        //Array(n+1).fill(true) :  n+1개의 길이를 가진 true로 가득찬 배열 완
+        //fill(false, 0 , 2) : 0번쨰부터 2번째(0,1)은 false
+        //console.log(arr) //[false, false, true, true, true, true, true, true, true, true, true]
+            for (let i = 2; i*i<=m; i++){
+                // i가 제곱근이 되서, n 해당 소수의 배수를 셀렉하는 것 같아요
+                // 제곱근이면, flase
+                console.log(i) // 1. 배수 거르기 ( m보다 작은 수는
+                if(arr[i]){
+                    console.log( 'i',i, 'arr[i] : ',arr[i])
+                    //arr[i]는 true
+                for(let j = i*i; j<=m; j+=i){ // 배수 찾기
+                    console.log(j,arr[j])
+                    arr[j] = false;
+                    console.log("j까지 탄",arr)
+                }
+            }
+        }
+        return arr.filter(el => el).length
+    }
 
 
 </script>
