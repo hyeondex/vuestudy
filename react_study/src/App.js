@@ -39,6 +39,7 @@ function Article(props) {
     </article>
   );
 }
+// app
 function App() {
   const list = [
     { id: 1, title: "one", body: "header" },
