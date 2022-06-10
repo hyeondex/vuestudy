@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수,
+    solution을 완성하세요. 예를 들어 s가 "a234"이면 False를 리턴하고 "1234"라면
+    True를 리턴하면 됩니다.
+  </body>
+  <script>
+    const s = "a123"; //a1234
+
+    //a1234 : false ( 숫자만, legnth는 4,6 )
+    function solution(s) {
+      let answer = true;
+      if (s.length === 4 || s.length === 6) {
+        // 문자열의 길이가 4 or 6인 경우
+        for (let i = 0; i < s.length; i++) {
+          parseInt(s[i]) === /d/ ? answer : !answer;
+          break;
+        }
+        return answer;
+      } else {
+        return !answer;
+      }
+    }
+    console.log(solution(s));
+  </script>
+</html>
