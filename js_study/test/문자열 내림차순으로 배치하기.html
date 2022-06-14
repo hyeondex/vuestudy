@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을
+    리턴하는 함수, solution을 완성해주세요. s는 영문 대소문자로만 구성되어
+    있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
+  </body>
+  <script>
+    //A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+    //a b c d e f g h i j k l m n o p q r s t u v w x y z
+    // 아스키 코드로 하기
+
+    const s = "ABSCSdfxdksflkdfjlskdf"; //gfedcbZ
+    /*function solution(s) {
+      let answer = "";
+      let arr = [];
+      for (let i = 0; i < s.length; i++) {
+        let ask = s[i].charCodeAt(0);
+        arr.push(ask);
+      }
+      answer = arr
+        .sort(function (a, b) {
+          return b - a;
+        })
+        .map((el) => {
+          return String.fromCharCode(el);
+        })
+        .join("");
+      return answer;
+    }
+    solution(s);*/
+
+    // 정규식으로 하기
+    /*    function solution(s) {
+      return Array.from(s)
+        .sort((a, b) => b.charCodeAt(0) - a.charCodeAt(0))
+        .join("");
+    }*/
+
+    function solution(s) {
+      return s.split("").sort().reverse().join("");
+    }
+
+    console.log(solution(s));
+  </script>
+</html>
