@@ -1,8 +1,22 @@
 .App {
+  padding: 10px;
   text-align: center;
+  font-size: 1.5em;
 }
 ol,
 ul {
+  display: flex;
+  list-style: none;
+  text-align: left;
+  font-weight: bold;
+}
+li {
+  flex: 1 0 auto;
+}
+article {
+  padding: 10px;
+  background: #000;
+  color: #fff;
 }
 /*
 .App-logo {

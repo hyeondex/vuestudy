@@ -1,5 +1,6 @@
 //import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 function Header(props) {
   //대 문 자 로 기수해야함
@@ -66,23 +67,36 @@ function App() {
     { id: 2, title: "two", body: "nav" },
     { id: 3, title: "three", body: "body" },
   ];
+  /*const _mode = useState("welcome");
+  const mode = _mode[0];
+  const setMode = _mode[1];*/
+  // 윗 세줄 축약형
+  const [mode, setMode] = useState("welcome");
+  let content = null;
+  if (mode === "welcome") {
+    content = (
+      <Article article="Welcome" body="header 누르면 나오는 페이지야"></Article>
+    );
+  } else if (mode === "read") {
+    content = <Article article="read" body="nav쓰 페이지"></Article>;
+  }
   return (
     <div className="App">
       <Header
         title="title 변경해볼게"
         onChangeMode={() => {
-          alert("Header 입니다.");
+          setMode("welcome");
         }}
       ></Header>
       <Nav
         list={list}
         onChangeMode={(id) => {
-          alert(id + "입니다");
+          setMode("read");
         }}
       ></Nav>
       {/*{} ""로 감싸서 보내면 문자열로 보내지고 {}로 넣어주면 데이터 바인딩*/}
-      <Article article="article이 되볼게" body="body도 생겨볼게"></Article>
-      <Article article="dhdP m되볼게" body="body도 생겨볼게"></Article>
+      {/*<Article article="article이 되볼게" body="body도 생겨볼게"></Article>*/}
+      {content}
     </div>
   );
 }
