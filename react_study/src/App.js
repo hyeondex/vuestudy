@@ -44,7 +44,7 @@ function Nav(props) {
           href={"/read/" + li.id}
           onClick={(e) => {
             e.preventDefault();
-            props.onChangeMode(e.target.id);
+            props.onChangeMode(Number(e.target.id));
           }}
         >
           {li.title}
@@ -63,22 +63,31 @@ function Nav(props) {
 // app
 function App() {
   const list = [
-    { id: 1, title: "one", body: "header" },
-    { id: 2, title: "two", body: "nav" },
-    { id: 3, title: "three", body: "body" },
+    { id: 1, title: "one", body: "첫번째 메뉴를 누르면 나오면 페이지" },
+    { id: 2, title: "two", body: "두번째 메뉴를 누르면 나오는 페이지" },
+    { id: 3, title: "three", body: "세번째 메뉴를 누르면 나오는 페이지" },
   ];
   /*const _mode = useState("welcome");
   const mode = _mode[0];
   const setMode = _mode[1];*/
-  // 윗 세줄 축약형
   const [mode, setMode] = useState("welcome");
+  const [id, setId] = useState(null);
   let content = null;
   if (mode === "welcome") {
     content = (
       <Article article="Welcome" body="header 누르면 나오는 페이지야"></Article>
     );
   } else if (mode === "read") {
-    content = <Article article="read" body="nav쓰 페이지"></Article>;
+    let title,
+      body = null;
+    for (let i = 0; i < list.length; i++) {
+      console.log(list[i].id, id);
+      if (list[i].id === id) {
+        title = list[i].title;
+        body = list[i].body;
+      }
+    }
+    content = <Article article={title} body={body}></Article>;
   }
   return (
     <div className="App">
@@ -92,6 +101,7 @@ function App() {
         list={list}
         onChangeMode={(id) => {
           setMode("read");
+          setId(id);
         }}
       ></Nav>
       {/*{} ""로 감싸서 보내면 문자열로 보내지고 {}로 넣어주면 데이터 바인딩*/}
