@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    대 소문자 있는 str s <br />
+    s의 'p', 'y'의 개수를 비교 해 같으면 true / 다르면 false<br />
+    s에 p, y 모두 없는 경우 true <br />
+    대소문자 구별 없음<br />
+    <br />
+    1. 정규식으로 풀기<br />
+    2. 둘중하나 대문자나, 소문자로 변경하기
+  </body>
+  <script>
+    const s = "pPooo"; //p 2개 y 2개 true;
+    function solution(s) {
+      let answer = true;
+      Array.from(s.toUpperCase()).filter((el) => {
+        if ((el === "Y").length === 0 && (el === "P").length === 0) {
+          console.log(123);
+          return answer;
+        } else if ((el === "Y").length === (el === "P").length) {
+          return answer;
+        }
+        console.log(789);
+        return !answer;
+      });
+    }
+    console.log(solution(s));
+  </script>
+</html>
