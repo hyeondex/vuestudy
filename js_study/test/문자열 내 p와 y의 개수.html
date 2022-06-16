@@ -31,7 +31,7 @@
     }
 
     // for문 // 솔직히 말해서 뭔가 엉성한데 지금 완성 된건 여기까지니끼ㅏ......... 일단 둠
-    const j = "PPPPPPPPPPPPPy";
+    const j = "pypypypy";
     function solution(j) {
       let answer = true;
       const arr = j.toUpperCase().split("");
@@ -45,8 +45,19 @@
       p === y ? (answer = answer) : (answer = !answer);
       return answer;
     }
-    console.log(solution(j));
+    //    console.log(solution(j));
+    // 남의 코드~
 
+    function numPY(j) {
+      console.log("str", j);
+      console.log('str.toUpperCase().split("P")', j.toUpperCase().split("P"));
+      console.log('str.toUpperCase().split("Y")', j.toUpperCase().split("Y"));
+      return (
+        j.toUpperCase().split("P").length === j.toUpperCase().split("Y").length
+      );
+    }
+
+    console.log("numPY", numPY(j));
     // 누산기로는 하지 맙시다
     /*    function solution(j) {
       let answer = true;
