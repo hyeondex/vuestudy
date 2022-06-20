@@ -86,6 +86,49 @@ function Create(props) {
     </article>
   ); // 내가 담을 태그
 }
+//update
+function Update(props) {
+  const [title, setTitle] = useState(props.title);
+  const [body, setBody] = useState(props.title);
+  return (
+    <article>
+      <h2>uPdate</h2>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          const title = event.target.title.value;
+          const body = event.target.body.value;
+          props.onUpdate(title, body);
+        }}
+      >
+        <p>
+          <input
+            type="text"
+            name="title"
+            placeholder="title"
+            value={title}
+            onChange={(event) => {
+              setTitle(event.target.value);
+            }}
+          />
+        </p>
+        <p>
+          <textarea
+            name="body"
+            placeholder="body"
+            value={body}
+            onChange={(event) => {
+              setBody(event.target.value);
+            }}
+          ></textarea>
+        </p>
+        <p>
+          <input type="submit" value="Update"></input>
+        </p>
+      </form>
+    </article>
+  );
+}
 // app
 function App() {
   /*const _mode = useState("welcome");
@@ -100,6 +143,7 @@ function App() {
     { id: 3, title: "three", body: "세번째 메뉴를 누르면 나오는 페이지" },
   ]);
   let content = null;
+  let contextControl = null;
   if (mode === "welcome") {
     content = (
       <Article title="Welcome" body="header 누르면 나오는 페이지야"></Article>
@@ -115,6 +159,19 @@ function App() {
       }
     }
     content = <Article title={title} body={body}></Article>;
+    contextControl = (
+      <li>
+        <a
+          href={"/update" + id}
+          onClick={(event) => {
+            event.preventDefault();
+            setMode("UPDATE");
+          }}
+        >
+          update
+        </a>
+      </li>
+    );
   } else if (mode === "CREATE") {
     // 위에서 사용 하는 mode에서 안걸리니까
     content = (
@@ -129,6 +186,29 @@ function App() {
           setNextId(nextId + 1);
         }}
       ></Create>
+    );
+  } else if (mode === "UPDATE") {
+    let title,
+      body = null;
+    for (let i = 0; i < list.length; i++) {
+      //console.log(list[i].id, id);
+      if (list[i].id === id) {
+        title = list[i].title;
+        body = list[i].body;
+      }
+      for (let i = 0; i < list.length; i++) {
+          if(list[i])
+      }
+    }
+    content = (
+      <Update
+        title={title}
+        body={body}
+        onUpdate={(title, body) => {
+          const updatedList = { id: id, title: title, body: body };
+          const newList = [...list];
+        }}
+      ></Update>
     );
   }
   return (
@@ -161,6 +241,7 @@ function App() {
             Create
           </a>
         </li>
+        {contextControl}
       </ul>
     </div>
   );
