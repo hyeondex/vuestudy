@@ -22,18 +22,13 @@
     const strings = ["sun", "bed", "car"];
     const n = 1;
     function solution(strings, n) {
-      let answer = [];
-      for (let i = 0; i < strings.length; i++) {
-        for (let j = 0; j < strings[i].length; j++) {
-          strings[i][j].charCodeAt(0);
-          if (strings[i][1].charCodeAt(0) <= "a".charCodeAt(0)) {
-            answer.push(strings[i][1]);
-          }
-          console.log(strings[i][1].charCodeAt(0));
-        }
-      }
-      return answer;
+      return strings.sort((a, b) => {
+        if (a[n] === b[n]) return (a > b) - (b > a);
+        return (a[n] > b[n]) - (b[n] > a[n]);
+      });
     }
+
     solution(strings, n);
+    console.log(solution(strings, n));
   </script>
 </html>
