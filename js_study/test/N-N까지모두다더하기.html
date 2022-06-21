@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    두정수 A,B.가 주어졌을 떄 a와 b사이에 속한 모든 정수의 합을 리턴하는 함수,
+    solution 완성하세요<br />
+    예를 들어 a=3, b=5인경우 3+4+5 12
+  </body>
+  <script>
+    const a = 5;
+    const b = 3;
+
+    // 제일 직관적으로 쓴 내용
+    function solution(a, b) {
+      let answer = 0;
+
+      let compare = a > b ? a - b : b - a;
+      console.log(compare); // 2
+      Array(compare + 1) // 앞 뒤 빼면
+        .fill()
+        .map((el, i) => {
+          el = el + i; // 흠 여기서 막히넴>>>!!!!!!!!!!
+          console.log(el);
+          answer += el;
+        });
+      return answer;
+    }
+    console.log(solution(a, b));
+  </script>
+</html>
