@@ -130,6 +130,8 @@ function Update(props) {
     </article>
   );
 }
+//update
+
 // app
 function App() {
   /*const _mode = useState("welcome");
@@ -161,17 +163,36 @@ function App() {
     }
     content = <Article title={title} body={body}></Article>;
     contextControl = (
-      <li>
-        <a
-          href={"/update" + id}
-          onClick={(event) => {
-            event.preventDefault();
-            setMode("UPDATE");
-          }}
-        >
-          update
-        </a>
-      </li>
+      <>
+        {"/*이렇게 쓰면 빈태그로 나옴*/ "}
+        <li>
+          <a
+            href={"/update" + id}
+            onClick={(event) => {
+              event.preventDefault();
+              setMode("UPDATE");
+            }}
+          >
+            update
+          </a>
+        </li>
+        <li>
+          <input
+            type="button"
+            value="Delete"
+            onClick={(event) => {
+              const newListDel = [];
+              for (let i = 0; i < list.length; i++) {
+                if (list[i].id !== id) {
+                  newListDel.push(list[i]);
+                }
+              }
+              setList(newListDel);
+              setMode("WELCOME");
+            }}
+          />
+        </li>
+      </>
     );
   } else if (mode === "CREATE") {
     // 위에서 사용 하는 mode에서 안걸리니까
