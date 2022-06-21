@@ -27,7 +27,8 @@ function Article(props) {
   return (
     <article>
       {props.article}
-      <p>{props.body}</p>
+      <p> title : {props.title}</p>
+      <p> body : {props.body}</p>
     </article>
   );
 }
@@ -92,7 +93,7 @@ function Update(props) {
   const [body, setBody] = useState(props.title);
   return (
     <article>
-      <h2>uPdate</h2>
+      <h2>Update</h2>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -191,13 +192,9 @@ function App() {
     let title,
       body = null;
     for (let i = 0; i < list.length; i++) {
-      //console.log(list[i].id, id);
       if (list[i].id === id) {
         title = list[i].title;
         body = list[i].body;
-      }
-      for (let i = 0; i < list.length; i++) {
-          if(list[i])
       }
     }
     content = (
@@ -205,12 +202,21 @@ function App() {
         title={title}
         body={body}
         onUpdate={(title, body) => {
-          const updatedList = { id: id, title: title, body: body };
           const newList = [...list];
+          const updatedList = { id: id, title: title, body: body };
+          for (let i = 0; i < newList.length; i++) {
+            if (newList[i].id === id) {
+              newList[i] = updatedList;
+              break;
+            }
+          }
+          setList(newList);
+          setMode("READ");
         }}
       ></Update>
     );
   }
+
   return (
     <div className="App">
       <Header
