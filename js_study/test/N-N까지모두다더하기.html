@@ -16,18 +16,30 @@
     // 제일 직관적으로 쓴 내용
     function solution(a, b) {
       let answer = 0;
-
       let compare = a > b ? a - b : b - a;
-      console.log(compare); // 2
-      Array(compare + 1) // 앞 뒤 빼면
-        .fill()
+      Array(compare + 1)
+        .fill(0)
         .map((el, i) => {
-          el = el + i; // 흠 여기서 막히넴>>>!!!!!!!!!!
-          console.log(el);
-          answer += el;
+          el = a > b ? b : a;
+          answer += el + i;
         });
       return answer;
     }
+    //min, max
+    function solution(a, b) {
+      let answer = 0;
+      console.log();
+      for (let i = Math.min(a, b); i <= Math.max(a, b); i++) {
+        answer += i;
+      }
+      return answer;
+    }
     console.log(solution(a, b));
+    //
+    function adder(a, b) {
+      console.log(Math.abs(b - a));
+      return ((a + b) * (Math.abs(b - a) + 1)) / 2;
+    }
+    console.log(adder(a, b));
   </script>
 </html>
