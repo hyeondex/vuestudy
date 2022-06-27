@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    arr , diviser 로 나눠서 하는거야...!?
+  </body>
+  <script>
+    const arr = [5, 9, 7, 10];
+    // const arr = [2, 36, 1, 3];
+    //const arr = [3, 2, 6];
+    const divisor = 5;
+    //const divisor = 1;
+    //const divisor = 10;
+    // 8번만 미통과...
+    function solution(arr, divisor) {
+      let answer = [];
+
+      arr.map((el) => {
+        if (el % divisor === 0) {
+          answer.push(el);
+        } else if (el === 1 || divisor === 1) {
+          answer.push(el);
+        } else if (el < divisor) {
+          answer.splice(0, 1, -1);
+        }
+      });
+      answer.sort((a, b) => {
+        return a - b;
+      });
+      return answer;
+    }
+    console.log(solution(arr, divisor));
+  </script>
+</html>
