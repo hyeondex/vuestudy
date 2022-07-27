@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <a href="https://ko.javascript.info/arrow-functions-basics">link</a>
+  </body>
+  <script>
+    function Item(tit, price) {
+      // this = {} // :: 빈 객체를 만들어 this에 할당합니다.
+      this.tit = tit;
+      this.price = price;
+      this.titAlert = function () {
+        alert(this.tit); // 해당 this는 item3
+      };
+    }
+
+    let item1 = new Item("타이틀1", 999);
+    let item2 = new Item("타이틀2", 888);
+    let item3 = new Item("타이틀3", 777);
+
+    console.log(item1, item2, item3);
+
+    item3.titAlert();
+  </script>
+</html>

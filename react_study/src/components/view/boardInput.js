@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function BoardInput(props) {
-    return (
-        <div>
-            <input type="text"/>
-        </div>
-    );
+class BoardInput extends Component{
+    render(){
+        return (
+            <div>
+                input
+                <input type="text"/>
+            </div>
+        );
+    }
 }
+
 
 export default BoardInput;

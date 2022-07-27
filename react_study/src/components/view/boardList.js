@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function BoardList(props) {
-    return (
-        <div>
-            {props.name}
-            <li></li>
-        </div>
-    );
+class BoardList extends Component{
+    render(){
+        return (
+            <div>
+               <li>list</li>
+            </div>
+        );
+    }
 }
+
 
 export default BoardList;

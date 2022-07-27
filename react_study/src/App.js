@@ -1,15 +1,21 @@
-//import "./App.css";
-import BoardList from "./components/view/boardList";
-import BoardInput from "./components/view/boardInput";
+import React, {Component} from 'react';
+import {Route, Router} from "react-router-dom";
+import boardList from "./components/view/boardList";
+import boardInput from "./components/view/boardInput";
+
 
 // app
 function App() {
 
     return (
-        <main>
-            <BoardList name="게시판 리스트"></BoardList>
-            <BoardInput name="게시물 작성" ></BoardInput>
-        </main>
+    <Router>
+        <div>
+
+            <Route exact path="./components/view/boardInput.js" Component ={boardInput}> input</Route>
+            <Route exact path="./components/view/boardInput.js.js" Component ={boardList} >list</Route>
+        </div>
+    </Router>
+
     );
 }
 
