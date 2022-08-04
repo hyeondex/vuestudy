@@ -13,7 +13,7 @@
       this.tit = tit;
       this.price = price;
       this.titAlert = function () {
-        alert(this.tit); // 해당 this는 item3
+        //alert(this.tit); // 해당 this는 item3
       };
     }
 
@@ -24,5 +24,48 @@
     console.log(item1, item2, item3);
 
     item3.titAlert();
+    
+    
+    /*class Test {
+        constructor() {
+            this.test= "test"
+        }
+        testFunc (){
+            console.log(this.test)
+        }
+    }
+
+    class Test2 extends Test{
+        constructor() {
+          super();
+            this.name = "name"
+            this.test = "test2"
+        }
+        testFunc2 (){
+            console.log(this.test)
+        }
+    }
+    const test2 = new Test2();
+    test2.testFunc();
+    test2.testFunc2();
+    console.log(test2)*/
+    class Test {
+        test= "test"
+        testFunc = () => {
+            console.log(this.test)
+        }
+    }
+
+    class Test2 extends Test{
+        name = "name"
+        test = "test2"
+        testFunc2 = () => {
+            console.log(this.test)
+        }
+    }
+    const test2 = new Test2();
+    test2.testFunc();
+    test2.testFunc2();
+
   </script>
 </html>
