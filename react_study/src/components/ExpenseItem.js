@@ -1,16 +1,15 @@
 import "./ExpenseItem.css";
 
 // 비용 관련 component
-function ExpenseItem() {
-  const expenseDate = new Date(2022, 8, 17);
-  const expenseTitle = "title";
-  const expenseAmount = 123456789;
+function ExpenseItem(Props) {
+
   return (
     <div className="expense-item">
-      <div>{expenseDate.toISOString()}</div>
-      <div className="expense-item__description">
-        <h2>{expenseTitle}</h2>
-        <div className="expense-item__price">${expenseAmount}</div>
+        <div id={Props.id}></div>
+      <div title={Props.title}></div>
+      <div >
+        <h2 date={Props.date}>{}</h2>
+        <div amount={Props.amount}></div>
       </div>
     </div>
   );
