@@ -1,15 +1,15 @@
 import "./ExpenseItem.css";
 
 // 비용 관련 component
-function ExpenseItem(Props) {
+function ExpenseItem(props) {
 
   return (
     <div className="expense-item">
-        <div id={Props.id}></div>
-      <div title={Props.title}></div>
+        <div>{props.id}</div>
+      <div >{props.title}</div>
+        <h2 >{props.date.toDateString()}</h2>
       <div >
-        <h2 date={Props.date}>{}</h2>
-        <div amount={Props.amount}></div>
+        <div>{props.amount}</div>
       </div>
     </div>
   );
