@@ -1,5 +1,6 @@
 import React from "react";
-import ExpenseItem from "./components/ExpenseItem";
+import ExpenseBoard from "./components/ExpenseBoard";
+import Common from "./components/Common";
 
 // app
 function App() {
@@ -29,33 +30,10 @@ function App() {
       date: new Date(2022, 8, 17),
     },
   ];
-
   return (
     <div>
-      <ExpenseItem
-        title={data[0].title}
-        id={data[0].id}
-        amount={data[0].amount}
-        date={data[0].date}
-      />
-      <ExpenseItem
-        title={data[1].title}
-        id={data[1].id}
-        amount={data[1].amount}
-        date={data[1].date}
-      />
-      <ExpenseItem
-        title={data[2].title}
-        id={data[2].id}
-        amount={data[2].amount}
-        date={data[2].date}
-      />
-      <ExpenseItem
-        title={data[3].title}
-        id={data[3].id}
-        amount={data[3].amount}
-        date={data[3].date}
-      />
+      <ExpenseBoard data={data} />
+      <common />
     </div>
   );
 }

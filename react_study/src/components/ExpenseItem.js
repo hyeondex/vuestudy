@@ -1,6 +1,7 @@
 import "./ExpenseItem.css";
 import "./ExpenseDate";
 import ExpenseDate from "./ExpenseDate";
+import ExpensePrice from "./ExpensePrice";
 
 // 비용 관련 component
 function ExpenseItem(props) {
@@ -12,8 +13,7 @@ function ExpenseItem(props) {
         {props.title}
         <ExpenseDate date={props.date} />
       </div>
-
-      <div className="price">{props.amount}</div>
+      <ExpensePrice price={props.amount} />
     </div>
   );
 }

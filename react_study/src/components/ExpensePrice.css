@@ -1,0 +1,9 @@
+.price {
+  min-width: 100px;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+  color: blue;
+  vertical-align: middle;
+}
