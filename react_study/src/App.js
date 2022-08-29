@@ -37,25 +37,25 @@ function App() {
         id={data[0].id}
         amount={data[0].amount}
         date={data[0].date}
-      ></ExpenseItem>
+      />
       <ExpenseItem
         title={data[1].title}
         id={data[1].id}
         amount={data[1].amount}
         date={data[1].date}
-      ></ExpenseItem>
+      />
       <ExpenseItem
         title={data[2].title}
         id={data[2].id}
         amount={data[2].amount}
         date={data[2].date}
-      ></ExpenseItem>
+      />
       <ExpenseItem
         title={data[3].title}
         id={data[3].id}
         amount={data[3].amount}
         date={data[3].date}
-      ></ExpenseItem>
+      />
     </div>
   );
 }

@@ -1,0 +1,6 @@
+.date {
+  display: flex;
+}
+.date > div {
+  margin-left: 10px;
+}
