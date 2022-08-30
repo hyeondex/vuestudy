@@ -1,0 +1,6 @@
+.card {
+  background: #000;
+}
+.card > * {
+  color: #fff;
+}

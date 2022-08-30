@@ -1,9 +1,8 @@
 import React from "react";
-import ExpenseBoard from "./components/ExpenseBoard";
-import Common from "./components/Common";
+import ExpenseBoard from "./components/expense/ExpenseBoard";
 
 // app
-function App() {
+const App = () => {
   const data = [
     {
       id: 0,
@@ -33,9 +32,8 @@ function App() {
   return (
     <div>
       <ExpenseBoard data={data} />
-      <common />
     </div>
   );
-}
+};
 
 export default App;

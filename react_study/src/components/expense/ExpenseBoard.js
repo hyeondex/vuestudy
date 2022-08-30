@@ -1,10 +1,10 @@
 import "./ExpenseBoard.css";
 import ExpenseItem from "./ExpenseItem";
-import Common from "./Common";
+import Card from "../common/Card";
 
-function ExpenseBoard(props) {
+const ExpenseBoard = (props) => {
   return (
-    <Common className="board">
+    <Card>
       <ExpenseItem
         id={props.data[0].id}
         title={props.data[0].title}
@@ -29,8 +29,8 @@ function ExpenseBoard(props) {
         price={props.data[3].amount}
         date={props.data[3].date}
       />
-    </Common>
+    </Card>
   );
-}
+};
 
 export default ExpenseBoard;

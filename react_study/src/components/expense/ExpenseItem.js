@@ -4,7 +4,7 @@ import ExpenseDate from "./ExpenseDate";
 import ExpensePrice from "./ExpensePrice";
 
 // 비용 관련 component
-function ExpenseItem(props) {
+const ExpenseItem = (props) => {
   // 위에 변수로 빼서 사용하기
   return (
     <div className="expense-item">
@@ -16,6 +16,6 @@ function ExpenseItem(props) {
       <ExpensePrice price={props.amount} />
     </div>
   );
-}
+};
 
 export default ExpenseItem;
