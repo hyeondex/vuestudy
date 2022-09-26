@@ -1,5 +1,6 @@
 import React from "react";
 import ExpenseBoard from "./components/expense/ExpenseBoard";
+import NewExpense from "./components/newExpense/NewExpense";
 
 // app
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
   ];
   return (
     <div>
+      <NewExpense />
       <ExpenseBoard data={data} />
     </div>
   );

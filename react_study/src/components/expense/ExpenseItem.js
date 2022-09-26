@@ -11,8 +11,9 @@ const ExpenseItem = (props) => {
   const [title, updateTitle] = useState(props.title);
   const clickHandler = () => {
     console.log("실행");
-    updateTitle("updated! title");
+    updateTitle("변경된 title");
   };
+  setTimeout(clickHandler, 3000);
 
   return (
     <div className="expense-item">
