@@ -26,18 +26,18 @@
       scroll-snap-type: x mandatory;
       counter-reset: grid;
     }
-    /*mobile only*/
+    /*!*mobile only*!
     .grid-container::-webkit-scrollbar-thumb {
       display: none;
     }
-    /*mobile only*/
+    !*mobile only*!
     .grid-container::-webkit-scrollbar {
       display: none;
     }
-    /* Track */
+    !* Track *!
     .grid-container::-webkit-scrollbar-track {
       display: none;
-    }
+    }*/
 
     .grid {
       border: 1px solid #111;
@@ -301,12 +301,8 @@
           let scrBoundSize =
             allSlideWidth - containerWidth - slides[0].clientWidth;
           //slide 전체 포함한 width - 1200px - 슬라이드 하나 width ?
-
-          scrPosition += slides[0].clientWidth;
-          container.scrollLeft = Number(
-            scrBoundSize - scrPosition + slides[0].clientWidth
-          );
-          console.log("스크롤 포지션", scrPosition);
+          console.log(container.scrollLeft);
+          container.scrollLeft += scrPosition + slides[0].clientWidth;
           /*container.animate(
             { scrollLeft: scrPosition + slides[0].clientWidth },
             300,
@@ -318,7 +314,7 @@
           );*/
           prev.classList.add("on");
         });
-        prev.addEventListener("click", () => {
+        /*prev.addEventListener("click", () => {
           //  let scrBoundSize = slideContainerWidth - wrapWidth;
           scrPosition = slideContainer.scrollLeft();
           slideContainer = $(".wrap .grid-container");
@@ -332,7 +328,7 @@
             }
           );
           next.classList.add("on");
-        });
+        });*/
       }
     };
     productSlide();
