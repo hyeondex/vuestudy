@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1"
+    />
+    <title>Title</title>
+  </head>
+  <style>
+    .wrap {
+      position: relative;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #111;
+      overflow: hidden;
+    }
+    .grid-container {
+      display: grid;
+      margin: 0 auto;
+      grid-auto-flow: column;
+      overflow-x: auto;
+      box-sizing: border-box;
+      scroll-snap-type: x mandatory;
+      counter-reset: grid;
+    }
+    /*mobile only*/
+    .grid-container::-webkit-scrollbar-thumb {
+      display: none;
+    }
+    /*mobile only*/
+    .grid-container::-webkit-scrollbar {
+      display: none;
+    }
+    /* Track */
+    .grid-container::-webkit-scrollbar-track {
+      display: none;
+    }
+
+    .grid {
+      border: 1px solid #111;
+      scroll-snap-align: start;
+      scroll-margin-left: 0;
+      /*
+      scroll-margin: 50px;*/
+      /*width: 160px;*/
+      height: auto;
+    }
+    .grid::before {
+      content: counter(grid);
+      font-size: 14px;
+      line-height: 14px;
+      color: Red;
+      counter-increment: grid;
+    }
+
+    .item-box {
+      position: relative;
+    }
+
+    .info {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.3)
+      );
+    }
+
+    .name {
+      display: none;
+    }
+
+    .tit {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      color: #fff;
+      font-weight: 300;
+      letter-spacing: -0.6px;
+    }
+
+    .price {
+      margin-top: 7px;
+      color: #fff;
+    }
+
+    .button {
+      visibility: hidden;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: visibility ease-out 0.5s, ease-out 0.3s;
+      opacity: 0;
+      left: 0;
+    }
+
+    .button.on {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+
+    .button > button {
+      font-size: 0;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background: black;
+    }
+
+    .button.next {
+      left: auto;
+      right: 0;
+    }
+
+    .button.next > button {
+      background: red;
+    }
+
+    @media (min-width: 720px) {
+      .price {
+        margin-top: 10px;
+      }
+
+      .grid-container {
+        width: 100%;
+        margin: 0;
+        scroll-snap-type: none;
+        grid-auto-flow: column;
+        /*grid-auto-columns: minmax(240px, 240px);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 240px));*/
+        gap: 0;
+        overflow-x: scroll;
+      }
+
+      .grid-container:after {
+        display: none;
+      }
+
+      .grid {
+        width: auto;
+        border-radius: 0;
+      }
+
+      .info {
+        padding: 25px 20px;
+      }
+
+      .name {
+        display: block;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #fff;
+      }
+
+      .tit {
+        margin-top: 5px;
+      }
+
+      .price {
+        margin-top: 10px;
+      }
+    }
+  </style>
+  <body>
+    <div class="wrap">
+      <div class="grid-container">
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+        <div class="grid">
+          <a href="#self" class="item-box">
+            <div class="img">
+              <img src="http://www.dummyimage.com/187x250" alt="" />
+            </div>
+            <div class="info">
+              <div class="name">name</div>
+              <div class="tit">description</div>
+              <div class="price">$100</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="button prev">
+        <button type="button">prev</button>
+      </div>
+      <div class="button next">
+        <button type="button">next</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const productSlide = () => {
+      let container = document.querySelector(".grid-container"); //gridcontainer
+      let containerWidth = container.clientWidth;
+      let slides = document.querySelectorAll(".wrap .grid"); //slide 되는 요소 1개의 사이즈
+      let allSlideWidth = slides[0].clientWidth * slides.length; // 스크롤이 생기는 영역 전체 사이즈
+      let prev = document.querySelector(".button.prev"); // 버튼 left
+      let next = document.querySelector(".button.next"); // 버튼 right
+      //console.log(containerWidth, allSlideWidth);
+      //container.scrollLeft = 0;
+      if (containerWidth < allSlideWidth) {
+        console.log("실행");
+        // 1200px < 슬라이드 container
+        prev.classList.remove("on");
+        next.classList.add("on");
+        let scrPosition = container.scrollLeft;
+        next.addEventListener("click", () => {
+          let scrBoundSize =
+            allSlideWidth - containerWidth - slides[0].clientWidth;
+          //slide 전체 포함한 width - 1200px - 슬라이드 하나 width ?
+
+          scrPosition += slides[0].clientWidth;
+          container.scrollLeft = Number(
+            scrBoundSize - scrPosition + slides[0].clientWidth
+          );
+          console.log("스크롤 포지션", scrPosition);
+          /*container.animate(
+            { scrollLeft: scrPosition + slides[0].clientWidth },
+            300,
+            () => {
+              scrBoundSize <= scrPosition
+                ? next.classList.remove("on")
+                : next.classList.add("on");
+            }
+          );*/
+          prev.classList.add("on");
+        });
+        prev.addEventListener("click", () => {
+          //  let scrBoundSize = slideContainerWidth - wrapWidth;
+          scrPosition = slideContainer.scrollLeft();
+          slideContainer = $(".wrap .grid-container");
+          slideContainer.getAnimations(
+            { scrollLeft: scrPosition - slides[0].clientWidth },
+            300,
+            () => {
+              scrPosition > slides[0].clientWidth
+                ? prev.classList.add("on")
+                : prev.classList.remove("on");
+            }
+          );
+          next.classList.add("on");
+        });
+      }
+    };
+    productSlide();
+  </script>
+</html>
