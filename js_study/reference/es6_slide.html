@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>es6 slide</title>
+  <link rel="stylesheet" href="es6_slide.css">
+</head>
+<body>
+<div class="gird-container-cover">
+  <div class="grid-container row">
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="product-list-item">
+        <a href="#self" class="item-box">
+          <div class="img">
+            <img src="http://www.dummyimage.com/187x250" alt="" />
+          </div>
+          <div class="info">
+            <div class="brand">MAATILA</div>
+            <div class="tit">
+              디어썸머 시어서커 여름차렵이불세트(SS/Q/K) 솔리드
+            </div>
+            <div class="price">29,900원</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="button prev">
+    <button type="button">prev</button>
+  </div>
+  <div class="button next">
+    <button type="button">next</button>
+  </div>
+</div>
+</body>
+<script>
+  const productSlide = () =>{
+      let slideCoverWidth = document.querySelector(".gird-container-cover").offsetWidth;
+
+        //let slideCoverWidth = document.querySelector(".gird-container-cover").outerWidth(); // outerwidth는 바닐라자스가 아님
+
+      console.log('slideCoverWidth',slideCoverWidth)
+        let slideContainer = document.querySelector(".gird-container-cover .grid-container");
+        let slides = document.querySelectorAll(".gird-container-cover .grid");
+        let slideContainerWidth = slides[0].clientWidth * slides.length;
+        let slideIdx = Math.ceil(slides.length / 2);
+        let prev = document.querySelector(".button.prev");
+        let next = document.querySelector(".button.next");
+        if (slideCoverWidth < slideContainerWidth) {
+            // 커버 사이즈 < 전체 리스트 사이즈 , pc 기준
+            let scrPosition = slideContainer.scrollLeft();
+            next.classList.add("on");
+            prev.classList.remove("on");
+            next.addEventListener("click", () => {
+                let scrollBoundSize =
+                    slideContainerWidth - slideCoverWidth - slides[0].clientWidth;
+                scrPosition = slideContainer.scrollLeft();
+                slideContainer.animate(
+                    { scrollLeft: scrPosition + slides[0].clientWidth },
+                    300,
+                    () => {
+                        scrollBoundSize <= scrPosition
+                            ? next.classList.remove("on")
+                            : next.classList.add("on");
+                    }
+                );
+                prev.classList.add("on");
+                slideIdx++;
+            });
+            prev.addEventListener("click", () => {
+                //  let scrollBoundSize = slideContainerWidth - slideCoverWidth;
+                scrPosition = slideContainer.scrollLeft();
+                slideContainer = document.querySelector(".gird-container-cover .grid-container");
+                slideContainer.animate(
+                    { scrollLeft: scrPosition - slides[0].clientWidth },
+                    300,
+                    () => {
+                        scrPosition > slides[0].clientWidth
+                            ? prev.classList.add("on")
+                            : prev.classList.remove("on");
+                    }
+                );
+                next.classList.add("on");
+                slideIdx--;
+            });
+        }
+    }
+
+    productSlide();
+  console.log('실행')
+</script>
+</html>
