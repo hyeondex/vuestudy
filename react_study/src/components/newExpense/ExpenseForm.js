@@ -6,18 +6,9 @@ const ExpenseForm = () => {
   const [enteredDate, setEnteredDate] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const titleChangeHandler = (e) => {
-    //onChange 되면 실행
     setEnteredTitle(e.target.value);
-    console.log(
-      "현재 input value",
-      e.target.value,
-      "enteredTitle",
-      enteredTitle
-    );
-    //console.log("setEnteredTitle", setEnteredTitle);
   };
   const amountChangeHandler = (e) => {
-    //onChange 되면 실행
     setEnteredAmount(e.target.value);
   };
   const dateChangeHandler = (e) => {
