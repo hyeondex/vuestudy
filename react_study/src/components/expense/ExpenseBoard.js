@@ -2,23 +2,27 @@ import "./ExpenseBoard.css";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../common/Card";
 import ExpenseFilter from "../newExpense/ExpenseFilter";
+import { useState } from "react";
 
 const ExpenseBoard = (props) => {
+  const [temp, setTemp] = useState([]);
   const dateHandler = (val) => {
-    props.data.map((data, idx) => {
+    const test = props.data.filter((data, idx) => {
       const year = new Date(data.date).toLocaleDateString("en-us", {
         year: "numeric",
       });
-      return year === val ? console.log(13) : console.log(false);
+      if (year === val) return data;
     });
+    setTemp(test);
   };
   return (
     <div>
       <ExpenseFilter onDateHandler={dateHandler} />
       <Card>
-        {props.data.map((data, idx) => (
+        {temp.map((data, idx) => (
           <ExpenseItem
             key={idx}
+            z
             id={data.id}
             title={data.title}
             amount={data.amount}
