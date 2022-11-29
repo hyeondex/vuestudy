@@ -3,38 +3,27 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "../common/Card";
 import ExpenseFilter from "../newExpense/ExpenseFilter";
 
-const dateHandler = (props) => {
-  console.log(props);
-};
 const ExpenseBoard = (props) => {
+  const dateHandler = (val) => {
+    props.data.map((data, idx) => {
+      const year = new Date(data.date).toLocaleDateString("en-us", {
+        year: "numeric",
+      });
+      return year === val ? console.log(13) : console.log(false);
+    });
+  };
   return (
     <div>
       <ExpenseFilter onDateHandler={dateHandler} />
       <Card>
-        <ExpenseItem
-          id={props.data[0].id}
-          title={props.data[0].title}
-          price={props.data[0].amount}
-          date={props.data[0].date}
-        />
-        <ExpenseItem
-          id={props.data[1].id}
-          title={props.data[1].title}
-          price={props.data[1].amount}
-          date={props.data[1].date}
-        />
-        <ExpenseItem
-          id={props.data[2].id}
-          title={props.data[2].title}
-          price={props.data[2].amount}
-          date={props.data[2].date}
-        />
-        <ExpenseItem
-          id={props.data[3].id}
-          title={props.data[3].title}
-          price={props.data[3].amount}
-          date={props.data[3].date}
-        />
+        {props.data.map((data, idx) => (
+          <ExpenseItem
+            key={idx}
+            id={data.id}
+            title={data.title}
+            amount={data.amount}
+          />
+        ))}
       </Card>
     </div>
   );

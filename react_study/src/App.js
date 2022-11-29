@@ -15,13 +15,13 @@ const App = () => {
       id: 1,
       title: "title2",
       amount: 10000,
-      date: new Date(2022, 0, 17),
+      date: new Date(2019, 0, 17),
     },
     {
       id: 2,
       title: "title3",
       amount: 900,
-      date: new Date(2022, 8, 17),
+      date: new Date(2018, 8, 17),
     },
     {
       id: 3,
