@@ -1,13 +1,13 @@
 // form 담아두는 component
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
-const NewExpense = () => {
+const NewExpense = (props) => {
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData, // ExpenseForm의   expenseData를 가져옴
       id: Math.random().toString(),
     };
-    console.log(expenseData);
+    props.onExpenseHandler(expenseData);
   };
 
   return (

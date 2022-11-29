@@ -30,9 +30,13 @@ const App = () => {
       date: new Date(2022, 8, 17),
     },
   ];
+  const addExpenseHandler = (expense) => {
+    console.log("props를 받아 app으로");
+    console.log(expense);
+  };
   return (
     <div>
-      <NewExpense />
+      <NewExpense onExpenseHandler={addExpenseHandler} />
       <ExpenseBoard data={data} />
     </div>
   );
