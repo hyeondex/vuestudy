@@ -10,6 +10,18 @@
 .expense-item + .expense-item {
   border-top: 1px solid #4b4b4b;
 }
+.expense-item.nodata > * {
+  display: none;
+}
+.expense-item.nodata:before {
+  content: "No Data";
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  line-height: 28px;
+  color: #fff;
+  text-align: center;
+}
 .number {
   padding: 0 10px;
   font-weight: 500;
@@ -25,4 +37,7 @@
 }
 .date > div {
   margin-left: 10px;
+}
+
+.nodata {
 }

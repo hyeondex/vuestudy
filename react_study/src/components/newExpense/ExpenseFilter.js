@@ -1,14 +1,17 @@
 import "./ExpenseFilter.css";
+
 const ExpensesFilter = (props) => {
   const selectDate = (e) => {
     const selectedYear = e.target.value; // 선택된 연도 value
-    props.onDateHandler(selectedYear);
+    const defaultVal = e.defaultValue;
+    props.onDateHandler(selectedYear, defaultVal);
   };
   return (
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label>Filter by year</label>
-        <select onChange={selectDate}>
+        <select onChange={selectDate} defaultValue={"all"}>
+          <option value="all">all</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
