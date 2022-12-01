@@ -14,22 +14,26 @@ const ExpenseBoard = (props) => {
     return data.date.getFullYear().toString() === year;
   });
 
-  //nodata case
-  if (tempList.length === 0) {
+  //nodata case 내 작업
+  /*if (tempList.length === 0) {
     return <div className="nodata">nodata</div>;
-  }
+  }*/
 
   return (
     <Card>
       <ExpenseFilter onDateHandler={dateHandler} selected={year} />
-      {tempList.map((data) => (
-        <ExpenseItem
-          key={data.id}
-          title={data.title}
-          amount={data.amount}
-          date={data.date}
-        />
-      ))}
+      {tempList.length === 0 ? (
+        <p className="nodata">No data</p>
+      ) : (
+        tempList.map((data) => (
+          <ExpenseItem
+            key={data.id}
+            title={data.title}
+            amount={data.amount}
+            date={data.date}
+          />
+        ))
+      )}
     </Card>
   );
 };
