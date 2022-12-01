@@ -18,33 +18,22 @@ const ExpenseBoard = (props) => {
   /*if (tempList.length === 0) {
     return <div className="nodata">nodata</div>;
   }*/
+  let list = <p className="nodata">no data</p>;
 
+  if (tempList.length > 0) {
+    list = tempList.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
   return (
     <Card>
       <ExpenseFilter onDateHandler={dateHandler} selected={year} />
-      {/*{tempList.length === 0 ? (
-        <p className="nodata">No data</p>
-      ) : (
-        tempList.map((data) => (
-          <ExpenseItem
-            key={data.id}
-            title={data.title}
-            amount={data.amount}
-            date={data.date}
-          />
-        ))
-      )}*/}
-      {/*위 식과 동일한 내용*/}
-      {tempList.length === 0 && <p className="nodata">No data</p>}
-      {tempList.length > 0 &&
-        tempList.map((data) => (
-          <ExpenseItem
-            key={data.id}
-            title={data.title}
-            amount={data.amount}
-            date={data.date}
-          />
-        ))}
+      {list}
     </Card>
   );
 };
