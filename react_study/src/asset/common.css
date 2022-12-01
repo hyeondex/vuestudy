@@ -14,3 +14,12 @@ button {
   padding: 10px 20px;
   font-weight: bold;
 }
+
+.nodata {
+  display: block;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
