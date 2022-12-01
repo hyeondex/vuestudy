@@ -22,7 +22,7 @@ const ExpenseBoard = (props) => {
   return (
     <Card>
       <ExpenseFilter onDateHandler={dateHandler} selected={year} />
-      {tempList.length === 0 ? (
+      {/*{tempList.length === 0 ? (
         <p className="nodata">No data</p>
       ) : (
         tempList.map((data) => (
@@ -33,7 +33,18 @@ const ExpenseBoard = (props) => {
             date={data.date}
           />
         ))
-      )}
+      )}*/}
+      {/*위 식과 동일한 내용*/}
+      {tempList.length === 0 && <p className="nodata">No data</p>}
+      {tempList.length > 0 &&
+        tempList.map((data) => (
+          <ExpenseItem
+            key={data.id}
+            title={data.title}
+            amount={data.amount}
+            date={data.date}
+          />
+        ))}
     </Card>
   );
 };
