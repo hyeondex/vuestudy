@@ -35,3 +35,25 @@ const ExpenseBoard = (props) => {
 };
 
 export default ExpenseBoard;
+
+/*
+* <Card className="expenses">
+        <ExpensesFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
+        * // 이렇게 한번에 적어 줄 수 도 있습니다.
+        {props.items
+          .filter(
+            (expenseItem) =>
+              expenseItem.date.getFullYear().toString() === filteredYear
+          )
+          .map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))}
+      </Card>*/
