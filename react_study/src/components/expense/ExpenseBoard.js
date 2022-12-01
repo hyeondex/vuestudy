@@ -14,34 +14,31 @@ const ExpenseBoard = (props) => {
     console.log(defaultYearList);
     return setTemp(defaultYearList);
   }*/
-  const dateHandler = (val) => {
+  const dateHandler = (selectedYear) => {
     const tempList = props.data.filter((data) => {
       const tempYear = new Date(data.date).toLocaleDateString("en-us", {
         year: "numeric",
       });
-      if (val === tempYear) {
+      if (selectedYear === tempYear) {
         return data;
       }
     });
     setTemp(tempList);
-    setYear(val);
+    setYear(selectedYear);
   };
 
   return (
-    <div>
+    <Card>
       <ExpenseFilter onDateHandler={dateHandler} selected={year} />
-      <Card>
-        {temp.map((data, idx) => (
-          <ExpenseItem
-            key={idx}
-            id={data.id}
-            title={data.title}
-            amount={data.amount}
-            date={data.date}
-          />
-        ))}
-      </Card>
-    </div>
+      {temp.map((data, idx) => (
+        <ExpenseItem
+          key={idx}
+          title={data.title}
+          amount={data.amount}
+          date={data.date}
+        />
+      ))}
+    </Card>
   );
 };
 

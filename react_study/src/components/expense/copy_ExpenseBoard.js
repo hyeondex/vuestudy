@@ -54,7 +54,7 @@ const ExpenseBoard = (props) => {
   );
 };
 
-export default ExpenseBoard;
+//export default ExpenseBoard;
 
 //1회차
 /*import "./ExpenseBoard.css";
