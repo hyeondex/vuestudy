@@ -4,6 +4,8 @@
   font-size: 1rem;
   padding: 0.5rem;
   border-radius: 12px;
-  color: blue;
+  color: #fff;
+  font-style: italic;
   vertical-align: middle;
+  font-weight: bold;
 }
