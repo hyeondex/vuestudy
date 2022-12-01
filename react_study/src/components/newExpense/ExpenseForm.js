@@ -27,6 +27,10 @@ const ExpenseForm = (props) => {
     setEnteredAmount("");
     setEnteredDate("");
   };
+  const openForm = () => {
+    console.log("start");
+    return document.querySelector(".form form").css("display", "block");
+  };
   return (
     <div className="form">
       <form onSubmit={submitHandler}>
@@ -57,10 +61,16 @@ const ExpenseForm = (props) => {
             value={enteredDate}
           />
         </label>
-        <div className="submit-btn">
+        <div className="btn-wrap">
+          <button type="button">Cancel</button>
           <button type="submit">Add Expense</button>
         </div>
       </form>
+      <div className="btn-wrap">
+        <button type="button" onChange={openForm}>
+          add expense
+        </button>
+      </div>
     </div>
   );
 };
