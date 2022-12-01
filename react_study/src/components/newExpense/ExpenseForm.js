@@ -57,7 +57,7 @@ const ExpenseForm = (props) => {
             value={enteredDate}
           />
         </label>
-        <div className="new-expense__actions">
+        <div className="submit-btn">
           <button type="submit">Add Expense</button>
         </div>
       </form>

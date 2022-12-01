@@ -10,11 +10,7 @@ const NewExpense = (props) => {
     props.onExpenseHandler(expenseData);
   };
 
-  return (
-    <div>
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
-    </div>
-  );
+  return <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />;
 };
 
 export default NewExpense;
