@@ -14,15 +14,6 @@ const ExpenseForm = (props) => {
   const dateChangeHandler = (e) => {
     setEnteredDate(e.target.value);
   };
-  const openForm = (e) => {
-    e.preventDefault();
-    document.querySelector(".form form").style.display = "block";
-    e.target.style.display = "none";
-  };
-  const closeForm = () => {
-    document.querySelector(".form .add-btn button").style.display = "block";
-    document.querySelector(".form form").style.display = "none";
-  };
   const submitHandler = (e) => {
     e.preventDefault(); // page reload X
     const expenseData = {
@@ -35,7 +26,6 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
-    closeForm();
   };
 
   return (
@@ -69,17 +59,12 @@ const ExpenseForm = (props) => {
           />
         </label>
         <div className="btn-wrap">
-          <button type="button" onClick={closeForm}>
+          {/*<button type="button" onClick={closeForm}>
             Cancel
-          </button>
+          </button>*/}
           <button type="submit">Add Expense</button>
         </div>
       </form>
-      <div className="btn-wrap add-btn">
-        <button type="button" onClick={openForm}>
-          add expense
-        </button>
-      </div>
     </div>
   );
 };
