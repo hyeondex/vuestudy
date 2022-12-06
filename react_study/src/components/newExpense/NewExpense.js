@@ -13,15 +13,12 @@ const NewExpense = (props) => {
   };
   const [view, setView] = useState(false);
   const addForm = () => {
-    console.log(view);
-    console.log(!view);
     return setView(!view);
-    //return [props, ...setView(true)];
   };
 
   return (
     <div>
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {view && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
       <button onClick={addForm}>add form</button>
     </div>
   );
