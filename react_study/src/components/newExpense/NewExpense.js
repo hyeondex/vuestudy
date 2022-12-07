@@ -13,6 +13,7 @@ const NewExpense = (props) => {
   };
   const [edit, setEdit] = useState(false);
   const editOpenForm = () => {
+    console.log("editOpenForm", !edit);
     return setEdit(!edit);
   };
   return (

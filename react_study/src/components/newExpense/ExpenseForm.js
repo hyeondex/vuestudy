@@ -29,8 +29,7 @@ const ExpenseForm = (props) => {
     setEnteredDate("");
   };
   const cancelForm = () => {
-    console.log(props.editCloseForm(false));
-    props.editCloseForm(false);
+    props.editCloseForm(Boolean);
   };
   return (
     <div className="form">
