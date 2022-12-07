@@ -12,14 +12,18 @@ const NewExpense = (props) => {
     props.onExpenseHandler(expenseData);
   };
   const [edit, setEdit] = useState(false);
-  const addForm = () => {
+  const editOpenForm = () => {
     return setEdit(!edit);
   };
-
   return (
     <div>
-      {edit && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
-      {!edit && <button onClick={addForm}>add form</button>}
+      {edit && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          editCloseForm={editOpenForm}
+        />
+      )}
+      {!edit && <button onClick={editOpenForm}>add form</button>}
     </div>
   );
 };
