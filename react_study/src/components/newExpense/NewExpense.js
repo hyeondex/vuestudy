@@ -11,15 +11,15 @@ const NewExpense = (props) => {
     };
     props.onExpenseHandler(expenseData);
   };
-  const [view, setView] = useState(false);
+  const [edit, setEdit] = useState(false);
   const addForm = () => {
-    return setView(!view);
+    return setEdit(!edit);
   };
 
   return (
     <div>
-      {view && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
-      <button onClick={addForm}>add form</button>
+      {edit && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
+      {!edit && <button onClick={addForm}>add form</button>}
     </div>
   );
 };
