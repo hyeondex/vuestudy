@@ -28,9 +28,6 @@ const ExpenseForm = (props) => {
     setEnteredAmount("");
     setEnteredDate("");
   };
-  const cancelForm = () => {
-    props.editCloseForm(Boolean);
-  };
   return (
     <div className="form">
       <form onSubmit={submitHandler}>
@@ -62,7 +59,7 @@ const ExpenseForm = (props) => {
           />
         </label>
         <div className="btn-wrap">
-          <button type="button" onClick={cancelForm}>
+          <button type="button" onClick={props.editCloseForm}>
             Cancel
           </button>
           <button type="submit">Add Expense</button>

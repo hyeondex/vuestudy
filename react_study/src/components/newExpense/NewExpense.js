@@ -4,18 +4,25 @@ import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
 const NewExpense = (props) => {
-  const saveExpenseDataHandler = (enteredExpenseData) => {
-    const expenseData = {
-      ...enteredExpenseData, // ExpenseForm의   expenseData를 가져옴
-      id: Math.random().toString(),
-    };
-    props.onExpenseHandler(expenseData);
-  };
   const [edit, setEdit] = useState(false);
   const editOpenForm = () => {
     console.log("editOpenForm", !edit);
     return setEdit(!edit);
   };
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData, // ExpenseForm의   expenseData를 가져옴
+      id: Math.random().toString(),
+    };
+    const { amount, title } = expenseData;
+    if (amount !== "" || title !== "") {
+      props.onExpenseHandler(expenseData);
+      editOpenForm();
+    } else {
+      alert("빈칸을 채워주세요! ");
+    }
+  };
+
   return (
     <div>
       {edit && (
