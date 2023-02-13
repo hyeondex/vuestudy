@@ -35,3 +35,5 @@ package-lock.json
 /test/README.md
 .idea/prettier
 /.idea/
+
+*.xml
