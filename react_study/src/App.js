@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import ExpenseBoard from "./components/expense/ExpenseBoard";
+import ExpenseList from "./components/expense/ExpenseList";
 import NewExpense from "./components/newExpense/NewExpense";
 import "../src/asset/common.css";
 import Card from "./components/common/Card";
+import Chart from "./components/chart/Chart";
 // app
 
 const Dummy_data = [
@@ -41,9 +42,10 @@ const App = () => {
   };
   return (
     <div className="container">
+        <Chart/>
       <Card>
         <NewExpense onExpenseHandler={addExpenseHandler} />
-        <ExpenseBoard data={data} />
+        <ExpenseList data={data} />
       </Card>
     </div>
   );
