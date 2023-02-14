@@ -13,7 +13,7 @@ const ExpenseItem = (props) => {
   setTimeout(clickHandler, 3000);
 
   return (
-    <div className="expense-item">
+    <li className="expense-item">
       <div className="number">{props.id}</div>
       <div className="desc">
         {title}
@@ -21,7 +21,7 @@ const ExpenseItem = (props) => {
       </div>
       <ExpensePrice price={props.amount} />
       <button onClick={clickHandler}>button</button>
-    </div>
+    </li>
   );
 };
 

@@ -1,12 +1,15 @@
 import "./ExpenseLIst.css";
 import ExpenseItem from "./ExpenseItem";
+import expenseItem from "./ExpenseItem";
 
 const ExpenseList = (props) => {
   //nodata case 내 작업
   /*if (tempList.length === 0) {
     return <div className="nodata">nodata</div>;
   }*/
-  console.log(props, " props");
+  //nodata case
+  console.log(props, "list");
+  if (props.items.length === 0) return <p>No data</p>;
   return (
     <ul>
       {props.items.map((expense) => (

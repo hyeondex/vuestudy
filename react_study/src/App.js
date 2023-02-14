@@ -4,6 +4,7 @@ import NewExpense from "./components/newExpense/NewExpense";
 import "../src/asset/common.css";
 import Card from "./components/common/Card";
 import Chart from "./components/chart/Chart";
+import Expense from "./components/expense/Expense";
 // app
 
 const Dummy_data = [
@@ -28,7 +29,7 @@ const Dummy_data = [
   {
     id: 3,
     title: "title4",
-    amount: 5000000,
+    amount: 500,
     date: new Date(2022, 8, 17),
   },
 ];
@@ -40,12 +41,12 @@ const App = () => {
       return [expense, ...prevState];
     }); //기존 데이터 + 새롭게 form에서 추가 되는 데이터
   };
+
   return (
     <div className="container">
-        <Chart/>
       <Card>
         <NewExpense onExpenseHandler={addExpenseHandler} />
-        <ExpenseList data={data} />
+        <Expense items={data} />
       </Card>
     </div>
   );
