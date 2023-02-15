@@ -21,7 +21,7 @@ const ExpenseForm = (props) => {
     const expenseData = {
       title: enteredTitle,
       date: new Date(enteredDate),
-      amount: enteredAmount,
+      amount: +enteredAmount, // 버그 수정
     };
     props.onSaveExpenseData(expenseData); // NewExpense에서 받는 매개변수
     setEnteredTitle("");
