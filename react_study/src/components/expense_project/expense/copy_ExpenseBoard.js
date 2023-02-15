@@ -1,7 +1,7 @@
 //2회차
 import "./ExpenseBoard.css";
 import ExpenseItem from "./ExpenseItem";
-import Card from "../common/Card";
+import Card from "../../common/Card";
 import ExpenseFilter from "../newExpense/ExpenseFilter";
 import { useState } from "react";
 import { useEffect } from "react";
