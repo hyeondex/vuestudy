@@ -112,7 +112,7 @@
       top: 50%;
       transform: translateY(-50%);
       transition: visibility ease-out 0.5s, ease-out 0.3s;
-      opacity: 0;
+      /*opacity: 0;*/
       left: 0;
     }
 
@@ -127,12 +127,13 @@
       display: block;
       width: 24px;
       height: 24px;
-      background: black;
+      background: black;z-index: 100;
     }
 
     .button.next {
       left: auto;
       right: 0;
+
     }
 
     .button.next > button {
